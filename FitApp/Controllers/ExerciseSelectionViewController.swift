@@ -32,19 +32,29 @@ class ExerciseSelection: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+
+    
+    var selectedCell = IndexPath()
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destination = segue.destination as! TodaysWorkoutViewController
         let indexPath = listOfExercisesTableView.indexPathForSelectedRow
         
         destination.exerciseSelectionIndexPath = indexPath
-        destination.formatTableView()
+        destination.checkDuplicates()
         
     }
     
 }
 
 extension ExerciseSelection: UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("This cell from the chat list was selected: \(indexPath.row)")
+        selectedCell = indexPath
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 

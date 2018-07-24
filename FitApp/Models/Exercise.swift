@@ -14,12 +14,14 @@ class Exercise {
     var numberOfReps: [Int]
     var numberOfSets: [Int]
     var sectionNumber: Int
+    var alreadyAdded: Bool
     
-    init(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int){
+    init(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool){
         self.exerciseName = exerciseName
         self.numberOfReps = numberOfReps
         self.numberOfSets = numberOfSets
         self.sectionNumber = sectionNumber
+        self.alreadyAdded = alreadyAdded
     }
     
 }

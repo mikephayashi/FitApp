@@ -15,8 +15,7 @@ class TodaysWorkoutViewController: UIViewController {
     @IBOutlet weak var exerciseListTableView: UITableView!
     
     //Exercise Properties
-    var selectedExercise: Exercise!
-    var sectionNumber = 0
+    var selectedExercise = Exercise(exerciseName: "", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
     var listOfSelectedExercises = [Exercise]()
     
     //Adding Set Cell Index Path
@@ -49,22 +48,39 @@ class TodaysWorkoutViewController: UIViewController {
         
     }
     
-    func formatTableView(){
-        print("New Exercise")
-
-        selectedExercise = listOfExercises[exerciseSelectionIndexPath.row]
-        selectedExercise.sectionNumber = sectionNumber
-        selectedExercise.numberOfSets.append(1)
-        print("Selected Exercise: \(selectedExercise.exerciseName)")
+    
+    func checkDuplicates(){
         
-        sectionNumber = selectedExercise.sectionNumber
-        sectionNumber += 1
+        selectedExercise = listOfExercises[exerciseSelectionIndexPath.row]
+        
+        if listOfSelectedExercises.count == 0{
+            formatTableView()
+            return
+        }
+        
+        //check this
+        
+        for exercise in listOfSelectedExercises {
+            if selectedExercise.alreadyAdded == false && selectedExercise.exerciseName != exercise.exerciseName{
+                formatTableView()
+            }
+        }
+        
+
+    }
+    
+    func formatTableView(){
+        
+        //No sections on loading
+        selectedExercise.sectionNumber = exerciseListTableView.numberOfSections
+        selectedExercise.numberOfSets.append(1)
+        selectedExercise.alreadyAdded = true
         
         listOfSelectedExercises.append(selectedExercise)
         exerciseListTableView.reloadData()
     }
-    
 }
+
 
 extension TodaysWorkoutViewController: UITableViewDataSource{
     
@@ -82,13 +98,8 @@ extension TodaysWorkoutViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         var valuedReturned = ""
-        
         if listOfSelectedExercises.count != 0{
-            print("Section: \(section)")
-            print(listOfSelectedExercises[section].exerciseName)
-            for x in listOfSelectedExercises{
-                print(x.exerciseName)
-            }
+            
             valuedReturned = listOfSelectedExercises[section].exerciseName
         }
         return valuedReturned
@@ -100,7 +111,6 @@ extension TodaysWorkoutViewController: UITableViewDataSource{
         if listOfSelectedExercises.count != 0{
             for x in listOfSelectedExercises {
                 if x.sectionNumber == section {
-                    print("Rows")
                     returnedValue = 3 + x.numberOfSets[0]
                 }
             }
@@ -111,36 +121,30 @@ extension TodaysWorkoutViewController: UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("list of selected exercises")
-        print(listOfSelectedExercises)
-        var returnedValue = tableView.dequeueReusableCell(withIdentifier: "ExerciseHeaderCell", for: indexPath) 
+        var returnedValue = tableView.dequeueReusableCell(withIdentifier: "ExerciseHeaderCell", for: indexPath)
         if listOfSelectedExercises.count != 0 {
-            print("list of selected exercises not 0")
-            for x in listOfSelectedExercises {
-//                if x.sectionNumber == indexPath.section {
+            for exercise in listOfSelectedExercises {
+                if exercise.sectionNumber == indexPath.section{
                     switch  indexPath.row {
                     case 0:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseHeaderCell", for: indexPath) as! ExerciseHeaderCell
-                        print("Cell 0")
                         returnedValue = cell
                     case 1:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseLabelsCell", for: indexPath) as! ExerciseLabelsCell
-                        print("Cell 1")
                         returnedValue = cell
                     // + 2 because middle = 2 + numberOfSets
-                    case let x where x > 1 && x < selectedExercise.numberOfSets[0] + 2 :
+                    case let x where x > 1 && x < exercise.numberOfSets[0] + 2 :
                         let cell = tableView.dequeueReusableCell(withIdentifier: "SetDataCell", for: indexPath) as! SetDataCell
-                        print("Cell Middle")
                         returnedValue = cell
-                    case selectedExercise.numberOfSets[0]+2:
+                    case exercise.numberOfSets[0]+2:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "AddingSetCell", for: indexPath) as! AddingSetCell
                         cell.delegate = self as AddingSetCellDelegate
-                        print("Cell End")
                         returnedValue = cell
                     default:
                         fatalError("Error unexpected Indexpath.row")
                     }
-//                }
+                    
+                }
             }
         }
         
@@ -150,21 +154,16 @@ extension TodaysWorkoutViewController: UITableViewDataSource{
     
 }
 
+
 extension TodaysWorkoutViewController: AddingSetCellDelegate{
     
     func reloadingNumberOfSets(cell: AddingSetCell) {
         
         let indexPath = exerciseListTableView.indexPath(for: cell)!
-
-        print("index path: \(indexPath)")
-        print(listOfSelectedExercises)
-        print(listOfSelectedExercises)
         
         for x in listOfSelectedExercises{
-            print(x.sectionNumber)
             if indexPath.section == x.sectionNumber{
-                listOfSelectedExercises[sectionNumber].numberOfSets[0] += 1
-                print("Rep Added")
+                listOfSelectedExercises[x.sectionNumber].numberOfSets[0] += 1
                 exerciseListTableView.reloadData()
             }
         }

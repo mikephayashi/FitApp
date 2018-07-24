@@ -13,12 +13,14 @@ class ListOfExercises {
 
     var listOfExercises = [Exercise]()
 
-    var pushUp = Exercise(exerciseName: "Push Up", numberOfReps: [], numberOfSets: [], sectionNumber: 0)
-    var pullUp = Exercise(exerciseName: "Pull Up", numberOfReps: [], numberOfSets: [], sectionNumber: 0)
+    var pushUp = Exercise(exerciseName: "Push Up", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
+    var pullUp = Exercise(exerciseName: "Pull Up", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
+    var squat = Exercise(exerciseName: "Squat", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
     
     init(){
         listOfExercises.append(pushUp)
         listOfExercises.append(pullUp)
+        listOfExercises.append(squat)
     }
     
 }

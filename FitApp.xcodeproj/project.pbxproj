@@ -8,22 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053C2106442E009E6666 /* AppDelegate.swift */; };
-		1E1E053F2106442E009E6666 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053E2106442E009E6666 /* ViewController.swift */; };
-		1E1E05422106442E009E6666 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E05402106442E009E6666 /* Main.storyboard */; };
+		1E1E053F2106442E009E6666 /* TodaysWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053E2106442E009E6666 /* TodaysWorkoutViewController.swift */; };
+		1E1E05422106442E009E6666 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E05402106442E009E6666 /* TabBar.storyboard */; };
 		1E1E05452106442E009E6666 /* FitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E05432106442E009E6666 /* FitApp.xcdatamodeld */; };
 		1E1E054721064430009E6666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E054621064430009E6666 /* Assets.xcassets */; };
 		1E1E054A21064430009E6666 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E054821064430009E6666 /* LaunchScreen.storyboard */; };
+		1E1E055921064B32009E6666 /* ExerciseLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E055821064B32009E6666 /* ExerciseLabelCell.swift */; };
+		1E1E055D210653E7009E6666 /* TodaysWorkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E055C210653E7009E6666 /* TodaysWorkout.storyboard */; };
+		1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */; };
+		1E8A08B52106745C000B40BF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B42106745C000B40BF /* Exercise.swift */; };
+		1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B6210677AB000B40BF /* AddingSetCell.swift */; };
+		1E9A7BD22106945200B2F3FC /* SetDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A7BD12106945200B2F3FC /* SetDataCell.swift */; };
+		1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A7BD3210695E800B2F3FC /* ExerciseSelectionViewController.swift */; };
+		1E9A7BD6210696C300B2F3FC /* ExerciseNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A7BD5210696C300B2F3FC /* ExerciseNameCell.swift */; };
+		1E9A7BD9210699E500B2F3FC /* ListOfExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A7BD8210699E500B2F3FC /* ListOfExercises.swift */; };
+		468B3E81C711E80DD354ADB3 /* Pods_FitApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31304F47A1481A07320CB7A7 /* Pods_FitApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E1E05392106442E009E6666 /* FitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E1E053C2106442E009E6666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1E1E053E2106442E009E6666 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1E1E05412106442E009E6666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1E1E053E2106442E009E6666 /* TodaysWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysWorkoutViewController.swift; sourceTree = "<group>"; };
+		1E1E05412106442E009E6666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TabBar.storyboard; sourceTree = "<group>"; };
 		1E1E05442106442E009E6666 /* FitApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitApp.xcdatamodel; sourceTree = "<group>"; };
 		1E1E054621064430009E6666 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E1E054921064430009E6666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E1E054B21064430009E6666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E1E055821064B32009E6666 /* ExerciseLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLabelCell.swift; sourceTree = "<group>"; };
+		1E1E055C210653E7009E6666 /* TodaysWorkout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TodaysWorkout.storyboard; sourceTree = "<group>"; };
+		1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHeaderCell.swift; sourceTree = "<group>"; };
+		1E8A08B42106745C000B40BF /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		1E8A08B6210677AB000B40BF /* AddingSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingSetCell.swift; sourceTree = "<group>"; };
+		1E9A7BD12106945200B2F3FC /* SetDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDataCell.swift; sourceTree = "<group>"; };
+		1E9A7BD3210695E800B2F3FC /* ExerciseSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectionViewController.swift; sourceTree = "<group>"; };
+		1E9A7BD5210696C300B2F3FC /* ExerciseNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNameCell.swift; sourceTree = "<group>"; };
+		1E9A7BD8210699E500B2F3FC /* ListOfExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfExercises.swift; sourceTree = "<group>"; };
+		31304F47A1481A07320CB7A7 /* Pods_FitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F41417D097CDA1AE0A26EE7 /* Pods-FitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitApp/Pods-FitApp.debug.xcconfig"; sourceTree = "<group>"; };
+		6C8410D205523301C09AA400 /* Pods-FitApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitApp/Pods-FitApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				468B3E81C711E80DD354ADB3 /* Pods_FitApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +65,8 @@
 			children = (
 				1E1E053B2106442E009E6666 /* FitApp */,
 				1E1E053A2106442E009E6666 /* Products */,
+				25CAAFFD5A555FB57EA113FF /* Pods */,
+				2E1DC4EFD2C39F24CE816686 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +82,112 @@
 			isa = PBXGroup;
 			children = (
 				1E1E053C2106442E009E6666 /* AppDelegate.swift */,
-				1E1E053E2106442E009E6666 /* ViewController.swift */,
-				1E1E05402106442E009E6666 /* Main.storyboard */,
+				1E1E055121064468009E6666 /* Models */,
+				1E1E055221064473009E6666 /* Views */,
+				1E1E055321064477009E6666 /* Controllers */,
+				1E1E0556210644D1009E6666 /* Storyboards */,
+				1E1E05542106449D009E6666 /* Helpers */,
+				1E1E0555210644A6009E6666 /* Extensions */,
+				1E1E05572106450E009E6666 /* Services */,
 				1E1E054621064430009E6666 /* Assets.xcassets */,
-				1E1E054821064430009E6666 /* LaunchScreen.storyboard */,
 				1E1E054B21064430009E6666 /* Info.plist */,
 				1E1E05432106442E009E6666 /* FitApp.xcdatamodeld */,
 			);
 			path = FitApp;
+			sourceTree = "<group>";
+		};
+		1E1E055121064468009E6666 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1E8A08B42106745C000B40BF /* Exercise.swift */,
+				1E9A7BD8210699E500B2F3FC /* ListOfExercises.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1E1E055221064473009E6666 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1E8A08B8210677C2000B40BF /* Exercise List Table View */,
+				1E9A7BD7210696DA00B2F3FC /* Exercise Selection Table View */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1E1E055321064477009E6666 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1E1E053E2106442E009E6666 /* TodaysWorkoutViewController.swift */,
+				1E9A7BD3210695E800B2F3FC /* ExerciseSelectionViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1E1E05542106449D009E6666 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1E1E0555210644A6009E6666 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1E1E0556210644D1009E6666 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1E1E054821064430009E6666 /* LaunchScreen.storyboard */,
+				1E1E05402106442E009E6666 /* TabBar.storyboard */,
+				1E1E055C210653E7009E6666 /* TodaysWorkout.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		1E1E05572106450E009E6666 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1E8A08B8210677C2000B40BF /* Exercise List Table View */ = {
+			isa = PBXGroup;
+			children = (
+				1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */,
+				1E1E055821064B32009E6666 /* ExerciseLabelCell.swift */,
+				1E9A7BD12106945200B2F3FC /* SetDataCell.swift */,
+				1E8A08B6210677AB000B40BF /* AddingSetCell.swift */,
+			);
+			path = "Exercise List Table View";
+			sourceTree = "<group>";
+		};
+		1E9A7BD7210696DA00B2F3FC /* Exercise Selection Table View */ = {
+			isa = PBXGroup;
+			children = (
+				1E9A7BD5210696C300B2F3FC /* ExerciseNameCell.swift */,
+			);
+			path = "Exercise Selection Table View";
+			sourceTree = "<group>";
+		};
+		25CAAFFD5A555FB57EA113FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F41417D097CDA1AE0A26EE7 /* Pods-FitApp.debug.xcconfig */,
+				6C8410D205523301C09AA400 /* Pods-FitApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2E1DC4EFD2C39F24CE816686 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31304F47A1481A07320CB7A7 /* Pods_FitApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +197,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E1E054E21064430009E6666 /* Build configuration list for PBXNativeTarget "FitApp" */;
 			buildPhases = (
+				474E26AC91A361B9A4B88016 /* [CP] Check Pods Manifest.lock */,
 				1E1E05352106442E009E6666 /* Sources */,
 				1E1E05362106442E009E6666 /* Frameworks */,
 				1E1E05372106442E009E6666 /* Resources */,
+				D8054B44F4C82A9D92351E6E /* [CP] Embed Pods Frameworks */,
+				D37CA3DD76FC6742C3B8740A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,32 +253,124 @@
 			files = (
 				1E1E054A21064430009E6666 /* LaunchScreen.storyboard in Resources */,
 				1E1E054721064430009E6666 /* Assets.xcassets in Resources */,
-				1E1E05422106442E009E6666 /* Main.storyboard in Resources */,
+				1E1E055D210653E7009E6666 /* TodaysWorkout.storyboard in Resources */,
+				1E1E05422106442E009E6666 /* TabBar.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		474E26AC91A361B9A4B88016 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D37CA3DD76FC6742C3B8740A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FitApp/Pods-FitApp-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitApp/Pods-FitApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8054B44F4C82A9D92351E6E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FitApp/Pods-FitApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitApp/Pods-FitApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1E1E05352106442E009E6666 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E1E053F2106442E009E6666 /* ViewController.swift in Sources */,
+				1E9A7BD6210696C300B2F3FC /* ExerciseNameCell.swift in Sources */,
+				1E1E053F2106442E009E6666 /* TodaysWorkoutViewController.swift in Sources */,
+				1E9A7BD9210699E500B2F3FC /* ListOfExercises.swift in Sources */,
+				1E9A7BD22106945200B2F3FC /* SetDataCell.swift in Sources */,
+				1E8A08B52106745C000B40BF /* Exercise.swift in Sources */,
+				1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */,
+				1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */,
+				1E1E055921064B32009E6666 /* ExerciseLabelCell.swift in Sources */,
 				1E1E05452106442E009E6666 /* FitApp.xcdatamodeld in Sources */,
 				1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */,
+				1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1E1E05402106442E009E6666 /* Main.storyboard */ = {
+		1E1E05402106442E009E6666 /* TabBar.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1E1E05412106442E009E6666 /* Base */,
 			);
-			name = Main.storyboard;
+			name = TabBar.storyboard;
 			sourceTree = "<group>";
 		};
 		1E1E054821064430009E6666 /* LaunchScreen.storyboard */ = {
@@ -282,6 +500,7 @@
 		};
 		1E1E054F21064430009E6666 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F41417D097CDA1AE0A26EE7 /* Pods-FitApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +519,7 @@
 		};
 		1E1E055021064430009E6666 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C8410D205523301C09AA400 /* Pods-FitApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

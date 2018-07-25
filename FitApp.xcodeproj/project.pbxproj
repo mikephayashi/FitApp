@@ -38,6 +38,9 @@
 		1E5CA0D12108F24400A252F0 /* JTSCalendarWeekDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0C92108F24300A252F0 /* JTSCalendarWeekDayView.swift */; };
 		1E5CA0D22108F24400A252F0 /* JTSVerticalCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0CA2108F24300A252F0 /* JTSVerticalCalendarView.swift */; };
 		1E5CA0D52109031F00A252F0 /* NotesAndReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D42109031F00A252F0 /* NotesAndReference.swift */; };
+		1E5CA0D8210915D000A252F0 /* UserMetrics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D7210915D000A252F0 /* UserMetrics.storyboard */; };
+		1E5CA0DA210915E000A252F0 /* UserMetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D9210915E000A252F0 /* UserMetricsViewController.swift */; };
+		1E5CA0DD2109249000A252F0 /* CalculateUserMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0DC2109249000A252F0 /* CalculateUserMetrics.swift */; };
 		1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */; };
 		1E8A08B52106745C000B40BF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B42106745C000B40BF /* Exercise.swift */; };
 		1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B6210677AB000B40BF /* AddingSetCell.swift */; };
@@ -82,6 +85,9 @@
 		1E5CA0C92108F24300A252F0 /* JTSCalendarWeekDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarWeekDayView.swift; sourceTree = "<group>"; };
 		1E5CA0CA2108F24300A252F0 /* JTSVerticalCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSVerticalCalendarView.swift; sourceTree = "<group>"; };
 		1E5CA0D42109031F00A252F0 /* NotesAndReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAndReference.swift; sourceTree = "<group>"; };
+		1E5CA0D7210915D000A252F0 /* UserMetrics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserMetrics.storyboard; sourceTree = "<group>"; };
+		1E5CA0D9210915E000A252F0 /* UserMetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMetricsViewController.swift; sourceTree = "<group>"; };
+		1E5CA0DC2109249000A252F0 /* CalculateUserMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateUserMetrics.swift; sourceTree = "<group>"; };
 		1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHeaderCell.swift; sourceTree = "<group>"; };
 		1E8A08B42106745C000B40BF /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		1E8A08B6210677AB000B40BF /* AddingSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingSetCell.swift; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				1E1E053C2106442E009E6666 /* AppDelegate.swift */,
+				1E5CA0DB2109246600A252F0 /* Algorithm */,
 				1E1E055121064468009E6666 /* Models */,
 				1E1E055221064473009E6666 /* Views */,
 				1E1E055321064477009E6666 /* Controllers */,
@@ -164,6 +171,7 @@
 		1E1E055321064477009E6666 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1E5CA0D6210915AA00A252F0 /* UserMetrics */,
 				1E5CA09A2108E8AF00A252F0 /* TodaysWorkout */,
 				1E5CA09B2108E8BB00A252F0 /* Calendar */,
 			);
@@ -190,6 +198,7 @@
 			children = (
 				1E1E054821064430009E6666 /* LaunchScreen.storyboard */,
 				1E1E05402106442E009E6666 /* TabBar.storyboard */,
+				1E5CA0D7210915D000A252F0 /* UserMetrics.storyboard */,
 				1E1E055C210653E7009E6666 /* TodaysWorkout.storyboard */,
 				1E5CA0962108E33A00A252F0 /* Calendar.storyboard */,
 			);
@@ -269,6 +278,22 @@
 				1E5CA0CA2108F24300A252F0 /* JTSVerticalCalendarView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1E5CA0D6210915AA00A252F0 /* UserMetrics */ = {
+			isa = PBXGroup;
+			children = (
+				1E5CA0D9210915E000A252F0 /* UserMetricsViewController.swift */,
+			);
+			path = UserMetrics;
+			sourceTree = "<group>";
+		};
+		1E5CA0DB2109246600A252F0 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				1E5CA0DC2109249000A252F0 /* CalculateUserMetrics.swift */,
+			);
+			path = Algorithm;
 			sourceTree = "<group>";
 		};
 		1E8A08B8210677C2000B40BF /* Exercise List Table View */ = {
@@ -369,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E5CA0972108E33A00A252F0 /* Calendar.storyboard in Resources */,
+				1E5CA0D8210915D000A252F0 /* UserMetrics.storyboard in Resources */,
 				1E1E054A21064430009E6666 /* LaunchScreen.storyboard in Resources */,
 				1E1E054721064430009E6666 /* Assets.xcassets in Resources */,
 				1E1E055D210653E7009E6666 /* TodaysWorkout.storyboard in Resources */,
@@ -467,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E5CA0BE2108F22C00A252F0 /* JTSCalendarWeekDay.swift in Sources */,
+				1E5CA0DA210915E000A252F0 /* UserMetricsViewController.swift in Sources */,
 				1E5CA0AD2108EFC300A252F0 /* JTSCalendarSettings.swift in Sources */,
 				1E5CA0D12108F24400A252F0 /* JTSCalendarWeekDayView.swift in Sources */,
 				1E9A7BD6210696C300B2F3FC /* ExerciseNameCell.swift in Sources */,
@@ -480,6 +507,7 @@
 				1E5CA0A82108EFC300A252F0 /* JTSCalendarDelegate.swift in Sources */,
 				1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */,
 				1E8A08B52106745C000B40BF /* Exercise.swift in Sources */,
+				1E5CA0DD2109249000A252F0 /* CalculateUserMetrics.swift in Sources */,
 				1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */,
 				1E5CA0B52108F20E00A252F0 /* JTSCalendarDelegateManager.swift in Sources */,
 				1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */,

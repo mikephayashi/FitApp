@@ -14,6 +14,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarContentView: JTSHorizontalCalendarView!
     @IBOutlet weak var calendarContentViewHeight: NSLayoutConstraint!
     
+    
     var calendarManager:JTSCalendarManager?
     
     var monthSwiped: Date?
@@ -66,6 +67,17 @@ class CalendarViewController: UIViewController {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
+    
+   
+    @IBAction func lastMonthClicked(_ sender: Any) {
+//        JTSHorizontalCalendarView.loadPreviousPage(calendarContentView)
+    }
+    
+    @IBAction func nextMonthClicked(_ sender: Any) {
+        
+    }
+    
+    
     
     //Months Available
     func createMinAndMaxDate() {

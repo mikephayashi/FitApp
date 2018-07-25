@@ -14,6 +14,7 @@ class TodaysWorkoutViewController: UIViewController {
     @IBOutlet weak var newExerciseButton: UIButton!
     @IBOutlet weak var exerciseListTableView: UITableView!
     
+    @IBOutlet var testUserMetricLabel2: UILabel!
     
     //Exercise Properties
     var selectedExercise = Exercise(exerciseName: "", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
@@ -29,12 +30,31 @@ class TodaysWorkoutViewController: UIViewController {
     let listOfExercisesReference = ListOfExercises()
     var listOfExercises = [Exercise]()
     
+    //Timer
+    @IBOutlet weak var toggleTimerButton: UIButton!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var resetButton: UIButton!
+    
+    @IBOutlet weak var timerProgressView: UIProgressView!
+    
+    var timerLength = 60.0
+    var timerIsRunning = false
+    
+    var countDownTimer = Timer()
+    
+    //Test Variables
+    var weightInput = 1
+    var heightInput = 1
+    var ageInput = 1
+    var genderInput = 1
+    
     //Overide Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         listOfExercises = listOfExercisesReference.listOfExercises
         timerProgressView.progress = Float(1.0)
+        
         
     }
     
@@ -47,6 +67,21 @@ class TodaysWorkoutViewController: UIViewController {
     @IBAction func newExerciseTapped(_ sender: Any) {
         
     }
+
+    @IBAction func calculateUserMetricsTapped(_ sender: Any) {
+        //        weightInput = CalculateUserMetrics().weightInput
+        //        heightInput = CalculateUserMetrics().heightInput
+        //        ageInput = CalculateUserMetrics().ageInput
+        //        genderInput = CalculateUserMetrics().genderInput
+        print("Being Called")
+        print(weightInput)
+        print(heightInput)
+        print(ageInput)
+        print(genderInput)
+        
+        testUserMetricLabel2.text = "Weight:\(weightInput) \nHeight: \(heightInput) \nage:\(ageInput) \ngender: \(genderInput)"
+    }
+    
     
     @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
         
@@ -85,16 +120,6 @@ class TodaysWorkoutViewController: UIViewController {
     }
 
     //Stopwatch
-    @IBOutlet weak var toggleTimerButton: UIButton!
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var resetButton: UIButton!
-    
-    @IBOutlet weak var timerProgressView: UIProgressView!
-    
-    var timerLength = 60.0
-    var timerIsRunning = false
-    
-    var countDownTimer = Timer()
     
     @IBAction func toggleTimerTapped(_ sender: Any) {
 
@@ -129,6 +154,8 @@ class TodaysWorkoutViewController: UIViewController {
 
 extension TodaysWorkoutViewController: UITableViewDataSource{
     
+    
+    //TableViews
     func numberOfSections(in tableView: UITableView) -> Int {
         
         var returnedValue = 0
@@ -215,7 +242,39 @@ extension TodaysWorkoutViewController: AddingSetCellDelegate{
     }
 }
 
+extension TodaysWorkoutViewController: UserMetricsDelegate{
+    func outputWorkouts(weight: Int, height: Int, age: Int, gender: Int) {
+        weightInput = weight
+        heightInput = height
+        ageInput = age
+        genderInput = gender
+        
+        print("Being Called")
+        print(weight)
+        print(height)
+        print(age)
+        print(gender)
+        print(weightInput)
+        print(heightInput)
+        print(ageInput)
+        print(genderInput)
+        
+    }
+    
+    
+}
 
+extension TodaysWorkoutViewController: CalculateUserMetricsDelegate{
+    func calculateWorkouts(weight: Int, height: Int, age: Int, gender: Int) {
+//        weightInput = weight
+//        heightInput = height
+//        ageInput = age
+//        genderInput = gender
+        
+
+    }
+    
+}
 
 
 

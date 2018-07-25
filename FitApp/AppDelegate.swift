@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         let myTabBar = self.window?.rootViewController as! UITabBarController // Getting Tab Bar
-        myTabBar.selectedIndex = 1 //Selecting tab here
+        myTabBar.selectedIndex = 2 //Selecting tab here
         
         return true
     }

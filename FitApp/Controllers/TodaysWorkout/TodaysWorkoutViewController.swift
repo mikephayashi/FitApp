@@ -14,6 +14,7 @@ class TodaysWorkoutViewController: UIViewController {
     @IBOutlet weak var newExerciseButton: UIButton!
     @IBOutlet weak var exerciseListTableView: UITableView!
     
+    
     //Exercise Properties
     var selectedExercise = Exercise(exerciseName: "", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
     var listOfSelectedExercises = [Exercise]()
@@ -33,6 +34,7 @@ class TodaysWorkoutViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         listOfExercises = listOfExercisesReference.listOfExercises
+        timerProgressView.progress = Float(1.0)
         
     }
     
@@ -86,7 +88,10 @@ class TodaysWorkoutViewController: UIViewController {
     @IBOutlet weak var toggleTimerButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
-    var timerLength = 60
+    
+    @IBOutlet weak var timerProgressView: UIProgressView!
+    
+    var timerLength = 60.0
     var timerIsRunning = false
     
     var countDownTimer = Timer()
@@ -106,14 +111,17 @@ class TodaysWorkoutViewController: UIViewController {
     
     
     @IBAction func resetButtonTapped(_ sender: Any) {
-        timerLength = 60
+        timerLength = 60.0
         timerLabel.text = String(timerLength)
+        timerProgressView.progress = Float(timerLength/60.0)
+        
     }
     
     @objc func timerControl () {
         
             timerLength -= 1
             timerLabel.text = String(timerLength)
+        timerProgressView.progress = Float(timerLength/60.0)
 
     }
 }

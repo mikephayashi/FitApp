@@ -29,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
         
+        let myTabBar = self.window?.rootViewController as! UITabBarController // Getting Tab Bar
+        myTabBar.selectedIndex = 1 //Selecting tab here
+        
         return true
     }
 

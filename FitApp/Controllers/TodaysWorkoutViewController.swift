@@ -28,6 +28,7 @@ class TodaysWorkoutViewController: UIViewController {
     let listOfExercisesReference = ListOfExercises()
     var listOfExercises = [Exercise]()
     
+    //Overide Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -40,6 +41,7 @@ class TodaysWorkoutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //IB Actions
     @IBAction func newExerciseTapped(_ sender: Any) {
         
     }
@@ -48,7 +50,7 @@ class TodaysWorkoutViewController: UIViewController {
         
     }
     
-    
+    //Setting Table View
     func checkDuplicates(){
         
         selectedExercise = listOfExercises[exerciseSelectionIndexPath.row]
@@ -78,6 +80,41 @@ class TodaysWorkoutViewController: UIViewController {
         
         listOfSelectedExercises.append(selectedExercise)
         exerciseListTableView.reloadData()
+    }
+
+    //Stopwatch
+    @IBOutlet weak var toggleTimerButton: UIButton!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var resetButton: UIButton!
+    var timerLength = 60
+    var timerIsRunning = false
+    
+    var countDownTimer = Timer()
+    
+    @IBAction func toggleTimerTapped(_ sender: Any) {
+
+        if timerIsRunning == true{
+        
+        countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TodaysWorkoutViewController.timerControl), userInfo: nil, repeats: true)
+            timerIsRunning = false
+        } else {
+            countDownTimer.invalidate()
+            timerIsRunning = true
+        }
+        
+    }
+    
+    
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        timerLength = 60
+        timerLabel.text = String(timerLength)
+    }
+    
+    @objc func timerControl () {
+        
+            timerLength -= 1
+            timerLabel.text = String(timerLength)
+
     }
 }
 

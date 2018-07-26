@@ -8,11 +8,13 @@
 
 import UIKit
 
-class WODViewController: UIViewController {
+class TodaysWorkoutViewController: UIViewController {
     
     //Objects
     @IBOutlet weak var newExerciseButton: UIButton!
     @IBOutlet weak var exerciseListTableView: UITableView!
+    
+    @IBOutlet var testUserMetricLabel2: UILabel!
     
     //Exercise Properties
     var selectedExercise = Exercise(exerciseName: "", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
@@ -65,9 +67,24 @@ class WODViewController: UIViewController {
     @IBAction func newExerciseTapped(_ sender: Any) {
         
     }
+
+    @IBAction func calculateUserMetricsTapped(_ sender: Any) {
+        //        weightInput = CalculateUserMetrics().weightInput
+        //        heightInput = CalculateUserMetrics().heightInput
+        //        ageInput = CalculateUserMetrics().ageInput
+        //        genderInput = CalculateUserMetrics().genderInput
+        print("Being Called")
+        print(weightInput)
+        print(heightInput)
+        print(ageInput)
+        print(genderInput)
+        
+        testUserMetricLabel2.text = "Weight:\(weightInput) \nHeight: \(heightInput) \nage:\(ageInput) \ngender: \(genderInput)"
+    }
+    
     
     @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
-        print("SEgue Tapped")
+        
     }
     
     //Setting Table View
@@ -108,7 +125,7 @@ class WODViewController: UIViewController {
 
         if timerIsRunning == true{
         
-        countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WODViewController.timerControl), userInfo: nil, repeats: true)
+        countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TodaysWorkoutViewController.timerControl), userInfo: nil, repeats: true)
             timerIsRunning = false
         } else {
             countDownTimer.invalidate()
@@ -135,7 +152,7 @@ class WODViewController: UIViewController {
 }
 
 
-extension WODViewController: UITableViewDataSource{
+extension TodaysWorkoutViewController: UITableViewDataSource{
     
     
     //TableViews
@@ -210,7 +227,7 @@ extension WODViewController: UITableViewDataSource{
 }
 
 
-extension WODViewController: AddingSetCellDelegate{
+extension TodaysWorkoutViewController: AddingSetCellDelegate{
     
     func reloadingNumberOfSets(cell: AddingSetCell) {
         
@@ -225,7 +242,39 @@ extension WODViewController: AddingSetCellDelegate{
     }
 }
 
+extension TodaysWorkoutViewController: UserMetricsDelegate{
+    func outputWorkouts(weight: Int, height: Int, age: Int, gender: Int) {
+        weightInput = weight
+        heightInput = height
+        ageInput = age
+        genderInput = gender
+        
+        print("Being Called")
+        print(weight)
+        print(height)
+        print(age)
+        print(gender)
+        print(weightInput)
+        print(heightInput)
+        print(ageInput)
+        print(genderInput)
+        
+    }
+    
+    
+}
 
+extension TodaysWorkoutViewController: CalculateUserMetricsDelegate{
+    func calculateWorkouts(weight: Int, height: Int, age: Int, gender: Int) {
+//        weightInput = weight
+//        heightInput = height
+//        ageInput = age
+//        genderInput = gender
+        
+
+    }
+    
+}
 
 
 

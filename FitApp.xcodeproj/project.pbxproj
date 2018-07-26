@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053C2106442E009E6666 /* AppDelegate.swift */; };
-		1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053E2106442E009E6666 /* WODViewController.swift */; };
+		1E1E053F2106442E009E6666 /* TodaysWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053E2106442E009E6666 /* TodaysWorkoutViewController.swift */; };
 		1E1E05422106442E009E6666 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E05402106442E009E6666 /* TabBar.storyboard */; };
 		1E1E05452106442E009E6666 /* FitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E05432106442E009E6666 /* FitApp.xcdatamodeld */; };
 		1E1E054721064430009E6666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E054621064430009E6666 /* Assets.xcassets */; };
 		1E1E054A21064430009E6666 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E054821064430009E6666 /* LaunchScreen.storyboard */; };
 		1E1E055921064B32009E6666 /* ExerciseLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E055821064B32009E6666 /* ExerciseLabelCell.swift */; };
-		1E1E055D210653E7009E6666 /* WOD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E055C210653E7009E6666 /* WOD.storyboard */; };
+		1E1E055D210653E7009E6666 /* TodaysWorkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E055C210653E7009E6666 /* TodaysWorkout.storyboard */; };
 		1E5CA0972108E33A00A252F0 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E5CA0962108E33A00A252F0 /* Calendar.storyboard */; };
 		1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0982108E37800A252F0 /* CalendarViewController.swift */; };
 		1E5CA0A82108EFC300A252F0 /* JTSCalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0A12108EFC000A252F0 /* JTSCalendarDelegate.swift */; };
@@ -40,9 +40,7 @@
 		1E5CA0D52109031F00A252F0 /* NotesAndReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D42109031F00A252F0 /* NotesAndReference.swift */; };
 		1E5CA0D8210915D000A252F0 /* UserMetrics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D7210915D000A252F0 /* UserMetrics.storyboard */; };
 		1E5CA0DA210915E000A252F0 /* UserMetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D9210915E000A252F0 /* UserMetricsViewController.swift */; };
-		1E5CA0DF21094E8F00A252F0 /* NutriHealth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E5CA0DE21094E8F00A252F0 /* NutriHealth.storyboard */; };
-		1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0E221094F4600A252F0 /* NutriHealthViewController.swift */; };
-		1E5CA0E72109577000A252F0 /* ExerciseNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0E62109577000A252F0 /* ExerciseNoteCell.swift */; };
+		1E5CA0DD2109249000A252F0 /* CalculateUserMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0DC2109249000A252F0 /* CalculateUserMetrics.swift */; };
 		1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */; };
 		1E8A08B52106745C000B40BF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B42106745C000B40BF /* Exercise.swift */; };
 		1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B6210677AB000B40BF /* AddingSetCell.swift */; };
@@ -56,14 +54,14 @@
 /* Begin PBXFileReference section */
 		1E1E05392106442E009E6666 /* FitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E1E053C2106442E009E6666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1E1E053E2106442E009E6666 /* WODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewController.swift; sourceTree = "<group>"; };
+		1E1E053E2106442E009E6666 /* TodaysWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysWorkoutViewController.swift; sourceTree = "<group>"; };
 		1E1E05412106442E009E6666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TabBar.storyboard; sourceTree = "<group>"; };
 		1E1E05442106442E009E6666 /* FitApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitApp.xcdatamodel; sourceTree = "<group>"; };
 		1E1E054621064430009E6666 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E1E054921064430009E6666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E1E054B21064430009E6666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E1E055821064B32009E6666 /* ExerciseLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLabelCell.swift; sourceTree = "<group>"; };
-		1E1E055C210653E7009E6666 /* WOD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WOD.storyboard; sourceTree = "<group>"; };
+		1E1E055C210653E7009E6666 /* TodaysWorkout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TodaysWorkout.storyboard; sourceTree = "<group>"; };
 		1E5CA0962108E33A00A252F0 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		1E5CA0982108E37800A252F0 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		1E5CA0A12108EFC000A252F0 /* JTSCalendarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarDelegate.swift; sourceTree = "<group>"; };
@@ -89,9 +87,7 @@
 		1E5CA0D42109031F00A252F0 /* NotesAndReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAndReference.swift; sourceTree = "<group>"; };
 		1E5CA0D7210915D000A252F0 /* UserMetrics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserMetrics.storyboard; sourceTree = "<group>"; };
 		1E5CA0D9210915E000A252F0 /* UserMetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMetricsViewController.swift; sourceTree = "<group>"; };
-		1E5CA0DE21094E8F00A252F0 /* NutriHealth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NutriHealth.storyboard; sourceTree = "<group>"; };
-		1E5CA0E221094F4600A252F0 /* NutriHealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriHealthViewController.swift; sourceTree = "<group>"; };
-		1E5CA0E62109577000A252F0 /* ExerciseNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNoteCell.swift; sourceTree = "<group>"; };
+		1E5CA0DC2109249000A252F0 /* CalculateUserMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateUserMetrics.swift; sourceTree = "<group>"; };
 		1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHeaderCell.swift; sourceTree = "<group>"; };
 		1E8A08B42106745C000B40BF /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		1E8A08B6210677AB000B40BF /* AddingSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingSetCell.swift; sourceTree = "<group>"; };
@@ -138,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				1E1E053C2106442E009E6666 /* AppDelegate.swift */,
+				1E5CA0DB2109246600A252F0 /* Algorithm */,
 				1E1E055121064468009E6666 /* Models */,
 				1E1E055221064473009E6666 /* Views */,
 				1E1E055321064477009E6666 /* Controllers */,
@@ -174,10 +171,9 @@
 		1E1E055321064477009E6666 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1E5CA09A2108E8AF00A252F0 /* WOD */,
-				1E5CA09B2108E8BB00A252F0 /* Calendar */,
-				1E5CA0E121094F2300A252F0 /* NutriHealth */,
 				1E5CA0D6210915AA00A252F0 /* UserMetrics */,
+				1E5CA09A2108E8AF00A252F0 /* TodaysWorkout */,
+				1E5CA09B2108E8BB00A252F0 /* Calendar */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -200,11 +196,11 @@
 		1E1E0556210644D1009E6666 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				1E5CA0E021094E9B00A252F0 /* Management */,
-				1E1E055C210653E7009E6666 /* WOD.storyboard */,
-				1E5CA0962108E33A00A252F0 /* Calendar.storyboard */,
-				1E5CA0DE21094E8F00A252F0 /* NutriHealth.storyboard */,
+				1E1E054821064430009E6666 /* LaunchScreen.storyboard */,
+				1E1E05402106442E009E6666 /* TabBar.storyboard */,
 				1E5CA0D7210915D000A252F0 /* UserMetrics.storyboard */,
+				1E1E055C210653E7009E6666 /* TodaysWorkout.storyboard */,
+				1E5CA0962108E33A00A252F0 /* Calendar.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -216,13 +212,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		1E5CA09A2108E8AF00A252F0 /* WOD */ = {
+		1E5CA09A2108E8AF00A252F0 /* TodaysWorkout */ = {
 			isa = PBXGroup;
 			children = (
-				1E1E053E2106442E009E6666 /* WODViewController.swift */,
+				1E1E053E2106442E009E6666 /* TodaysWorkoutViewController.swift */,
 				1E9A7BD3210695E800B2F3FC /* ExerciseSelectionViewController.swift */,
 			);
-			path = WOD;
+			path = TodaysWorkout;
 			sourceTree = "<group>";
 		};
 		1E5CA09B2108E8BB00A252F0 /* Calendar */ = {
@@ -292,27 +288,17 @@
 			path = UserMetrics;
 			sourceTree = "<group>";
 		};
-		1E5CA0E021094E9B00A252F0 /* Management */ = {
+		1E5CA0DB2109246600A252F0 /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
-				1E1E054821064430009E6666 /* LaunchScreen.storyboard */,
-				1E1E05402106442E009E6666 /* TabBar.storyboard */,
+				1E5CA0DC2109249000A252F0 /* CalculateUserMetrics.swift */,
 			);
-			path = Management;
-			sourceTree = "<group>";
-		};
-		1E5CA0E121094F2300A252F0 /* NutriHealth */ = {
-			isa = PBXGroup;
-			children = (
-				1E5CA0E221094F4600A252F0 /* NutriHealthViewController.swift */,
-			);
-			path = NutriHealth;
+			path = Algorithm;
 			sourceTree = "<group>";
 		};
 		1E8A08B8210677C2000B40BF /* Exercise List Table View */ = {
 			isa = PBXGroup;
 			children = (
-				1E5CA0E62109577000A252F0 /* ExerciseNoteCell.swift */,
 				1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */,
 				1E1E055821064B32009E6666 /* ExerciseLabelCell.swift */,
 				1E9A7BD12106945200B2F3FC /* SetDataCell.swift */,
@@ -411,8 +397,7 @@
 				1E5CA0D8210915D000A252F0 /* UserMetrics.storyboard in Resources */,
 				1E1E054A21064430009E6666 /* LaunchScreen.storyboard in Resources */,
 				1E1E054721064430009E6666 /* Assets.xcassets in Resources */,
-				1E5CA0DF21094E8F00A252F0 /* NutriHealth.storyboard in Resources */,
-				1E1E055D210653E7009E6666 /* WOD.storyboard in Resources */,
+				1E1E055D210653E7009E6666 /* TodaysWorkout.storyboard in Resources */,
 				1E1E05422106442E009E6666 /* TabBar.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,7 +498,7 @@
 				1E5CA0D12108F24400A252F0 /* JTSCalendarWeekDayView.swift in Sources */,
 				1E9A7BD6210696C300B2F3FC /* ExerciseNameCell.swift in Sources */,
 				1E5CA0BD2108F22C00A252F0 /* JTSContent.swift in Sources */,
-				1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */,
+				1E1E053F2106442E009E6666 /* TodaysWorkoutViewController.swift in Sources */,
 				1E9A7BD9210699E500B2F3FC /* ListOfExercises.swift in Sources */,
 				1E5CA0D52109031F00A252F0 /* NotesAndReference.swift in Sources */,
 				1E5CA0C02108F22C00A252F0 /* JTSCalendarPage.swift in Sources */,
@@ -522,8 +507,8 @@
 				1E5CA0A82108EFC300A252F0 /* JTSCalendarDelegate.swift in Sources */,
 				1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */,
 				1E8A08B52106745C000B40BF /* Exercise.swift in Sources */,
+				1E5CA0DD2109249000A252F0 /* CalculateUserMetrics.swift in Sources */,
 				1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */,
-				1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */,
 				1E5CA0B52108F20E00A252F0 /* JTSCalendarDelegateManager.swift in Sources */,
 				1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */,
 				1E5CA0CD2108F24400A252F0 /* JTSHVCalendarBaseView.swift in Sources */,
@@ -534,7 +519,6 @@
 				1E5CA0AA2108EFC300A252F0 /* JTSCalendarManager.swift in Sources */,
 				1E5CA0B62108F20E00A252F0 /* JTSCalendarScrollManager.swift in Sources */,
 				1E5CA0BF2108F22C00A252F0 /* JTSCalendarWeek.swift in Sources */,
-				1E5CA0E72109577000A252F0 /* ExerciseNoteCell.swift in Sources */,
 				1E5CA0D22108F24400A252F0 /* JTSVerticalCalendarView.swift in Sources */,
 				1E5CA0CC2108F24400A252F0 /* JTSCalendarDayView.swift in Sources */,
 				1E5CA0CE2108F24400A252F0 /* JTSCalendarMenuView.swift in Sources */,

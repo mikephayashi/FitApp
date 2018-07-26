@@ -78,6 +78,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aW5-nX-jqP">
+                                <rect key="frame" x="155" y="391" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Calculate"/>
+                                <connections>
+                                    <action selector="calculateButtonTapped:" destination="JDi-mV-nu7" eventType="touchUpInside" id="ykw-xv-s2n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jgq-dh-b05"/>
@@ -93,6 +101,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6a-pr-yT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1143.2" y="1076.311844077961"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="WgI-YC-Ttp">
+            <objects>
+                <viewController id="Ujc-5G-OcS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QGR-Er-37Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ChD-1I-Q7D"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eJg-Kg-AWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-321" y="1096"/>
         </scene>
     </scenes>
 </document>

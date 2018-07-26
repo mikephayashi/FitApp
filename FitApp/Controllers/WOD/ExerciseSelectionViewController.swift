@@ -11,7 +11,6 @@ import UIKit
 class ExerciseSelectionViewController: UIViewController{
     
     @IBOutlet weak var listOfExercisesTableView: UITableView!
-    @IBOutlet weak var exerciseSearchBar: UISearchBar!
     
     let listOfExercisesReference = ListOfExercises()
     var listOfExercises = [Exercise]()
@@ -24,18 +23,9 @@ class ExerciseSelectionViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+
         
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        
-        self.view.addGestureRecognizer(tap)
-        
-        if exerciseSearchBar.isSearchResultsButtonSelected {
-            print ("searched")
-        }
         
     }
     
@@ -48,7 +38,7 @@ class ExerciseSelectionViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destination = segue.destination as! TodaysWorkoutViewController
+        let destination = segue.destination as! WODViewController
         let indexPath = listOfExercisesTableView.indexPathForSelectedRow
         
         destination.exerciseSelectionIndexPath = indexPath
@@ -56,12 +46,7 @@ class ExerciseSelectionViewController: UIViewController{
         
     }
     
-    //Dismiss Keyboard
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
-    
+
 }
 
 extension ExerciseSelectionViewController: UITableViewDataSource {

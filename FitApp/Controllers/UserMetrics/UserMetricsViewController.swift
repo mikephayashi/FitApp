@@ -8,9 +8,6 @@
 
 import UIKit
 
-protocol UserMetricsDelegate: class {
-    func outputWorkouts(weight: Int, height: Int, age: Int, gender: Int)
-}
 
 class UserMetricsViewController: UIViewController {
     
@@ -20,7 +17,6 @@ class UserMetricsViewController: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var genderTextField: UITextField!
     
-    weak var delegate: UserMetricsDelegate?
     
     //Overide Functions
     override func viewDidLoad() {
@@ -42,16 +38,6 @@ class UserMetricsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func calculateButtonTapped(_ sender: Any) {
-        let weightInput = Int(weightTextField.text!)!
-        let heightInput = Int(heightTextField.text!)!
-        var ageInput = Int(ageTextField.text!)!
-        var genderInput = Int(genderTextField.text!)!
-        
-        TodaysWorkoutViewController().outputWorkouts(weight: weightInput, height: heightInput, age: ageInput, gender: genderInput)
-//        CalculateUserMetrics().outputWorkouts(weight: weightInput, height: heightInput, age: ageInput, gender: genderInput)
-//        TodaysWorkoutViewController().calculateWorkouts(weight: weightInput, height: heightInput, age: ageInput, gender: genderInput)
-    }
     
     //Dismiss Keyboard
     @objc func dismissKeyboard() {
@@ -59,12 +45,6 @@ class UserMetricsViewController: UIViewController {
         view.endEditing(true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "" {
-            let vc = segue.destination as! TodaysWorkoutViewController
-            self.delegate = vc
-        }
-    }
     
     
 }

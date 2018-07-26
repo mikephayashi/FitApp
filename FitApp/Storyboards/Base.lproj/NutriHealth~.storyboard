@@ -25,7 +25,6 @@
                         <segue destination="nR8-fo-saG" kind="relationship" relationship="viewControllers" id="qOP-fM-HwT"/>
                         <segue destination="zan-pQ-pzI" kind="relationship" relationship="viewControllers" id="hDw-CW-AcZ"/>
                         <segue destination="OdE-OH-fnb" kind="relationship" relationship="viewControllers" id="kur-lg-qYq"/>
-                        <segue destination="eKh-ru-Cxl" kind="relationship" relationship="viewControllers" id="UD8-8t-jaZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZsE-eE-SFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -57,22 +56,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2x6-iC-1cC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="569" y="1077"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="UKJ-Je-RaQ">
-            <objects>
-                <viewController id="eKh-ru-Cxl" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OuK-zM-gWA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Z6J-cl-lk1"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="GjY-tD-oxd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wCF-db-arJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1406" y="1076"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="eND-mp-1za">

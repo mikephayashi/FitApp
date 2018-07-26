@@ -1,5 +1,5 @@
 //
-//  TodaysWorkoutCell.swift
+//  WODCell.swift
 //  FitApp
 //
 //  Created by Michael Hayashi on 7/23/18.

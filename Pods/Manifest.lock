@@ -86,6 +86,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - VACalendar (1.2)
 
 DEPENDENCIES:
   - FacebookCore
@@ -99,6 +100,7 @@ DEPENDENCIES:
   - FirebaseUI/Google
   - GoogleSignIn
   - Kingfisher (~> 4.0)
+  - VACalendar
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -122,6 +124,7 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - nanopb
+    - VACalendar
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -144,7 +147,8 @@ SPEC CHECKSUMS:
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  VACalendar: f189d1b713b8a38d85fe679afef5dc21105c6259
 
-PODFILE CHECKSUM: 37c73652143cc03184c0b0f838cc2f34a397a15a
+PODFILE CHECKSUM: 3b6eb1ec637b249495ceecf29488b5cb47196a7b
 
 COCOAPODS: 1.5.3

@@ -73,7 +73,7 @@ class WODViewController: UIViewController {
     }
     
     @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
-        print("SEgue Tapped")
+
     }
     
     

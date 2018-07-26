@@ -6,201 +6,167 @@
 //  Copyright © 2018 Michael Hayashi. All rights reserved.
 //
 
-import UIKit
 
-class CalendarViewController: UIViewController {
+
+
+import UIKit
+import VACalendar
+
+final class CalendarViewController: UIViewController {
     
-    @IBOutlet weak var calendarMenuView: JTSCalendarMenuView!
-    @IBOutlet weak var calendarContentView: JTSHorizontalCalendarView!
-    @IBOutlet weak var calendarContentViewHeight: NSLayoutConstraint!
-    
-    
-    var calendarManager:JTSCalendarManager?
-    
-    var monthSwiped: Date?
-    
-//    private var _eventsByDate:[String:[Date]]?
-    private var _todayDate:Date?
-    private var _minDate:Date?
-    private var _maxDate:Date?
-    private var _dateSelected:Date? //Date Clicked
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        title = "Basic"
+    @IBOutlet weak var monthHeaderView: VAMonthHeaderView! {
+        didSet {
+            let appereance = VAMonthHeaderViewAppearance(
+                previousButtonImage: #imageLiteral(resourceName: "previous"),
+                nextButtonImage: #imageLiteral(resourceName: "next"),
+                dateFormat: "LLLL"
+            )
+            monthHeaderView.delegate = self
+            monthHeaderView.appearance = appereance
+        }
     }
     
-    //App Life Cycle
+    @IBOutlet var weekDaysView: VAWeekDaysView!{
+        didSet {
+            let appereance = VAWeekDaysViewAppearance(symbolsType: .veryShort, calendar: defaultCalendar)
+            weekDaysView.appearance = appereance
+        }
+    }
+    
+    let defaultCalendar: Calendar = {
+        var calendar = Calendar.current
+        calendar.firstWeekday = 1
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        return calendar
+    }()
+    
+    var calendarView: VACalendarView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendarManager = JTSCalendarManager()
-        calendarManager?.delegate = self
-//        createRandomEvents()
-        createMinAndMaxDate()
-        calendarManager?.menuView = calendarMenuView
-        calendarManager?.contentView = calendarContentView
-        calendarManager?.setDate(_todayDate!)
-        // Do any additional setup after loading the view.
         
-        calendarMenuView.isUserInteractionEnabled = false
+        let calendar = VACalendar(calendar: defaultCalendar)
+        calendarView = VACalendarView(frame: .zero, calendar: calendar)
+        calendarView.showDaysOut = true
+        calendarView.selectionStyle = .single  //Number of days selected
+        calendarView.monthDelegate = monthHeaderView
+        calendarView.dayViewAppearanceDelegate = self
+        calendarView.monthViewAppearanceDelegate = self
+        calendarView.calendarDelegate = self
+        calendarView.scrollDirection = .horizontal
+        //Bottom Dots
+//        calendarView.setSupplementaries([
+//            (Date().addingTimeInterval(-(60 * 60 * 70)), [VADaySupplementary.bottomDots([.red, .magenta])]),
+//            (Date().addingTimeInterval((60 * 60 * 110)), [VADaySupplementary.bottomDots([.red])]),
+//            (Date().addingTimeInterval((60 * 60 * 370)), [VADaySupplementary.bottomDots([.blue, .darkGray])]),
+//            (Date().addingTimeInterval((60 * 60 * 430)), [VADaySupplementary.bottomDots([.orange, .purple, .cyan])])
+//            ])
+        view.addSubview(calendarView)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //Buttons Clicked
-    @IBAction func didGoTodayTouch(_ sender: UIButton) {
-        calendarManager?.setDate(_todayDate!)
-    }
-    
-    @IBAction func didChangeModeTouch(_ sender: UIButton) {
-        calendarManager?.settings?.isWeekModeEnabled = !(calendarManager?.settings?.isWeekModeEnabled)!
-        calendarManager?.reload()
-        var newHeight:CGFloat = 300.0
-        if (calendarManager?.settings?.isWeekModeEnabled)! {
-            newHeight = 85.0
-        }
-        UIView.transition(with: self.view, duration: 0.5, options: [], animations: {
-            self.calendarContentViewHeight.constant = newHeight
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-    }
-    
-   
-    @IBAction func lastMonthClicked(_ sender: Any) {
-//        JTSHorizontalCalendarView.loadPreviousPage(calendarContentView)
-    }
-    
-    @IBAction func nextMonthClicked(_ sender: Any) {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-    }
-    
-    
-    
-    //Months Available
-    func createMinAndMaxDate() {
-        _todayDate = Date()
-
-        // Min date will be 2 month before today
-        _minDate = calendarManager?.dateHelper?.addToDate(_todayDate!, months: -2)
-        // Max date will be 2 month after today
-        _maxDate = calendarManager?.dateHelper?.addToDate(_todayDate!, months: 2)
-    }
-    
-    // Used only to have a key for _eventsByDate
-    func dateFormatter() -> DateFormatter {
-        var dateFormatter: DateFormatter?
-        if dateFormatter == nil {
-            dateFormatter = DateFormatter()
-            dateFormatter?.dateFormat = "yyyy-MM-dd"
+        if calendarView.frame == .zero {
+            calendarView.frame = CGRect(
+                x: 0,
+                y: weekDaysView.frame.maxY,
+                width: view.frame.width,
+                height: view.frame.height * 0.4 //Changing height of month calendar
+            )
+            calendarView.setup()
         }
-        return dateFormatter!
     }
     
-    //Event
-//    func haveEvent(forDay date: Date) -> Bool {
-//        let key: String = dateFormatter().string(from: date)
-//        if _eventsByDate![key] != nil && (_eventsByDate![key]?.count)! > 0 {
-//            return true
-//        }
-//        return false
-//    }
-    
-    //Random Events
-//    func createRandomEvents() {
-//        _eventsByDate = [String: [Date]]()
-//        for _ in 0..<30 {
-//            // Generate 30 random dates between now and 60 days later
-//            let randomDate = Date(timeInterval: TimeInterval(arc4random() % (3600 * 24 * 60)), since: Date())
-//            // Use the date as key for eventsByDate
-//            let key: String = dateFormatter().string(from: randomDate)
-//            if !(_eventsByDate![key] != nil) {
-//                _eventsByDate![key] = [Date]()
-//            }
-//            _eventsByDate![key]?.append(randomDate)
-//        }
-//    }
+    @IBAction func changeMode(_ sender: Any) {
+        calendarView.changeViewType()
+    }
     
 }
 
-extension CalendarViewController:JTSCalendarDelegate{
+extension CalendarViewController: VAMonthHeaderViewDelegate {
     
-    //Prepares Day Views
-    func calendar(_ calendar: JTSCalendarManager, prepareDayView dayView: JTSCalendarDayView) {
-        // Today
-        if (calendarManager?.dateHelper?.isTheSameDayThan(Date(), dayView.date!))! {
-            dayView.circleView?.isHidden = false
-            dayView.circleView?.backgroundColor = UIColor.blue
-            dayView.dotView?.backgroundColor = UIColor.white
-            dayView.textLabel?.textColor = UIColor.white
-        }
-        else if _dateSelected != nil && (calendarManager?.dateHelper?.isTheSameDayThan(_dateSelected!, dayView.date!))! {
-            dayView.circleView?.isHidden = false
-            dayView.circleView?.backgroundColor = UIColor.red
-            dayView.dotView?.backgroundColor = UIColor.white
-            dayView.textLabel?.textColor = UIColor.white
-        }
-        else if !(calendarManager?.dateHelper?.isTheSameMonthThan(calendarContentView.date!, dayView.date!))! {
-            dayView.circleView?.isHidden = true
-            dayView.dotView?.backgroundColor = UIColor.red
-            dayView.textLabel?.textColor = UIColor.lightGray
-        }
-        else {
-            dayView.circleView?.isHidden = true
-            dayView.dotView?.backgroundColor = UIColor.red
-            dayView.textLabel?.textColor = UIColor.black
-        }
-        
-        //Events
-//        if haveEvent(forDay: dayView.date!) {
-//            dayView.dotView?.isHidden = false
-//        }
-//        else {
-//            dayView.dotView?.isHidden = true
-//        }
+    func didTapNextMonth() {
+        calendarView.nextMonth()
     }
     
-    //Touch Day View
-    func calendar(_ calendar: JTSCalendarManager, didTouchDayView dayView: JTSCalendarDayView) {
-        _dateSelected = dayView.date
-        // Animation for the circleView
-        dayView.circleView?.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
-        UIView.transition(with: dayView, duration: 0.3, options: [], animations: {
-            dayView.circleView?.transform = .identity
-            self.calendarManager?.reload()
-        }) { (compeleted) in
-            
-        }
-        // Don't change page in week mode because block the selection of days in first and last weeks of the month
-        if (calendarManager?.settings?.isWeekModeEnabled)! {
-            return
-        }
-        // Load the previous or next page if touch a day from another month
-        if !(calendarManager?.dateHelper?.isTheSameMonthThan(calendarContentView.date!, dayView.date!))! {
-            if calendarContentView.date?.compare(dayView.date!) == .orderedAscending {
-                calendarContentView.loadNextPageWithAnimation()
-            }
-            else {
-                calendarContentView.loadPreviousPageWithAnimation()
-            }
-        }
+    func didTapPreviousMonth() {
+        calendarView.previousMonth()
+    }
+    
+}
 
+extension CalendarViewController: VAMonthViewAppearanceDelegate {
+    
+    func leftInset() -> CGFloat {
+        return 10.0
     }
     
-    //Load Months before and after
-    func calendar(_ calendar: JTSCalendarManager, canDisplayPageWith date: Date) -> Bool {
-        return (calendarManager?.dateHelper?.isBetweenAtStartDateAndEndDate(date, startDate: _minDate!, endDate: _maxDate!))!
+    func rightInset() -> CGFloat {
+        return 10.0
     }
     
-    //Loading Pages
-    func calendarDidLoadPreviousPage(_ calendar: JTSCalendarManager) {
-        print("Previous Page loaded")
+    func verticalMonthTitleFont() -> UIFont {
+        return UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
-    func calendarDidLoadNextPage(_ calendar: JTSCalendarManager) {
-        print("Next Page loaded")
+    func verticalMonthTitleColor() -> UIColor {
+        return .black
     }
+    
+    func verticalCurrentMonthTitleColor() -> UIColor {
+        return .red
+    }
+    
+}
+
+extension CalendarViewController: VADayViewAppearanceDelegate {
+    
+    func textColor(for state: VADayState) -> UIColor {
+        switch state {
+        case .out:
+            return UIColor(red: 214 / 255, green: 214 / 255, blue: 219 / 255, alpha: 1.0)
+        case .selected:
+            return .white
+        case .unavailable:
+            return .lightGray
+        default:
+            return .black
+        }
+    }
+    
+    func textBackgroundColor(for state: VADayState) -> UIColor {
+        switch state {
+        case .selected:
+            return .red
+        default:
+            return .clear
+        }
+    }
+    
+    func shape() -> VADayShape {
+        return .circle
+    }
+    
+    func dotBottomVerticalOffset(for state: VADayState) -> CGFloat {
+        switch state {
+        case .selected:
+            return 2
+        default:
+            return -7
+        }
+    }
+    
+}
+
+extension CalendarViewController: VACalendarViewDelegate {
+    
+    //Change to "selectedDates" for multiple selection
+    func selectedDate(_ date: Date) {
+        print(date)
+    }
+    
+
+    
 }
 

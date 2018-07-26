@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E14020F2109669800A539BA /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E14020E2109669800A539BA /* ProgressView.swift */; };
 		1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053C2106442E009E6666 /* AppDelegate.swift */; };
 		1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053E2106442E009E6666 /* WODViewController.swift */; };
 		1E1E05422106442E009E6666 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E05402106442E009E6666 /* TabBar.storyboard */; };
@@ -17,26 +18,6 @@
 		1E1E055D210653E7009E6666 /* WOD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E055C210653E7009E6666 /* WOD.storyboard */; };
 		1E5CA0972108E33A00A252F0 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E5CA0962108E33A00A252F0 /* Calendar.storyboard */; };
 		1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0982108E37800A252F0 /* CalendarViewController.swift */; };
-		1E5CA0A82108EFC300A252F0 /* JTSCalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0A12108EFC000A252F0 /* JTSCalendarDelegate.swift */; };
-		1E5CA0AA2108EFC300A252F0 /* JTSCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0A32108EFC100A252F0 /* JTSCalendarManager.swift */; };
-		1E5CA0AC2108EFC300A252F0 /* JTSDateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0A52108EFC200A252F0 /* JTSDateHelper.swift */; };
-		1E5CA0AD2108EFC300A252F0 /* JTSCalendarSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0A62108EFC300A252F0 /* JTSCalendarSettings.swift */; };
-		1E5CA0B52108F20E00A252F0 /* JTSCalendarDelegateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0B32108F20D00A252F0 /* JTSCalendarDelegateManager.swift */; };
-		1E5CA0B62108F20E00A252F0 /* JTSCalendarScrollManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0B42108F20E00A252F0 /* JTSCalendarScrollManager.swift */; };
-		1E5CA0BD2108F22C00A252F0 /* JTSContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0B72108F22A00A252F0 /* JTSContent.swift */; };
-		1E5CA0BE2108F22C00A252F0 /* JTSCalendarWeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0B82108F22A00A252F0 /* JTSCalendarWeekDay.swift */; };
-		1E5CA0BF2108F22C00A252F0 /* JTSCalendarWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0B92108F22B00A252F0 /* JTSCalendarWeek.swift */; };
-		1E5CA0C02108F22C00A252F0 /* JTSCalendarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0BA2108F22B00A252F0 /* JTSCalendarPage.swift */; };
-		1E5CA0C12108F22C00A252F0 /* JTSCalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0BB2108F22C00A252F0 /* JTSCalendarDay.swift */; };
-		1E5CA0C22108F22C00A252F0 /* JTSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0BC2108F22C00A252F0 /* JTSMenu.swift */; };
-		1E5CA0CB2108F24400A252F0 /* JTSHorizontalCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0C32108F24100A252F0 /* JTSHorizontalCalendarView.swift */; };
-		1E5CA0CC2108F24400A252F0 /* JTSCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0C42108F24100A252F0 /* JTSCalendarDayView.swift */; };
-		1E5CA0CD2108F24400A252F0 /* JTSHVCalendarBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0C52108F24100A252F0 /* JTSHVCalendarBaseView.swift */; };
-		1E5CA0CE2108F24400A252F0 /* JTSCalendarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0C62108F24200A252F0 /* JTSCalendarMenuView.swift */; };
-		1E5CA0CF2108F24400A252F0 /* JTSCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0C72108F24200A252F0 /* JTSCalendarWeekView.swift */; };
-		1E5CA0D02108F24400A252F0 /* JTSCalendarPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0C82108F24300A252F0 /* JTSCalendarPageView.swift */; };
-		1E5CA0D12108F24400A252F0 /* JTSCalendarWeekDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0C92108F24300A252F0 /* JTSCalendarWeekDayView.swift */; };
-		1E5CA0D22108F24400A252F0 /* JTSVerticalCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0CA2108F24300A252F0 /* JTSVerticalCalendarView.swift */; };
 		1E5CA0D52109031F00A252F0 /* NotesAndReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D42109031F00A252F0 /* NotesAndReference.swift */; };
 		1E5CA0D8210915D000A252F0 /* UserMetrics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D7210915D000A252F0 /* UserMetrics.storyboard */; };
 		1E5CA0DA210915E000A252F0 /* UserMetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D9210915E000A252F0 /* UserMetricsViewController.swift */; };
@@ -54,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E14020E2109669800A539BA /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		1E1E05392106442E009E6666 /* FitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E1E053C2106442E009E6666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E1E053E2106442E009E6666 /* WODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewController.swift; sourceTree = "<group>"; };
@@ -66,26 +48,6 @@
 		1E1E055C210653E7009E6666 /* WOD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WOD.storyboard; sourceTree = "<group>"; };
 		1E5CA0962108E33A00A252F0 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		1E5CA0982108E37800A252F0 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		1E5CA0A12108EFC000A252F0 /* JTSCalendarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarDelegate.swift; sourceTree = "<group>"; };
-		1E5CA0A32108EFC100A252F0 /* JTSCalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarManager.swift; sourceTree = "<group>"; };
-		1E5CA0A52108EFC200A252F0 /* JTSDateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSDateHelper.swift; sourceTree = "<group>"; };
-		1E5CA0A62108EFC300A252F0 /* JTSCalendarSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarSettings.swift; sourceTree = "<group>"; };
-		1E5CA0B32108F20D00A252F0 /* JTSCalendarDelegateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarDelegateManager.swift; sourceTree = "<group>"; };
-		1E5CA0B42108F20E00A252F0 /* JTSCalendarScrollManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarScrollManager.swift; sourceTree = "<group>"; };
-		1E5CA0B72108F22A00A252F0 /* JTSContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSContent.swift; sourceTree = "<group>"; };
-		1E5CA0B82108F22A00A252F0 /* JTSCalendarWeekDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarWeekDay.swift; sourceTree = "<group>"; };
-		1E5CA0B92108F22B00A252F0 /* JTSCalendarWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarWeek.swift; sourceTree = "<group>"; };
-		1E5CA0BA2108F22B00A252F0 /* JTSCalendarPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarPage.swift; sourceTree = "<group>"; };
-		1E5CA0BB2108F22C00A252F0 /* JTSCalendarDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarDay.swift; sourceTree = "<group>"; };
-		1E5CA0BC2108F22C00A252F0 /* JTSMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSMenu.swift; sourceTree = "<group>"; };
-		1E5CA0C32108F24100A252F0 /* JTSHorizontalCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSHorizontalCalendarView.swift; sourceTree = "<group>"; };
-		1E5CA0C42108F24100A252F0 /* JTSCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarDayView.swift; sourceTree = "<group>"; };
-		1E5CA0C52108F24100A252F0 /* JTSHVCalendarBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSHVCalendarBaseView.swift; sourceTree = "<group>"; };
-		1E5CA0C62108F24200A252F0 /* JTSCalendarMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarMenuView.swift; sourceTree = "<group>"; };
-		1E5CA0C72108F24200A252F0 /* JTSCalendarWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarWeekView.swift; sourceTree = "<group>"; };
-		1E5CA0C82108F24300A252F0 /* JTSCalendarPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarPageView.swift; sourceTree = "<group>"; };
-		1E5CA0C92108F24300A252F0 /* JTSCalendarWeekDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSCalendarWeekDayView.swift; sourceTree = "<group>"; };
-		1E5CA0CA2108F24300A252F0 /* JTSVerticalCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTSVerticalCalendarView.swift; sourceTree = "<group>"; };
 		1E5CA0D42109031F00A252F0 /* NotesAndReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAndReference.swift; sourceTree = "<group>"; };
 		1E5CA0D7210915D000A252F0 /* UserMetrics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserMetrics.storyboard; sourceTree = "<group>"; };
 		1E5CA0D9210915E000A252F0 /* UserMetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMetricsViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +147,6 @@
 		1E1E05542106449D009E6666 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				1E5CA0A02108EF9600A252F0 /* JTCalendarSwiftLib */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -193,6 +154,7 @@
 		1E1E0555210644A6009E6666 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1E14020E2109669800A539BA /* ProgressView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -231,57 +193,6 @@
 				1E5CA0982108E37800A252F0 /* CalendarViewController.swift */,
 			);
 			path = Calendar;
-			sourceTree = "<group>";
-		};
-		1E5CA0A02108EF9600A252F0 /* JTCalendarSwiftLib */ = {
-			isa = PBXGroup;
-			children = (
-				1E5CA0A12108EFC000A252F0 /* JTSCalendarDelegate.swift */,
-				1E5CA0A32108EFC100A252F0 /* JTSCalendarManager.swift */,
-				1E5CA0A62108EFC300A252F0 /* JTSCalendarSettings.swift */,
-				1E5CA0A52108EFC200A252F0 /* JTSDateHelper.swift */,
-				1E5CA0B02108F1AA00A252F0 /* Managers */,
-				1E5CA0B12108F1B100A252F0 /* Protocols */,
-				1E5CA0B22108F1B600A252F0 /* Views */,
-			);
-			path = JTCalendarSwiftLib;
-			sourceTree = "<group>";
-		};
-		1E5CA0B02108F1AA00A252F0 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				1E5CA0B32108F20D00A252F0 /* JTSCalendarDelegateManager.swift */,
-				1E5CA0B42108F20E00A252F0 /* JTSCalendarScrollManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		1E5CA0B12108F1B100A252F0 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				1E5CA0BB2108F22C00A252F0 /* JTSCalendarDay.swift */,
-				1E5CA0BA2108F22B00A252F0 /* JTSCalendarPage.swift */,
-				1E5CA0B92108F22B00A252F0 /* JTSCalendarWeek.swift */,
-				1E5CA0B82108F22A00A252F0 /* JTSCalendarWeekDay.swift */,
-				1E5CA0B72108F22A00A252F0 /* JTSContent.swift */,
-				1E5CA0BC2108F22C00A252F0 /* JTSMenu.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		1E5CA0B22108F1B600A252F0 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				1E5CA0C42108F24100A252F0 /* JTSCalendarDayView.swift */,
-				1E5CA0C62108F24200A252F0 /* JTSCalendarMenuView.swift */,
-				1E5CA0C82108F24300A252F0 /* JTSCalendarPageView.swift */,
-				1E5CA0C92108F24300A252F0 /* JTSCalendarWeekDayView.swift */,
-				1E5CA0C72108F24200A252F0 /* JTSCalendarWeekView.swift */,
-				1E5CA0C32108F24100A252F0 /* JTSHorizontalCalendarView.swift */,
-				1E5CA0C52108F24100A252F0 /* JTSHVCalendarBaseView.swift */,
-				1E5CA0CA2108F24300A252F0 /* JTSVerticalCalendarView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		1E5CA0D6210915AA00A252F0 /* UserMetrics */ = {
@@ -478,6 +389,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/VACalendar/VACalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -492,6 +404,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VACalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -507,41 +420,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E5CA0BE2108F22C00A252F0 /* JTSCalendarWeekDay.swift in Sources */,
 				1E5CA0DA210915E000A252F0 /* UserMetricsViewController.swift in Sources */,
-				1E5CA0AD2108EFC300A252F0 /* JTSCalendarSettings.swift in Sources */,
-				1E5CA0D12108F24400A252F0 /* JTSCalendarWeekDayView.swift in Sources */,
 				1E9A7BD6210696C300B2F3FC /* ExerciseNameCell.swift in Sources */,
-				1E5CA0BD2108F22C00A252F0 /* JTSContent.swift in Sources */,
 				1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */,
 				1E9A7BD9210699E500B2F3FC /* ListOfExercises.swift in Sources */,
 				1E5CA0D52109031F00A252F0 /* NotesAndReference.swift in Sources */,
-				1E5CA0C02108F22C00A252F0 /* JTSCalendarPage.swift in Sources */,
-				1E5CA0CF2108F24400A252F0 /* JTSCalendarWeekView.swift in Sources */,
 				1E9A7BD22106945200B2F3FC /* SetDataCell.swift in Sources */,
-				1E5CA0A82108EFC300A252F0 /* JTSCalendarDelegate.swift in Sources */,
 				1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */,
 				1E8A08B52106745C000B40BF /* Exercise.swift in Sources */,
 				1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */,
 				1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */,
-				1E5CA0B52108F20E00A252F0 /* JTSCalendarDelegateManager.swift in Sources */,
+				1E14020F2109669800A539BA /* ProgressView.swift in Sources */,
 				1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */,
-				1E5CA0CD2108F24400A252F0 /* JTSHVCalendarBaseView.swift in Sources */,
-				1E5CA0C22108F22C00A252F0 /* JTSMenu.swift in Sources */,
-				1E5CA0C12108F22C00A252F0 /* JTSCalendarDay.swift in Sources */,
 				1E1E055921064B32009E6666 /* ExerciseLabelCell.swift in Sources */,
 				1E1E05452106442E009E6666 /* FitApp.xcdatamodeld in Sources */,
-				1E5CA0AA2108EFC300A252F0 /* JTSCalendarManager.swift in Sources */,
-				1E5CA0B62108F20E00A252F0 /* JTSCalendarScrollManager.swift in Sources */,
-				1E5CA0BF2108F22C00A252F0 /* JTSCalendarWeek.swift in Sources */,
 				1E5CA0E72109577000A252F0 /* ExerciseNoteCell.swift in Sources */,
-				1E5CA0D22108F24400A252F0 /* JTSVerticalCalendarView.swift in Sources */,
-				1E5CA0CC2108F24400A252F0 /* JTSCalendarDayView.swift in Sources */,
-				1E5CA0CE2108F24400A252F0 /* JTSCalendarMenuView.swift in Sources */,
-				1E5CA0D02108F24400A252F0 /* JTSCalendarPageView.swift in Sources */,
-				1E5CA0CB2108F24400A252F0 /* JTSHorizontalCalendarView.swift in Sources */,
 				1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */,
-				1E5CA0AC2108EFC300A252F0 /* JTSDateHelper.swift in Sources */,
 				1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

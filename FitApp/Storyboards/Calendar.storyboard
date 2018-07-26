@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,72 +18,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-aE-yuA" customClass="JTSCalendarMenuView" customModule="FitApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="20" width="343" height="72"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUA-3Q-vqy">
-                                        <rect key="frame" x="274" y="21" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="nextMonthClicked:" destination="8r0-DL-yfx" eventType="touchUpInside" id="Rb0-70-iwL"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVM-bS-v3E">
-                                        <rect key="frame" x="8" y="21" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="lastMonthClicked:" destination="8r0-DL-yfx" eventType="touchUpInside" id="iWW-bN-zX3"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.76470588240000004" green="0.027450980390000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfe-KJ-vPJ" customClass="VAMonthHeaderView" customModule="VACalendar">
+                                <rect key="frame" x="0.0" y="20" width="375" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eg7-hZ-wOa" customClass="JTSHorizontalCalendarView" customModule="FitApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="91" width="343" height="367"/>
-                                <color key="backgroundColor" red="0.71764705880000002" green="0.72156862749999995" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="367" id="XWM-Gr-TIy"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="man-AZ-On9" customClass="VAWeekDaysView" customModule="VACalendar">
+                                <rect key="frame" x="0.0" y="78" width="375" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmI-Ex-PbI">
-                                <rect key="frame" x="221" y="498" width="96" height="30"/>
-                                <state key="normal" title="Change Mode"/>
-                                <connections>
-                                    <action selector="didChangeModeTouch:" destination="8r0-DL-yfx" eventType="touchUpInside" id="eqS-nz-aK0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j87-dX-03O">
-                                <rect key="frame" x="63" y="498" width="42" height="30"/>
-                                <state key="normal" title="Today"/>
-                                <connections>
-                                    <action selector="didGoTodayTouch:" destination="8r0-DL-yfx" eventType="touchUpInside" id="Tch-A0-2bV"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMZ-rs-uKY">
+                                <rect key="frame" x="16" y="409" width="343" height="238"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="j87-dX-03O" firstAttribute="baseline" secondItem="FmI-Ex-PbI" secondAttribute="baseline" id="147-5P-whk"/>
-                            <constraint firstItem="ASO-LX-9ix" firstAttribute="bottom" secondItem="j87-dX-03O" secondAttribute="bottom" constant="139" id="2Nh-uh-Jgn"/>
-                            <constraint firstItem="j87-dX-03O" firstAttribute="top" secondItem="eg7-hZ-wOa" secondAttribute="bottom" constant="40" id="2g0-EU-9lv"/>
-                            <constraint firstItem="cgw-aE-yuA" firstAttribute="leading" secondItem="eg7-hZ-wOa" secondAttribute="leading" id="5L9-nR-aeU"/>
-                            <constraint firstItem="ASO-LX-9ix" firstAttribute="trailing" secondItem="FmI-Ex-PbI" secondAttribute="trailing" constant="58" id="JFS-sq-08I"/>
-                            <constraint firstItem="cgw-aE-yuA" firstAttribute="trailing" secondItem="oog-sY-BfU" secondAttribute="trailingMargin" id="KNj-wj-dnJ"/>
-                            <constraint firstItem="cgw-aE-yuA" firstAttribute="leading" secondItem="oog-sY-BfU" secondAttribute="leadingMargin" id="eZP-eR-tSQ"/>
-                            <constraint firstItem="cgw-aE-yuA" firstAttribute="top" secondItem="ASO-LX-9ix" secondAttribute="top" id="fYb-kJ-w7F"/>
-                            <constraint firstItem="cgw-aE-yuA" firstAttribute="trailing" secondItem="eg7-hZ-wOa" secondAttribute="trailing" id="fi2-fZ-3bv"/>
-                            <constraint firstItem="eg7-hZ-wOa" firstAttribute="top" secondItem="ASO-LX-9ix" secondAttribute="top" constant="71" id="pp1-Xn-bVa"/>
-                            <constraint firstItem="j87-dX-03O" firstAttribute="leading" secondItem="ASO-LX-9ix" secondAttribute="leading" constant="63" id="sMj-8Z-Ahn"/>
-                            <constraint firstAttribute="bottom" secondItem="cgw-aE-yuA" secondAttribute="bottom" constant="575" id="yps-lP-q5k"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ASO-LX-9ix"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="4s9-fJ-N1h"/>
                     <connections>
-                        <outlet property="calendarContentView" destination="eg7-hZ-wOa" id="Zr3-xI-RTv"/>
-                        <outlet property="calendarContentViewHeight" destination="XWM-Gr-TIy" id="E7a-XQ-JMe"/>
-                        <outlet property="calendarMenuView" destination="cgw-aE-yuA" id="sNm-Iq-Wah"/>
+                        <outlet property="monthHeaderView" destination="sfe-KJ-vPJ" id="syY-qo-sBK"/>
+                        <outlet property="weekDaysView" destination="man-AZ-On9" id="tO1-qU-jST"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8k-SI-EQs" userLabel="First Responder" sceneMemberID="firstResponder"/>

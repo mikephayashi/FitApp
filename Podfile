@@ -17,5 +17,6 @@ target 'FitApp' do
   pod 'FacebookLogin'
   pod 'GoogleSignIn'
   pod 'FirebaseUI/Google'
+  pod 'VACalendar'
 
 end

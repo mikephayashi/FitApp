@@ -13,6 +13,7 @@ class WODViewController: UIViewController {
     //Objects
     @IBOutlet weak var newExerciseButton: UIButton!
     @IBOutlet weak var exerciseListTableView: UITableView!
+    @IBOutlet var addTimeStepper: UIStepper!
     
     //Exercise Properties
     var selectedExercise = Exercise(exerciseName: "", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
@@ -32,10 +33,10 @@ class WODViewController: UIViewController {
     @IBOutlet weak var toggleTimerButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
-    
     @IBOutlet weak var timerProgressView: UIProgressView!
     
-    var timerLength = 60.0
+    var timerLength = 60
+    var savedTime = 60
     var timerIsRunning = false
     
     var countDownTimer = Timer()
@@ -50,8 +51,13 @@ class WODViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         listOfExercises = listOfExercisesReference.listOfExercises
-        timerProgressView.progress = Float(1.0)
+        
+        timerLabel.text = String(timerLength)
+        timerProgressView.progress = Float(timerLength/savedTime)
+        timerProgressView.barHeight = self.view.frame.height*0.005
+
         
         
     }
@@ -69,6 +75,9 @@ class WODViewController: UIViewController {
     @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
         print("SEgue Tapped")
     }
+    
+    
+    
     
     //Setting Table View
     func checkDuplicates(){
@@ -103,25 +112,23 @@ class WODViewController: UIViewController {
     }
 
     //Stopwatch
-    
     @IBAction func toggleTimerTapped(_ sender: Any) {
 
-        if timerIsRunning == true{
+        if timerIsRunning == false{
         
         countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WODViewController.timerControl), userInfo: nil, repeats: true)
-            timerIsRunning = false
+            timerIsRunning = true
         } else {
             countDownTimer.invalidate()
-            timerIsRunning = true
+            timerIsRunning = false
         }
         
     }
     
-    
     @IBAction func resetButtonTapped(_ sender: Any) {
-        timerLength = 60.0
+        timerLength = savedTime
         timerLabel.text = String(timerLength)
-        timerProgressView.progress = Float(timerLength/60.0)
+        timerProgressView.progress = Float(timerLength/savedTime)
         
     }
     
@@ -129,8 +136,31 @@ class WODViewController: UIViewController {
         
             timerLength -= 1
             timerLabel.text = String(timerLength)
-        timerProgressView.progress = Float(timerLength/60.0)
+        timerProgressView.progress = Float(Double(timerLength)/Double(savedTime))
 
+    }
+
+    //Timer Actions
+    @IBAction func stepperClicked(_ sender: Any) {
+        if (sender as AnyObject).value > Double(timerLength) {
+            increaseValue()
+        } else {
+            decreaseValue()
+        }
+    }
+    
+    func increaseValue(){
+        savedTime += 10
+        timerLength = savedTime
+        timerLabel.text = String(timerLength)
+        timerProgressView.progress = Float(timerLength/60)
+    }
+    
+    func decreaseValue(){
+        savedTime -= 10
+        timerLength = savedTime
+        timerLabel.text = String(timerLength)
+        timerProgressView.progress = Float(timerLength/60)
     }
 }
 

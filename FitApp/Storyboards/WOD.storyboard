@@ -170,9 +170,12 @@
                                 <rect key="frame" x="0.0" y="65" width="375" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="uPj-sv-1nm">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" maximumValue="6000" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="uPj-sv-1nm">
                                 <rect key="frame" x="276" y="37" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperClicked:" destination="BYZ-38-t0r" eventType="valueChanged" id="0gC-sY-WzC"/>
+                                </connections>
                             </stepper>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-56-epV">
                                 <rect key="frame" x="57" y="37" width="39" height="30"/>
@@ -189,11 +192,12 @@
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="wWa-Z6-K4i"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addTimeStepper" destination="uPj-sv-1nm" id="ipw-cO-CES"/>
                         <outlet property="exerciseListTableView" destination="ebk-Hg-ew4" id="Tpm-6v-z1Z"/>
                         <outlet property="newExerciseButton" destination="Dop-F7-Pw6" id="CUe-gC-0cr"/>
                         <outlet property="resetButton" destination="C1V-56-epV" id="FcJ-9c-o6q"/>
                         <outlet property="timerLabel" destination="rgn-ro-cm2" id="fjo-Vh-TX4"/>
-                        <outlet property="timerProgressView" destination="YcY-zo-6LZ" id="sP8-1l-mED"/>
+                        <outlet property="timerProgressView" destination="YcY-zo-6LZ" id="Go1-WS-m1i"/>
                         <outlet property="toggleTimerButton" destination="6Xa-LA-21Y" id="vL1-V2-pIG"/>
                     </connections>
                 </viewController>
@@ -229,9 +233,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <connections>
+                                                <outlet property="exerciseNameLabel" destination="pWH-i2-929" id="ZVk-fb-A3V"/>
+                                            </connections>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="exerciseNameLabel" destination="pWH-i2-929" id="nii-bD-e9y"/>
                                             <segue destination="vMF-Iu-1eZ" kind="unwind" unwindAction="unwindWithSegueToHome:" id="2Zf-FN-6bi"/>
                                         </connections>
                                     </tableViewCell>

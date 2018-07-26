@@ -58,7 +58,7 @@ class WODViewController: UIViewController {
         timerProgressView.progress = Float(timerLength/savedTime)
         timerProgressView.barHeight = self.view.frame.height*0.005
 
-        
+        configureTableView()
         
     }
     
@@ -75,9 +75,7 @@ class WODViewController: UIViewController {
     @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
 
     }
-    
-    
-    
+
     
     //Setting Table View
     func checkDuplicates(){
@@ -111,6 +109,15 @@ class WODViewController: UIViewController {
         exerciseListTableView.reloadData()
     }
 
+    func configureTableView() {
+        
+        //remove separators for empty cells
+        exerciseListTableView.tableFooterView = UIView()
+        //remove separators from cells
+        exerciseListTableView.separatorStyle = .none
+    
+    }
+    
     //Stopwatch
     @IBAction func toggleTimerTapped(_ sender: Any) {
 

@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E106CFD210A2B270024B513 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E106CFC210A2B270024B513 /* Login.storyboard */; };
+		1E106D00210A2B700024B513 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106CFF210A2B700024B513 /* LoginViewController.swift */; };
+		1E106D02210A31520024B513 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D01210A31520024B513 /* User.swift */; };
+		1E106D04210A32C10024B513 /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D03210A32C10024B513 /* CreateUsernameViewController.swift */; };
+		1E106D09210A379D0024B513 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D08210A379D0024B513 /* UserService.swift */; };
+		1E106D0C210A3DE20024B513 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D0B210A3DE20024B513 /* Constants.swift */; };
+		1E106D0F210A46F20024B513 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E106D0E210A46F10024B513 /* GoogleService-Info.plist */; };
+		1E106D11210A4C300024B513 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D10210A4C300024B513 /* Storyboard+Utility.swift */; };
 		1E14020F2109669800A539BA /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E14020E2109669800A539BA /* ProgressView.swift */; };
 		1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053C2106442E009E6666 /* AppDelegate.swift */; };
 		1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053E2106442E009E6666 /* WODViewController.swift */; };
-		1E1E05422106442E009E6666 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E05402106442E009E6666 /* TabBar.storyboard */; };
+		1E1E05422106442E009E6666 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E05402106442E009E6666 /* Tabbar.storyboard */; };
 		1E1E05452106442E009E6666 /* FitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E05432106442E009E6666 /* FitApp.xcdatamodeld */; };
 		1E1E054721064430009E6666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E054621064430009E6666 /* Assets.xcassets */; };
 		1E1E054A21064430009E6666 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1E054821064430009E6666 /* LaunchScreen.storyboard */; };
@@ -35,11 +43,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E106CFC210A2B270024B513 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		1E106CFF210A2B700024B513 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1E106D01210A31520024B513 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1E106D03210A32C10024B513 /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
+		1E106D08210A379D0024B513 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		1E106D0B210A3DE20024B513 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1E106D0E210A46F10024B513 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1E106D10210A4C300024B513 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Utility.swift"; sourceTree = "<group>"; };
 		1E14020E2109669800A539BA /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		1E1E05392106442E009E6666 /* FitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E1E053C2106442E009E6666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E1E053E2106442E009E6666 /* WODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewController.swift; sourceTree = "<group>"; };
-		1E1E05412106442E009E6666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TabBar.storyboard; sourceTree = "<group>"; };
+		1E1E05412106442E009E6666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tabbar.storyboard; sourceTree = "<group>"; };
 		1E1E05442106442E009E6666 /* FitApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitApp.xcdatamodel; sourceTree = "<group>"; };
 		1E1E054621064430009E6666 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E1E054921064430009E6666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,6 +94,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E106CFE210A2B5F0024B513 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1E106CFF210A2B700024B513 /* LoginViewController.swift */,
+				1E106D03210A32C10024B513 /* CreateUsernameViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1E106D0A210A3DCE0024B513 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1E106D0D210A3DF40024B513 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1E106D0B210A3DE20024B513 /* Constants.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		1E1E05302106442E009E6666 = {
 			isa = PBXGroup;
 			children = (
@@ -104,11 +144,13 @@
 				1E1E055221064473009E6666 /* Views */,
 				1E1E055321064477009E6666 /* Controllers */,
 				1E1E0556210644D1009E6666 /* Storyboards */,
-				1E1E05542106449D009E6666 /* Helpers */,
 				1E1E0555210644A6009E6666 /* Extensions */,
+				1E106D0A210A3DCE0024B513 /* Helpers */,
 				1E1E05572106450E009E6666 /* Services */,
+				1E106D0D210A3DF40024B513 /* Supporting Files */,
 				1E1E054621064430009E6666 /* Assets.xcassets */,
 				1E1E054B21064430009E6666 /* Info.plist */,
+				1E106D0E210A46F10024B513 /* GoogleService-Info.plist */,
 				1E1E05432106442E009E6666 /* FitApp.xcdatamodeld */,
 				1E5CA0D42109031F00A252F0 /* NotesAndReference.swift */,
 			);
@@ -120,6 +162,7 @@
 			children = (
 				1E8A08B42106745C000B40BF /* Exercise.swift */,
 				1E9A7BD8210699E500B2F3FC /* ListOfExercises.swift */,
+				1E106D01210A31520024B513 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -136,6 +179,7 @@
 		1E1E055321064477009E6666 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1E106CFE210A2B5F0024B513 /* Login */,
 				1E5CA09A2108E8AF00A252F0 /* WOD */,
 				1E5CA09B2108E8BB00A252F0 /* Calendar */,
 				1E5CA0E121094F2300A252F0 /* NutriHealth */,
@@ -144,17 +188,11 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		1E1E05542106449D009E6666 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		1E1E0555210644A6009E6666 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				1E14020E2109669800A539BA /* ProgressView.swift */,
+				1E106D10210A4C300024B513 /* Storyboard+Utility.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -174,6 +212,7 @@
 		1E1E05572106450E009E6666 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1E106D08210A379D0024B513 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -207,7 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				1E1E054821064430009E6666 /* LaunchScreen.storyboard */,
-				1E1E05402106442E009E6666 /* TabBar.storyboard */,
+				1E106CFC210A2B270024B513 /* Login.storyboard */,
+				1E1E05402106442E009E6666 /* Tabbar.storyboard */,
 			);
 			path = Management;
 			sourceTree = "<group>";
@@ -320,11 +360,13 @@
 			files = (
 				1E5CA0972108E33A00A252F0 /* Calendar.storyboard in Resources */,
 				1E5CA0D8210915D000A252F0 /* UserMetrics.storyboard in Resources */,
+				1E106D0F210A46F20024B513 /* GoogleService-Info.plist in Resources */,
 				1E1E054A21064430009E6666 /* LaunchScreen.storyboard in Resources */,
 				1E1E054721064430009E6666 /* Assets.xcassets in Resources */,
 				1E5CA0DF21094E8F00A252F0 /* NutriHealth.storyboard in Resources */,
 				1E1E055D210653E7009E6666 /* WOD.storyboard in Resources */,
-				1E1E05422106442E009E6666 /* TabBar.storyboard in Resources */,
+				1E1E05422106442E009E6666 /* Tabbar.storyboard in Resources */,
+				1E106CFD210A2B270024B513 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,35 +462,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E106D00210A2B700024B513 /* LoginViewController.swift in Sources */,
+				1E106D0C210A3DE20024B513 /* Constants.swift in Sources */,
 				1E5CA0DA210915E000A252F0 /* UserMetricsViewController.swift in Sources */,
 				1E9A7BD6210696C300B2F3FC /* ExerciseNameCell.swift in Sources */,
 				1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */,
 				1E9A7BD9210699E500B2F3FC /* ListOfExercises.swift in Sources */,
+				1E106D11210A4C300024B513 /* Storyboard+Utility.swift in Sources */,
 				1E5CA0D52109031F00A252F0 /* NotesAndReference.swift in Sources */,
 				1E9A7BD22106945200B2F3FC /* SetDataCell.swift in Sources */,
 				1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */,
+				1E106D04210A32C10024B513 /* CreateUsernameViewController.swift in Sources */,
 				1E8A08B52106745C000B40BF /* Exercise.swift in Sources */,
 				1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */,
 				1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */,
 				1E14020F2109669800A539BA /* ProgressView.swift in Sources */,
 				1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */,
+				1E106D09210A379D0024B513 /* UserService.swift in Sources */,
 				1E1E055921064B32009E6666 /* ExerciseLabelCell.swift in Sources */,
 				1E1E05452106442E009E6666 /* FitApp.xcdatamodeld in Sources */,
 				1E5CA0E72109577000A252F0 /* ExerciseNoteCell.swift in Sources */,
 				1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */,
 				1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */,
+				1E106D02210A31520024B513 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1E1E05402106442E009E6666 /* TabBar.storyboard */ = {
+		1E1E05402106442E009E6666 /* Tabbar.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1E1E05412106442E009E6666 /* Base */,
 			);
-			name = TabBar.storyboard;
+			name = Tabbar.storyboard;
 			sourceTree = "<group>";
 		};
 		1E1E054821064430009E6666 /* LaunchScreen.storyboard */ = {

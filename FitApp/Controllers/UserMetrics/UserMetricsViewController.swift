@@ -38,6 +38,16 @@ class UserMetricsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //IBActions
+    @IBAction func updateUserMetricsTapped(_ sender: Any) {
+        UserMetricsService.updateUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!)
+    }
+    
+    @IBAction func pullUserMetricsTapped(_ sender: Any) {
+        UserMetricsService.pullAll()
+    }
+    
+    
     
     //Dismiss Keyboard
     @objc func dismissKeyboard() {

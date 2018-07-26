@@ -15,6 +15,8 @@
 		1E106D0C210A3DE20024B513 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D0B210A3DE20024B513 /* Constants.swift */; };
 		1E106D0F210A46F20024B513 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E106D0E210A46F10024B513 /* GoogleService-Info.plist */; };
 		1E106D11210A4C300024B513 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D10210A4C300024B513 /* Storyboard+Utility.swift */; };
+		1E106D13210A68920024B513 /* UserMetricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D12210A68920024B513 /* UserMetricsModel.swift */; };
+		1E106D15210A693D0024B513 /* UserMetricsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D14210A693D0024B513 /* UserMetricsService.swift */; };
 		1E14020F2109669800A539BA /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E14020E2109669800A539BA /* ProgressView.swift */; };
 		1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053C2106442E009E6666 /* AppDelegate.swift */; };
 		1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053E2106442E009E6666 /* WODViewController.swift */; };
@@ -51,6 +53,8 @@
 		1E106D0B210A3DE20024B513 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1E106D0E210A46F10024B513 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E106D10210A4C300024B513 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Utility.swift"; sourceTree = "<group>"; };
+		1E106D12210A68920024B513 /* UserMetricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMetricsModel.swift; sourceTree = "<group>"; };
+		1E106D14210A693D0024B513 /* UserMetricsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMetricsService.swift; sourceTree = "<group>"; };
 		1E14020E2109669800A539BA /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		1E1E05392106442E009E6666 /* FitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E1E053C2106442E009E6666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				1E8A08B42106745C000B40BF /* Exercise.swift */,
 				1E9A7BD8210699E500B2F3FC /* ListOfExercises.swift */,
 				1E106D01210A31520024B513 /* User.swift */,
+				1E106D12210A68920024B513 /* UserMetricsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				1E106D08210A379D0024B513 /* UserService.swift */,
+				1E106D14210A693D0024B513 /* UserMetricsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				1E9A7BD9210699E500B2F3FC /* ListOfExercises.swift in Sources */,
 				1E106D11210A4C300024B513 /* Storyboard+Utility.swift in Sources */,
 				1E5CA0D52109031F00A252F0 /* NotesAndReference.swift in Sources */,
+				1E106D13210A68920024B513 /* UserMetricsModel.swift in Sources */,
 				1E9A7BD22106945200B2F3FC /* SetDataCell.swift in Sources */,
 				1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */,
 				1E106D04210A32C10024B513 /* CreateUsernameViewController.swift in Sources */,
@@ -477,6 +484,7 @@
 				1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */,
 				1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */,
 				1E14020F2109669800A539BA /* ProgressView.swift in Sources */,
+				1E106D15210A693D0024B513 /* UserMetricsService.swift in Sources */,
 				1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */,
 				1E106D09210A379D0024B513 /* UserService.swift in Sources */,
 				1E1E055921064B32009E6666 /* ExerciseLabelCell.swift in Sources */,

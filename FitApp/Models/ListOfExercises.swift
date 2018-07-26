@@ -23,4 +23,6 @@ class ListOfExercises {
         listOfExercises.append(squat)
     }
     
+    
+    
 }

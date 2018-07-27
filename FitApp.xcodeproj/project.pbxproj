@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0B887D210A9A2A000FAB3F /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B887C210A9A2A000FAB3F /* MGPhotoHelper.swift */; };
+		1E0B8881210B92A4000FAB3F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B8880210B92A4000FAB3F /* Date.swift */; };
 		1E106CFD210A2B270024B513 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E106CFC210A2B270024B513 /* Login.storyboard */; };
 		1E106D00210A2B700024B513 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106CFF210A2B700024B513 /* LoginViewController.swift */; };
 		1E106D02210A31520024B513 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D01210A31520024B513 /* User.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E0B887C210A9A2A000FAB3F /* MGPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
+		1E0B8880210B92A4000FAB3F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1E106CFC210A2B270024B513 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		1E106CFF210A2B700024B513 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E106D01210A31520024B513 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 		1E106D0A210A3DCE0024B513 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1E0B887C210A9A2A000FAB3F /* MGPhotoHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 			children = (
 				1E14020E2109669800A539BA /* ProgressView.swift */,
 				1E106D10210A4C300024B513 /* Storyboard+Utility.swift */,
+				1E0B8880210B92A4000FAB3F /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -478,6 +484,7 @@
 				1E5CA0D52109031F00A252F0 /* NotesAndReference.swift in Sources */,
 				1E106D13210A68920024B513 /* UserMetricsModel.swift in Sources */,
 				1E9A7BD22106945200B2F3FC /* SetDataCell.swift in Sources */,
+				1E0B887D210A9A2A000FAB3F /* MGPhotoHelper.swift in Sources */,
 				1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */,
 				1E106D04210A32C10024B513 /* CreateUsernameViewController.swift in Sources */,
 				1E8A08B52106745C000B40BF /* Exercise.swift in Sources */,
@@ -492,6 +499,7 @@
 				1E5CA0E72109577000A252F0 /* ExerciseNoteCell.swift in Sources */,
 				1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */,
 				1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */,
+				1E0B8881210B92A4000FAB3F /* Date.swift in Sources */,
 				1E106D02210A31520024B513 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

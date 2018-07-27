@@ -15,12 +15,14 @@ class UserMetricsModel {
     var height: Int
     var age: Int
     var gender: Int
+    var date: String
     
-    init(weight: Int, height: Int, age: Int, gender: Int) {
+    init(weight: Int, height: Int, age: Int, gender: Int, date: String) {
         self.weight = weight
         self.height = height
         self.age = age
         self.gender = gender
+        self.date = date
     }
     
     var dictValue: [String : Any] {
@@ -28,7 +30,8 @@ class UserMetricsModel {
         return ["weight" : weight,
                 "height" : height,
                 "age" : age,
-                "gender" : gender
+                "gender" : gender,
+                "date" : date
         ]
     }
     
@@ -37,13 +40,15 @@ class UserMetricsModel {
             let weight = dict["weight"] as? Int,
             let height = dict["height"] as? Int,
             let age = dict["age"] as? Int,
-            let gender = dict["gender"] as? Int
+            let gender = dict["gender"] as? Int,
+            let date = dict["date"] as? String
             else {return nil}
         
         self.weight = weight
         self.height = height
         self.age = age
         self.gender = gender
+        self.date = date
         
     }
     

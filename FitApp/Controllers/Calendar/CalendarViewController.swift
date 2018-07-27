@@ -14,6 +14,9 @@ import VACalendar
 
 final class CalendarViewController: UIViewController {
     
+    static var selectedDateVar = Date()
+    static var selectedDateVarString: String!
+    
     @IBOutlet weak var monthHeaderView: VAMonthHeaderView! {
         didSet {
             let appereance = VAMonthHeaderViewAppearance(
@@ -163,6 +166,8 @@ extension CalendarViewController: VACalendarViewDelegate {
     
     //Change to "selectedDates" for multiple selection
     func selectedDate(_ date: Date) {
+        CalendarViewController.selectedDateVar = date
+        CalendarViewController.selectedDateVarString = date.toString(dateFormat: "dd-MMM-yyyy")
         print(date)
     }
     

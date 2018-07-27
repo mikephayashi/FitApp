@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 struct WorkoutService {
     
+    static var currentSectionNumber = "0"
     static var workoutArray = [ExerciseModel]()
     
     static func writeWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String) {
@@ -19,7 +20,7 @@ struct WorkoutService {
         let updateWorkoutVar = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated)
         let dict = updateWorkoutVar.dictValue
         
-        let workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString)
+        let workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString).child(currentSectionNumber)
         workoutRef.updateChildValues(dict)
         print("Selected date: \(CalendarViewController.selectedDateVarString)")
         
@@ -30,7 +31,7 @@ struct WorkoutService {
     
     static func updateWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String){
         
-        let workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString)
+        let workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString).child(currentSectionNumber)
         workoutRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             workoutRef.child("exerciseName").setValue(exerciseName)
@@ -47,7 +48,7 @@ struct WorkoutService {
     
     static func pullAll() {
         
-        let userMetricsRef = Database.database().reference().child("userMetrics").child(User.current.uid)
+        let userMetricsRef = Database.database().reference().child("workout").child(User.current.uid)
         userMetricsRef.observeSingleEvent(of: .value, with: { (snapshot) in
             for item in snapshot.children {
                 if let node = item as? DataSnapshot {

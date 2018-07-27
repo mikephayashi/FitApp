@@ -13,7 +13,7 @@ class ExerciseSelectionViewController: UIViewController{
     @IBOutlet weak var listOfExercisesTableView: UITableView!
     
     let listOfExercisesReference = ListOfExercises()
-    var listOfExercises = [Exercise]()
+    var listOfExercises = [ExerciseModel]()
     var selectedCell = IndexPath()
     
     override func viewWillAppear(_ animated: Bool) {

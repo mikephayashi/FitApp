@@ -26,9 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         configureInitialRootViewController(for: window)
         
-        
+        //Formatting Selected Date String
         CalendarViewController.selectedDateVarString = CalendarViewController.selectedDateVar.toString(dateFormat: "dd-MMM-yyyy")
+        
+        //Services pulling from database
         UserMetricsService.pullAll()
+        WorkoutService.pullAll()
         
         return true
     }

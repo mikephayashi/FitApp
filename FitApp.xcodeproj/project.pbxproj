@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E0B887D210A9A2A000FAB3F /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B887C210A9A2A000FAB3F /* MGPhotoHelper.swift */; };
 		1E0B8881210B92A4000FAB3F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B8880210B92A4000FAB3F /* Date.swift */; };
+		1E0B8883210BAC51000FAB3F /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B8882210BAC51000FAB3F /* WorkoutService.swift */; };
 		1E106CFD210A2B270024B513 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E106CFC210A2B270024B513 /* Login.storyboard */; };
 		1E106D00210A2B700024B513 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106CFF210A2B700024B513 /* LoginViewController.swift */; };
 		1E106D02210A31520024B513 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D01210A31520024B513 /* User.swift */; };
@@ -37,7 +38,7 @@
 		1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0E221094F4600A252F0 /* NutriHealthViewController.swift */; };
 		1E5CA0E72109577000A252F0 /* ExerciseNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0E62109577000A252F0 /* ExerciseNoteCell.swift */; };
 		1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */; };
-		1E8A08B52106745C000B40BF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B42106745C000B40BF /* Exercise.swift */; };
+		1E8A08B52106745C000B40BF /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B42106745C000B40BF /* ExerciseModel.swift */; };
 		1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B6210677AB000B40BF /* AddingSetCell.swift */; };
 		1E9A7BD22106945200B2F3FC /* SetDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A7BD12106945200B2F3FC /* SetDataCell.swift */; };
 		1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A7BD3210695E800B2F3FC /* ExerciseSelectionViewController.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		1E0B887C210A9A2A000FAB3F /* MGPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
 		1E0B8880210B92A4000FAB3F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		1E0B8882210BAC51000FAB3F /* WorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
 		1E106CFC210A2B270024B513 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		1E106CFF210A2B700024B513 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E106D01210A31520024B513 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -79,7 +81,7 @@
 		1E5CA0E221094F4600A252F0 /* NutriHealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriHealthViewController.swift; sourceTree = "<group>"; };
 		1E5CA0E62109577000A252F0 /* ExerciseNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNoteCell.swift; sourceTree = "<group>"; };
 		1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHeaderCell.swift; sourceTree = "<group>"; };
-		1E8A08B42106745C000B40BF /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		1E8A08B42106745C000B40BF /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		1E8A08B6210677AB000B40BF /* AddingSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingSetCell.swift; sourceTree = "<group>"; };
 		1E9A7BD12106945200B2F3FC /* SetDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDataCell.swift; sourceTree = "<group>"; };
 		1E9A7BD3210695E800B2F3FC /* ExerciseSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectionViewController.swift; sourceTree = "<group>"; };
@@ -169,9 +171,9 @@
 		1E1E055121064468009E6666 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1E8A08B42106745C000B40BF /* Exercise.swift */,
-				1E9A7BD8210699E500B2F3FC /* ListOfExercises.swift */,
 				1E106D01210A31520024B513 /* User.swift */,
+				1E8A08B42106745C000B40BF /* ExerciseModel.swift */,
+				1E9A7BD8210699E500B2F3FC /* ListOfExercises.swift */,
 				1E106D12210A68920024B513 /* UserMetricsModel.swift */,
 			);
 			path = Models;
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				1E106D08210A379D0024B513 /* UserService.swift */,
+				1E0B8882210BAC51000FAB3F /* WorkoutService.swift */,
 				1E106D14210A693D0024B513 /* UserMetricsService.swift */,
 			);
 			path = Services;
@@ -485,9 +488,10 @@
 				1E106D13210A68920024B513 /* UserMetricsModel.swift in Sources */,
 				1E9A7BD22106945200B2F3FC /* SetDataCell.swift in Sources */,
 				1E0B887D210A9A2A000FAB3F /* MGPhotoHelper.swift in Sources */,
+				1E0B8883210BAC51000FAB3F /* WorkoutService.swift in Sources */,
 				1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */,
 				1E106D04210A32C10024B513 /* CreateUsernameViewController.swift in Sources */,
-				1E8A08B52106745C000B40BF /* Exercise.swift in Sources */,
+				1E8A08B52106745C000B40BF /* ExerciseModel.swift in Sources */,
 				1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */,
 				1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */,
 				1E14020F2109669800A539BA /* ProgressView.swift in Sources */,

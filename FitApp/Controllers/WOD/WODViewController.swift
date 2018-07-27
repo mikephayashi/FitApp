@@ -15,9 +15,10 @@ class WODViewController: UIViewController {
     @IBOutlet weak var exerciseListTableView: UITableView!
     @IBOutlet var addTimeStepper: UIStepper!
     
+    
     //Exercise Properties
-    var selectedExercise = Exercise(exerciseName: "", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
-    var listOfSelectedExercises = [Exercise]()
+    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false, dateCreated: "")
+    var listOfSelectedExercises = [ExerciseModel]()
     
     //Adding Set Cell Index Path
     var selectedIndexPath: IndexPath!
@@ -27,7 +28,7 @@ class WODViewController: UIViewController {
     
     //List of Exercises
     let listOfExercisesReference = ListOfExercises()
-    var listOfExercises = [Exercise]()
+    var listOfExercises = [ExerciseModel]()
     
     //Timer
     @IBOutlet weak var toggleTimerButton: UIButton!
@@ -57,7 +58,7 @@ class WODViewController: UIViewController {
         timerLabel.text = String(timerLength)
         timerProgressView.progress = Float(timerLength/savedTime)
         timerProgressView.barHeight = self.view.frame.height*0.005
-
+        
         configureTableView()
         
     }
@@ -72,10 +73,44 @@ class WODViewController: UIViewController {
         
     }
     
-    @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
-
+    
+    @IBAction func saveWorkoutTapped(_ sender: Any) {
+        
+        if WorkoutService.workoutArray.count != 0 {
+            
+            for workout in listOfSelectedExercises {
+                if CalendarViewController.selectedDateVarString == workout.dateCreated {
+                    
+                    WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
+                    
+                    print("Date Exists")
+                    
+                    return
+                    
+                } else {
+                    
+                    WorkoutService.writeWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
+                    
+                    print("Date Exists Not")
+                    
+                    return
+                }
+            }
+            
+        } else {
+            
+            
+            for workout in listOfSelectedExercises{
+                WorkoutService.writeWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
+            }
+        }
+        
     }
-
+    
+    
+    @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
+        
+    }
     
     //Setting Table View
     func checkDuplicates(){
@@ -95,7 +130,7 @@ class WODViewController: UIViewController {
             }
         }
         
-
+        
     }
     
     func formatTableView(){
@@ -108,22 +143,22 @@ class WODViewController: UIViewController {
         listOfSelectedExercises.append(selectedExercise)
         exerciseListTableView.reloadData()
     }
-
+    
     func configureTableView() {
         
         //remove separators for empty cells
         exerciseListTableView.tableFooterView = UIView()
         //remove separators from cells
         exerciseListTableView.separatorStyle = .none
-    
+        
     }
     
     //Stopwatch
     @IBAction func toggleTimerTapped(_ sender: Any) {
-
-        if timerIsRunning == false{
         
-        countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WODViewController.timerControl), userInfo: nil, repeats: true)
+        if timerIsRunning == false{
+            
+            countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WODViewController.timerControl), userInfo: nil, repeats: true)
             timerIsRunning = true
         } else {
             countDownTimer.invalidate()
@@ -141,12 +176,12 @@ class WODViewController: UIViewController {
     
     @objc func timerControl () {
         
-            timerLength -= 1
-            timerLabel.text = String(timerLength)
+        timerLength -= 1
+        timerLabel.text = String(timerLength)
         timerProgressView.progress = Float(Double(timerLength)/Double(savedTime))
-
+        
     }
-
+    
     //Timer Actions
     @IBAction func stepperClicked(_ sender: Any) {
         if (sender as AnyObject).value > Double(timerLength) {

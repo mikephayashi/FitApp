@@ -11,11 +11,11 @@ import Foundation
 class ListOfExercises {
     
 
-    var listOfExercises = [Exercise]()
+    var listOfExercises = [ExerciseModel]()
 
-    var pushUp = Exercise(exerciseName: "Push Up", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
-    var pullUp = Exercise(exerciseName: "Pull Up", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
-    var squat = Exercise(exerciseName: "Squat", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false)
+    var pushUp = ExerciseModel(exerciseName: "Push Up", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false, dateCreated: "")
+    var pullUp = ExerciseModel(exerciseName: "Pull Up", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false, dateCreated: "")
+    var squat = ExerciseModel(exerciseName: "Squat", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false, dateCreated: "")
     
     init(){
         listOfExercises.append(pushUp)

@@ -37,3 +37,11 @@ import Foundation
  })
  
  */
+
+//static var note: [Array] = [] {
+//    didSet {
+//        self.tableView.reloadData()
+//        print("Reloaded")
+//    }
+//}
+

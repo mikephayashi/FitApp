@@ -6,9 +6,6 @@
 //  Copyright © 2018 Michael Hayashi. All rights reserved.
 //
 
-
-
-
 import UIKit
 import VACalendar
 
@@ -120,6 +117,7 @@ extension CalendarViewController: VAMonthViewAppearanceDelegate {
     func verticalCurrentMonthTitleColor() -> UIColor {
         return .red
     }
+
     
 }
 

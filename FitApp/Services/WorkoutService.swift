@@ -14,9 +14,11 @@ struct WorkoutService {
     
     static var currentSectionNumber = "0"
     static var workoutArray = [ExerciseModel]()
+    static var listOfDatesArray = [String]()
     
     static func writeWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String) {
         
+        //Workout Firebase
         let updateWorkoutVar = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated)
         let dict = updateWorkoutVar.dictValue
         
@@ -26,6 +28,15 @@ struct WorkoutService {
         
         let newWorkout = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated)
         workoutArray.append(newWorkout)
+        
+        
+        //Date Firebase
+        let dateRef = Database.database().reference().child("listOfDates").child(User.current.uid).child(dateCreated)
+        dateRef.updateChildValues(["date" : dateCreated])
+        listOfDatesArray.append(dateCreated)
+        
+        
+        
         
     }
     
@@ -48,30 +59,41 @@ struct WorkoutService {
     
     static func pullAll() {
         
-        let userMetricsRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString)
-        userMetricsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        let dateRef = Database.database().reference().child("listOfDates").child(User.current.uid)
+        dateRef.observeSingleEvent(of: .value, with: { (snapshot) in
             for item in snapshot.children {
                 if let node = item as? DataSnapshot {
                     print(node.key) //Which node
-                    let exerciseName = node.childSnapshot(forPath: "exerciseName").value
-                    let numberOfReps = node.childSnapshot(forPath: "numberOfReps").value
-                    let numberOfSets = node.childSnapshot(forPath: "numberOfSets").value
-                    let sectionNumber = node.childSnapshot(forPath: "sectionNumber").value
-                    let alreadyAdded = node.childSnapshot(forPath: "alreadyAdded").value
-                    let dateCreated = node.childSnapshot(forPath: "dateCreated").value
-                    print(exerciseName)
-                    print(numberOfReps)
-                    print(numberOfSets)
-                    print(sectionNumber)
-                    print(alreadyAdded)
-                    print(dateCreated)
-                    let pulledWorkout = ExerciseModel(exerciseName: exerciseName as! String, numberOfReps: numberOfReps as! [Int], numberOfSets: numberOfSets as! [Int], sectionNumber: sectionNumber as! Int, alreadyAdded: alreadyAdded as! Bool, dateCreated: dateCreated as! String)
-                    self.workoutArray.append(pulledWorkout)
+                    let datePulled = node.childSnapshot(forPath: "date").value
+                    self.listOfDatesArray.append(datePulled as! String)
                 }
             }
             
+            for date in listOfDatesArray{
+                
+                let userMetricsRef = Database.database().reference().child("workout").child(User.current.uid).child(date)
+                userMetricsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                    for item in snapshot.children {
+                        if let node = item as? DataSnapshot {
+                            print(node.key) //Which node
+                            let exerciseName = node.childSnapshot(forPath: "exerciseName").value
+                            let numberOfReps = node.childSnapshot(forPath: "numberOfReps").value
+                            let numberOfSets = node.childSnapshot(forPath: "numberOfSets").value
+                            let sectionNumber = node.childSnapshot(forPath: "sectionNumber").value
+                            let alreadyAdded = node.childSnapshot(forPath: "alreadyAdded").value
+                            let dateCreated = node.childSnapshot(forPath: "dateCreated").value
+                            print(exerciseName)
+                            print(numberOfReps)
+                            print(numberOfSets)
+                            print(sectionNumber)
+                            print(alreadyAdded)
+                            print(dateCreated)
+                            let pulledWorkout = ExerciseModel(exerciseName: exerciseName as! String, numberOfReps: numberOfReps as! [Int], numberOfSets: numberOfSets as! [Int], sectionNumber: sectionNumber as! Int, alreadyAdded: alreadyAdded as! Bool, dateCreated: dateCreated as! String)
+                            self.workoutArray.append(pulledWorkout)
+                        }
+                    }
+                })
+            }
         })
     }
-    
-    
 }

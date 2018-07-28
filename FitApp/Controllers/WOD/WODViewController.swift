@@ -15,16 +15,8 @@ class WODViewController: UIViewController {
     @IBOutlet weak var exerciseListTableView: UITableView!
     @IBOutlet var addTimeStepper: UIStepper!
     
-    
     //Exercise Properties
-    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [], numberOfSets: [], sectionNumber: 0, alreadyAdded: false, dateCreated: "")
-    var listOfSelectedExercises = [ExerciseModel]()
-    
-    //Adding Set Cell Index Path
-    var selectedIndexPath: IndexPath!
-    
-    //Exercise Selection IndexPath
-    var exerciseSelectionIndexPath: IndexPath!
+    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "")
     
     //List of Exercises
     let listOfExercisesReference = ListOfExercises()
@@ -35,18 +27,11 @@ class WODViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var timerProgressView: UIProgressView!
-    
     var timerLength = 60
     var savedTime = 60
     var timerIsRunning = false
-    
     var countDownTimer = Timer()
     
-    //Test Variables
-    var weightInput = 1
-    var heightInput = 1
-    var ageInput = 1
-    var genderInput = 1
     
     //Overide Functions
     override func viewDidLoad() {
@@ -63,12 +48,6 @@ class WODViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("View Will Appear")
-        saveWorkout()
-        exerciseListTableView.reloadData()
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -84,43 +63,35 @@ class WODViewController: UIViewController {
     @IBAction func saveWorkoutTapped(_ sender: Any) {
         saveWorkout()
     }
-
+    
     
     @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
-        saveWorkout()
-        exerciseListTableView.reloadData()
+        
     }
     
     //Setting Table View
     func checkDuplicates(){
         
-        selectedExercise = listOfExercises[exerciseSelectionIndexPath.row]
-        
-        if listOfSelectedExercises.count == 0{
+        if WorkoutService.workoutArray.count == 0{
             formatTableView()
             return
         }
+
         
-        //check this
-        
-        for exercise in listOfSelectedExercises {
+        for exercise in WorkoutService.workoutArray {
             if selectedExercise.alreadyAdded == false && selectedExercise.exerciseName != exercise.exerciseName{
                 formatTableView()
             }
         }
-        
         
     }
     
     func formatTableView(){
         
         //No sections on loading
-        selectedExercise.sectionNumber = exerciseListTableView.numberOfSections
-        selectedExercise.numberOfSets.append(1)
+        selectedExercise.sectionNumber = Int(WorkoutService.currentSectionNumber)!
         selectedExercise.alreadyAdded = true
-        
-        listOfSelectedExercises.append(selectedExercise)
-        exerciseListTableView.reloadData()
+        saveWorkout()
     }
     
     func configureTableView() {
@@ -183,57 +154,55 @@ class WODViewController: UIViewController {
         timerLabel.text = String(timerLength)
         timerProgressView.progress = Float(timerLength/60)
     }
-
+    
     //Saving Workout
     func saveWorkout(){
         
-        
         if WorkoutService.workoutArray.count != 0 {
             
+            print("Saving Workout")
             print(WorkoutService.workoutArray.count)
             print(WorkoutService.workoutArray)
+            print(selectedExercise.exerciseName)
             
-            for workoutCheck in WorkoutService.workoutArray {
-                if CalendarViewController.selectedDateVarString == workoutCheck.dateCreated {
+            for workout in WorkoutService.workoutArray {
+                if CalendarViewController.selectedDateVarString == workout.dateCreated && selectedExercise.exerciseName == workout.exerciseName{
                     
-                    for workout in listOfSelectedExercises{
-                        
-                        WorkoutService.currentSectionNumber = String(workout.sectionNumber)
-                        
-                        WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
-                        
-                    }
+                    WorkoutService.currentSectionNumber = String(workout.sectionNumber)
                     
+                    WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
                     
+                    selectedExercise.alreadyAdded = false
                     
                     print("Date Exists")
-                    
                     return
                     
                 } else {
                     
-                    for workout in listOfSelectedExercises{
-                        
-                        WorkoutService.currentSectionNumber = String(workout.sectionNumber)
-                        
-                        WorkoutService.writeWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
-                        
-                    }
+                    WorkoutService.currentSectionNumber = String(exerciseListTableView.numberOfSections)
+                    
+                    WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
+                    
+                    selectedExercise.alreadyAdded = false
+                    
+                    exerciseListTableView.insertSections([Int(WorkoutService.currentSectionNumber)!], with: .fade)
                     
                     print("Date Exists Not")
-                    
                     return
                 }
             }
             
         } else {
             
-            for workout in listOfSelectedExercises{
-                WorkoutService.writeWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
-            }
+            
+            WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
             
             print("Empty")
         }
+        
+        exerciseListTableView.reloadData()
+        
+//        exerciseListTableView.reloadSections([0], with: .fade)
         
     }
 }
@@ -247,8 +216,8 @@ extension WODViewController: UITableViewDataSource{
         
         var returnedValue = 0
         
-        if listOfSelectedExercises.count != 0{
-            returnedValue = listOfSelectedExercises.count
+        if WorkoutService.workoutArray.count != 0{
+            returnedValue = WorkoutService.workoutArray.count
         }
         
         return returnedValue
@@ -257,9 +226,9 @@ extension WODViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         var valuedReturned = ""
-        if listOfSelectedExercises.count != 0{
+        if WorkoutService.workoutArray.count != 0{
             
-            valuedReturned = listOfSelectedExercises[section].exerciseName
+            valuedReturned = WorkoutService.workoutArray[section].exerciseName
         }
         return valuedReturned
         
@@ -267,10 +236,10 @@ extension WODViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var returnedValue = 0
-        if listOfSelectedExercises.count != 0{
-            for x in listOfSelectedExercises {
-                if x.sectionNumber == section {
-                    returnedValue = 3 + x.numberOfSets[0]
+        if WorkoutService.workoutArray.count != 0{
+            for exercise in WorkoutService.workoutArray {
+                if exercise.sectionNumber == section {
+                    returnedValue = 3 + exercise.numberOfSets[0]
                 }
             }
         }
@@ -278,44 +247,46 @@ extension WODViewController: UITableViewDataSource{
         return returnedValue
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         var returnedValue = tableView.dequeueReusableCell(withIdentifier: "ExerciseHeaderCell", for: indexPath)
         
         if WorkoutService.workoutArray.count != 0 {
             for exercise in WorkoutService.workoutArray {
-//                if exercise.dateCreated == CalendarViewController.selectedDateVarString {
-                    if exercise.sectionNumber == indexPath.section{
-                        switch  indexPath.row {
-                        case 0:
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseHeaderCell", for: indexPath) as! ExerciseHeaderCell
-                            returnedValue = cell
-                        case 1:
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseLabelsCell", for: indexPath) as! ExerciseLabelsCell
-                            returnedValue = cell
-                        // + 2 because middle = 2 + numberOfSets
-                        case let x where x > 1 && x < exercise.numberOfSets[0] + 2 :
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "SetDataCell", for: indexPath) as! SetDataCell
-                            returnedValue = cell
-                        case exercise.numberOfSets[0]+2:
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "AddingSetCell", for: indexPath) as! AddingSetCell
-                            cell.delegate = self as AddingSetCellDelegate
-                            returnedValue = cell
-                        default:
-                            fatalError("Error unexpected Indexpath.row")
-                        }
+                if exercise.dateCreated == CalendarViewController.selectedDateVarString && exercise.sectionNumber == indexPath.section {
+                    switch  indexPath.row {
+                    case 0:
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseHeaderCell", for: indexPath) as! ExerciseHeaderCell
+                        returnedValue = cell
+                    case 1:
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseLabelsCell", for: indexPath) as! ExerciseLabelsCell
+                        returnedValue = cell
+                    // + 2 because middle = 2 + numberOfSets
+                    case let x where x > 1 && x < exercise.numberOfSets[0] + 2 :
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "SetDataCell", for: indexPath) as! SetDataCell
+                        returnedValue = cell
+                    case exercise.numberOfSets[0]+2:
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "AddingSetCell", for: indexPath) as! AddingSetCell
+                        cell.delegate = self as AddingSetCellDelegate
+                        returnedValue = cell
+                    default:
+                        fatalError("Error unexpected Indexpath.row")
                     }
                 }
-//            }
-            print("Workout service workout array not empty")
+            }
         }
-
-        
+        print("Workout service workout array not empty")
         return returnedValue
-        
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedExercise = WorkoutService.workoutArray[indexPath.section]
+    }
+    
+    
+    
 }
+
 
 
 extension WODViewController: AddingSetCellDelegate{
@@ -324,15 +295,22 @@ extension WODViewController: AddingSetCellDelegate{
         
         let indexPath = exerciseListTableView.indexPath(for: cell)!
         
-        for x in listOfSelectedExercises{
-            if indexPath.section == x.sectionNumber{
-                listOfSelectedExercises[x.sectionNumber].numberOfSets[0] += 1
+        for exercise in WorkoutService.workoutArray{
+            if indexPath.section == exercise.sectionNumber{
+                selectedExercise = exercise
+                WorkoutService.workoutArray[exercise.sectionNumber].numberOfSets[0] += 1
                 saveWorkout()
-                exerciseListTableView.reloadData()
+                exerciseListTableView.insertRows(at: [IndexPath(row: selectedExercise.numberOfSets[0]+1, section: selectedExercise.sectionNumber)], with: .fade)
+                
+                
             }
         }
     }
+
+
 }
+
+
 
 
 

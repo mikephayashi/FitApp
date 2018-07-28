@@ -48,7 +48,7 @@ struct WorkoutService {
     
     static func pullAll() {
         
-        let userMetricsRef = Database.database().reference().child("workout").child(User.current.uid)
+        let userMetricsRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString)
         userMetricsRef.observeSingleEvent(of: .value, with: { (snapshot) in
             for item in snapshot.children {
                 if let node = item as? DataSnapshot {

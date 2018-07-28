@@ -41,7 +41,7 @@ class ExerciseSelectionViewController: UIViewController{
         let destination = segue.destination as! WODViewController
         let indexPath = listOfExercisesTableView.indexPathForSelectedRow
         
-        destination.exerciseSelectionIndexPath = indexPath
+        destination.selectedExercise = destination.listOfExercises[indexPath!.row]
         destination.checkDuplicates()
         
     }

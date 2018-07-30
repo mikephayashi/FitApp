@@ -39,7 +39,7 @@ class ExerciseSelectionViewController: UIViewController{
         let indexPath = listOfExercisesTableView.indexPathForSelectedRow
         
         destination.selectedExercise = destination.listOfExercises[indexPath!.row]
-        destination.checkDuplicates()
+        destination.formatTableView()
         
     }
     

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>546610653187-pk0faub4c6me9sbgmh49v07vs0eco98d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.546610653187-pk0faub4c6me9sbgmh49v07vs0eco98d</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBWvOhSm1B4Loh5JoHhhlr9NGYXrwcOGGo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>546610653187</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.HayashiMichael.FitApp</string>
+	<key>PROJECT_ID</key>
+	<string>fitapp-f1411</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fitapp-f1411.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:546610653187:ios:f198063aa3e8638d</string>
+	<key>DATABASE_URL</key>
+	<string>https://fitapp-f1411.firebaseio.com</string>
+</dict>
+</plist>

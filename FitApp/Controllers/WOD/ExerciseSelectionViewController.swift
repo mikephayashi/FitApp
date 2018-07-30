@@ -13,7 +13,7 @@ class ExerciseSelectionViewController: UIViewController{
     @IBOutlet weak var listOfExercisesTableView: UITableView!
     
     let listOfExercisesReference = ListOfExercises()
-    var listOfExercises = [Exercise]()
+    var listOfExercises = [ExerciseModel]()
     var selectedCell = IndexPath()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,9 +23,6 @@ class ExerciseSelectionViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-
-        
         
     }
     
@@ -41,8 +38,8 @@ class ExerciseSelectionViewController: UIViewController{
         let destination = segue.destination as! WODViewController
         let indexPath = listOfExercisesTableView.indexPathForSelectedRow
         
-        destination.exerciseSelectionIndexPath = indexPath
-        destination.checkDuplicates()
+        destination.selectedExercise = destination.listOfExercises[indexPath!.row]
+        destination.formatTableView()
         
     }
     

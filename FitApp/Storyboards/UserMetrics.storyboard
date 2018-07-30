@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--User Metrics View Controller-->
         <scene sceneID="Ora-3f-elg">
             <objects>
                 <viewController id="JDi-mV-nu7" customClass="UserMetricsViewController" customModule="FitApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -78,11 +78,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQr-IG-VJY">
+                                <rect key="frame" x="152" y="320" width="71" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="updateUserMetricsTapped:" destination="JDi-mV-nu7" eventType="touchUpInside" id="QcP-Gb-ojh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jgq-dh-b05"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="4v4-2t-Jbl"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="4v4-2t-Jbl"/>
                     <connections>
                         <outlet property="ageTextField" destination="sDp-gd-rf8" id="0Py-Fq-iLD"/>
                         <outlet property="genderTextField" destination="fM6-WD-H6x" id="bjC-8m-R6z"/>

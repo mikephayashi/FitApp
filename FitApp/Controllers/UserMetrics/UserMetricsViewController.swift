@@ -15,8 +15,7 @@ class UserMetricsViewController: UIViewController {
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var heightTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var genderTextField: UITextField!
-    
+    @IBOutlet weak var genderTextField: UITextField!    
     
     //Overide Functions
     override func viewDidLoad() {
@@ -38,6 +37,36 @@ class UserMetricsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //IBActions
+    @IBAction func updateUserMetricsTapped(_ sender: Any) {
+        
+        if UserMetricsService.userMetricsArray.count != 0 {
+            for metric in UserMetricsService.userMetricsArray{
+                //                checkMetrics()
+                
+                if CalendarViewController.selectedDateVarString == metric.date{
+                    UserMetricsService.updateUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString)
+                    
+                    print("Date Exists")
+                    
+                    return
+                    
+                } else {
+                    
+                    UserMetricsService.writeUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString)
+                    
+                    print("Date Exists Not")
+                    
+                    return
+                }
+            }
+            
+        } else {
+            
+            UserMetricsService.writeUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString)
+        }
+        
+    }
     
     //Dismiss Keyboard
     @objc func dismissKeyboard() {

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--View Controller-->
         <scene sceneID="F0L-oR-9gE">
             <objects>
                 <viewController id="GYi-eP-Mf8" sceneMemberID="viewController">
@@ -82,7 +82,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YVX-fX-NyW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="92p-eS-PeO"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="92p-eS-PeO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23P-Pc-w2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

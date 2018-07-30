@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Calendar View Controller-->
         <scene sceneID="4xu-mL-cpI">
             <objects>
                 <viewController id="8r0-DL-yfx" customClass="CalendarViewController" customModule="FitApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ASO-LX-9ix"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="4s9-fJ-N1h"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="4s9-fJ-N1h"/>
                     <connections>
                         <outlet property="monthHeaderView" destination="sfe-KJ-vPJ" id="syY-qo-sBK"/>
                         <outlet property="weekDaysView" destination="man-AZ-On9" id="tO1-qU-jST"/>

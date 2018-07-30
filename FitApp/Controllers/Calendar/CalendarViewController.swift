@@ -6,13 +6,13 @@
 //  Copyright © 2018 Michael Hayashi. All rights reserved.
 //
 
-
-
-
 import UIKit
 import VACalendar
 
 final class CalendarViewController: UIViewController {
+    
+    static var selectedDateVar = Date()
+    static var selectedDateVarString: String!
     
     @IBOutlet weak var monthHeaderView: VAMonthHeaderView! {
         didSet {
@@ -36,7 +36,7 @@ final class CalendarViewController: UIViewController {
     let defaultCalendar: Calendar = {
         var calendar = Calendar.current
         calendar.firstWeekday = 1
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        calendar.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())!
         return calendar
     }()
     
@@ -117,6 +117,7 @@ extension CalendarViewController: VAMonthViewAppearanceDelegate {
     func verticalCurrentMonthTitleColor() -> UIColor {
         return .red
     }
+
     
 }
 
@@ -163,6 +164,8 @@ extension CalendarViewController: VACalendarViewDelegate {
     
     //Change to "selectedDates" for multiple selection
     func selectedDate(_ date: Date) {
+        CalendarViewController.selectedDateVar = date
+        CalendarViewController.selectedDateVarString = date.toString(dateFormat: "dd-MMM-yyyy")
         print(date)
     }
     

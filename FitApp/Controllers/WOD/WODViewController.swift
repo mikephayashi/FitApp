@@ -196,10 +196,11 @@ class WODViewController: UIViewController {
     
     @objc func timerControl () {
         
-        timerLength -= 1
-        timerLabel.text = String(timerLength)
-        timerProgressView.progress = Float(Double(timerLength)/Double(savedTime))
-        
+        if timerLength > 0{
+            timerLength -= 1
+            timerLabel.text = String(timerLength)
+            timerProgressView.progress = Float(Double(timerLength)/Double(savedTime))
+        }
     }
     
     //Timer Actions

@@ -14,6 +14,9 @@ final class CalendarViewController: UIViewController {
     static var selectedDateVar = Date()
     static var selectedDateVarString: String!
     
+    @IBOutlet var workoutLabel: UILabel!
+    
+    
     @IBOutlet weak var monthHeaderView: VAMonthHeaderView! {
         didSet {
             let appereance = VAMonthHeaderViewAppearance(
@@ -55,13 +58,17 @@ final class CalendarViewController: UIViewController {
         calendarView.calendarDelegate = self
         calendarView.scrollDirection = .horizontal
         //Bottom Dots
-//        calendarView.setSupplementaries([
-//            (Date().addingTimeInterval(-(60 * 60 * 70)), [VADaySupplementary.bottomDots([.red, .magenta])]),
-//            (Date().addingTimeInterval((60 * 60 * 110)), [VADaySupplementary.bottomDots([.red])]),
-//            (Date().addingTimeInterval((60 * 60 * 370)), [VADaySupplementary.bottomDots([.blue, .darkGray])]),
-//            (Date().addingTimeInterval((60 * 60 * 430)), [VADaySupplementary.bottomDots([.orange, .purple, .cyan])])
-//            ])
+        //        calendarView.setSupplementaries([
+        //            (Date().addingTimeInterval(-(60 * 60 * 70)), [VADaySupplementary.bottomDots([.red, .magenta])]),
+        //            (Date().addingTimeInterval((60 * 60 * 110)), [VADaySupplementary.bottomDots([.red])]),
+        //            (Date().addingTimeInterval((60 * 60 * 370)), [VADaySupplementary.bottomDots([.blue, .darkGray])]),
+        //            (Date().addingTimeInterval((60 * 60 * 430)), [VADaySupplementary.bottomDots([.orange, .purple, .cyan])])
+        //            ])
         view.addSubview(calendarView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadingWorkoutLabel()
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,6 +89,20 @@ final class CalendarViewController: UIViewController {
         calendarView.changeViewType()
     }
     
+    func loadingWorkoutLabel(){
+
+        var listOfWorkoutsString = ""
+        var numberOfLineCounters = 0
+        for workout in WorkoutService.workoutArray{
+            if workout.dateCreated == CalendarViewController.selectedDateVarString{
+                listOfWorkoutsString = listOfWorkoutsString + "\(workout.exerciseName) \(workout.numberOfSets) x \(workout.numberOfReps) \n"
+                numberOfLineCounters += 1
+                print("adding workout to label")
+            }
+        }
+        workoutLabel.numberOfLines = numberOfLineCounters
+        workoutLabel.text = listOfWorkoutsString
+    }
 }
 
 extension CalendarViewController: VAMonthHeaderViewDelegate {
@@ -117,7 +138,7 @@ extension CalendarViewController: VAMonthViewAppearanceDelegate {
     func verticalCurrentMonthTitleColor() -> UIColor {
         return .red
     }
-
+    
     
 }
 
@@ -167,9 +188,10 @@ extension CalendarViewController: VACalendarViewDelegate {
         CalendarViewController.selectedDateVar = date
         CalendarViewController.selectedDateVarString = date.toString(dateFormat: "dd-MMM-yyyy")
         print(date)
+        loadingWorkoutLabel()
     }
     
-
+    
     
 }
 

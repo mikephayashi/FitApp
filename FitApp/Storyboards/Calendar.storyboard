@@ -44,6 +44,7 @@
                     <connections>
                         <outlet property="monthHeaderView" destination="sfe-KJ-vPJ" id="syY-qo-sBK"/>
                         <outlet property="weekDaysView" destination="man-AZ-On9" id="tO1-qU-jST"/>
+                        <outlet property="workoutLabel" destination="kMZ-rs-uKY" id="59x-UW-jbH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8k-SI-EQs" userLabel="First Responder" sceneMemberID="firstResponder"/>

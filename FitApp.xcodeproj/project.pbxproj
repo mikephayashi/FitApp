@@ -44,6 +44,7 @@
 		1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A7BD3210695E800B2F3FC /* ExerciseSelectionViewController.swift */; };
 		1E9A7BD6210696C300B2F3FC /* ExerciseNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A7BD5210696C300B2F3FC /* ExerciseNameCell.swift */; };
 		1E9A7BD9210699E500B2F3FC /* ListOfExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A7BD8210699E500B2F3FC /* ListOfExercises.swift */; };
+		1ED78EF5210FDA4800C76CDC /* WorkoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED78EF4210FDA4800C76CDC /* WorkoutCalculator.swift */; };
 		468B3E81C711E80DD354ADB3 /* Pods_FitApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31304F47A1481A07320CB7A7 /* Pods_FitApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		1E9A7BD3210695E800B2F3FC /* ExerciseSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectionViewController.swift; sourceTree = "<group>"; };
 		1E9A7BD5210696C300B2F3FC /* ExerciseNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNameCell.swift; sourceTree = "<group>"; };
 		1E9A7BD8210699E500B2F3FC /* ListOfExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfExercises.swift; sourceTree = "<group>"; };
+		1ED78EF4210FDA4800C76CDC /* WorkoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCalculator.swift; sourceTree = "<group>"; };
 		31304F47A1481A07320CB7A7 /* Pods_FitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F41417D097CDA1AE0A26EE7 /* Pods-FitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitApp/Pods-FitApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6C8410D205523301C09AA400 /* Pods-FitApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitApp/Pods-FitApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		1E1E055321064477009E6666 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1ED78EF4210FDA4800C76CDC /* WorkoutCalculator.swift */,
 				1E106CFE210A2B5F0024B513 /* Login */,
 				1E5CA09A2108E8AF00A252F0 /* WOD */,
 				1E5CA09B2108E8BB00A252F0 /* Calendar */,
@@ -480,6 +483,7 @@
 				1E106D00210A2B700024B513 /* LoginViewController.swift in Sources */,
 				1E106D0C210A3DE20024B513 /* Constants.swift in Sources */,
 				1E5CA0DA210915E000A252F0 /* UserMetricsViewController.swift in Sources */,
+				1ED78EF5210FDA4800C76CDC /* WorkoutCalculator.swift in Sources */,
 				1E9A7BD6210696C300B2F3FC /* ExerciseNameCell.swift in Sources */,
 				1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */,
 				1E9A7BD9210699E500B2F3FC /* ListOfExercises.swift in Sources */,

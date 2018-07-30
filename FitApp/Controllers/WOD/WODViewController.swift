@@ -38,17 +38,6 @@ class WODViewController: UIViewController {
     //Table View
     var copiedVariable = [ExerciseModel]()
     
-    func copyOverData(){
-        for x in WorkoutService.workoutArray{
-            copiedVariable.append(x)
-        }
-        if WorkoutService.workoutArray.count == 0{
-            for x in copiedVariable{
-                WorkoutService.workoutArray.append(x)
-            }
-        }
-    }
-    
     //Overide Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,59 +58,77 @@ class WODViewController: UIViewController {
             var exerciseArray: IndexSet = []
             for exercise in WorkoutService.workoutArray{
                 print("adding")
+                
                 if CalendarViewController.selectedDateVarString == exercise.dateCreated {
                     exerciseArray.insert(exercise.sectionNumber)
                 }
             }
             
             self.exerciseListTableView.insertSections(exerciseArray, with: .fade)
-            exerciseArray = []
             self.copyOverData()
         }
         
         
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
+        print("Appear")
+        print(WorkoutService.workoutArray)
+        print(copiedVariable)
+        
         
         for exercise in WorkoutService.workoutArray{
             
+            print("stuff here")
+            
+            print(previousDate)
+            print(CalendarViewController.selectedDateVarString)
+            
             if previousDate != CalendarViewController.selectedDateVarString{
-                
+                print("loading data")
+                print(WorkoutService.workoutArray)
+                print(copiedVariable)
                 var exerciseArray: IndexSet = []
                 var numberOfSections = exerciseListTableView.numberOfSections
+                
                 if exerciseListTableView.numberOfSections != 0 {
+                    print("deleting stuff")
                     for section in 0...exerciseListTableView.numberOfSections-1 {
                         exerciseArray.insert(section)
                     }
                     WorkoutService.workoutArray = []
                     exerciseListTableView.deleteSections(exerciseArray, with: .none)
                     copyOverData()
-                    previousDate = CalendarViewController.selectedDateVarString
-                    exerciseArray = []
+                    print(copiedVariable)
+                    print(WorkoutService.workoutArray)
                 }
                 
+                previousDate = CalendarViewController.selectedDateVarString
+                
                 if CalendarViewController.selectedDateVarString == exercise.dateCreated {
+                    print("checking")
+                    var exerciseArray: IndexSet = []
                     
                     for exercise in WorkoutService.workoutArray{
+                        print("stuff here")
                         if CalendarViewController.selectedDateVarString == exercise.dateCreated {
-                            var exerciseArray: IndexSet = []
+                            print("adding")
+                            print(exerciseArray)
                             exerciseArray.insert(exercise.sectionNumber)
-                            break
+                            print(exerciseArray)
+                            print(exercise.sectionNumber)
                         }
-                        break
                         
                     }
-                    
-                    WorkoutService.workoutArray = []
+                    print("insert section")
+                    print(exerciseArray)
                     self.exerciseListTableView.insertSections(exerciseArray, with: .fade)
-                    copyOverData()
                     
-                    exerciseArray = []
                 }
             }
         }
+        
+        //        exerciseListTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -135,7 +142,9 @@ class WODViewController: UIViewController {
     }
     
     @IBAction func saveWorkoutTapped(_ sender: Any) {
-        saveWorkout()
+        if selectedExercise.exerciseName != ""{
+            saveWorkout()
+        }
     }
     
     @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
@@ -144,6 +153,8 @@ class WODViewController: UIViewController {
     
     //Setting Table View
     func checkDuplicates(){
+        
+        print("checking duplicates")
         
         if WorkoutService.workoutArray.count == 0{
             formatTableView()
@@ -240,30 +251,53 @@ class WODViewController: UIViewController {
             print(WorkoutService.workoutArray)
             print(selectedExercise.exerciseName)
             
+            var counter = 0
+            
             for workout in WorkoutService.workoutArray {
                 if CalendarViewController.selectedDateVarString == workout.dateCreated && selectedExercise.exerciseName == workout.exerciseName{
+                    
                     
                     WorkoutService.currentSectionNumber = String(workout.sectionNumber)
                     
                     WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
                     
                     selectedExercise.alreadyAdded = false
+                    copyOverData()
                     
                     print("Date Exists")
                     return
                     
                 } else {
-                    
-                    WorkoutService.currentSectionNumber = String(exerciseListTableView.numberOfSections)
-                    
-                    WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
-                    
-                    selectedExercise.alreadyAdded = false
-                    
-                    exerciseListTableView.insertSections([Int(WorkoutService.currentSectionNumber)!], with: .fade)
-                    
-                    print("Date Exists Not")
-                    return
+                    var isAlreadyAdded = false
+                    if workout.exerciseName == selectedExercise.exerciseName{
+                        isAlreadyAdded = true
+                    }
+                    counter += 1
+                    print("counting")
+                    print(workout.exerciseName)
+                    print(selectedExercise.exerciseName)
+                    print(counter)
+                    print(WorkoutService.workoutArray.count)
+                    if isAlreadyAdded == false && counter == WorkoutService.workoutArray.count{
+                        print("Checking")
+                        print(CalendarViewController.selectedDateVarString)
+                        print(workout.dateCreated)
+                        print(selectedExercise.exerciseName)
+                        print(workout.exerciseName)
+                        
+                        WorkoutService.currentSectionNumber = String(exerciseListTableView.numberOfSections)
+                        
+                        WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
+                        
+                        selectedExercise.alreadyAdded = false
+                        
+                        exerciseListTableView.insertSections([Int(WorkoutService.currentSectionNumber)!], with: .fade)
+                        
+                        copyOverData()
+                        
+                        print("Date Exists Not")
+                        return
+                    }
                 }
             }
             
@@ -272,13 +306,34 @@ class WODViewController: UIViewController {
             
             WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
             
+            selectedExercise.alreadyAdded = false
+            
+            copyOverData()
+            
             print("Empty")
         }
         
         exerciseListTableView.reloadData()
-        
+        print("checking workout array")
+        print(WorkoutService.workoutArray)
         
     }
+    
+    func copyOverData(){
+        
+        if WorkoutService.workoutArray.count != 0{
+            copiedVariable = []
+            for x in WorkoutService.workoutArray{
+                copiedVariable.append(x)
+            }
+        }
+        if WorkoutService.workoutArray.count == 0{
+            for x in copiedVariable{
+                WorkoutService.workoutArray.append(x)
+            }
+        }
+    }
+    
 }
 
 
@@ -374,7 +429,10 @@ extension WODViewController: AddingSetCellDelegate{
                 selectedExercise = exercise
                 WorkoutService.workoutArray[exercise.sectionNumber].numberOfSets[0] += 1
                 
-                exerciseListTableView.insertRows(at: [IndexPath(row: 2, section: selectedExercise.sectionNumber)], with: .fade)
+                print("selected exercise")
+                print(selectedExercise)
+                print(selectedExercise.sectionNumber)
+                exerciseListTableView.insertRows(at: [IndexPath(row: selectedExercise.numberOfSets[0]+1, section: selectedExercise.sectionNumber)], with: .fade)
                 
                 saveWorkout()
                 

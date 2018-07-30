@@ -29,10 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Formatting Selected Date String
         CalendarViewController.selectedDateVarString = CalendarViewController.selectedDateVar.toString(dateFormat: "dd-MMM-yyyy")
         
-        //Services pulling from database
-        UserMetricsService.pullAll()
-        WorkoutService.pullAll()
-        
         return true
     }
     
@@ -131,8 +127,12 @@ extension AppDelegate {
         if let _ = Auth.auth().currentUser,
             let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
             let user = try? JSONDecoder().decode(User.self, from: userData) {
+            //Services pulling from database
             User.setCurrent(user)
+            UserMetricsService.pullAll()
+            WorkoutService.pullAll()
             initialViewController = UIStoryboard.initialViewController(for: .Tabbar)
+            
         } else {
             initialViewController = UIStoryboard.initialViewController(for: .login)
         }

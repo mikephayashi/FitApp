@@ -14,21 +14,21 @@ struct UserMetricsService {
     
     static var userMetricsArray = [UserMetricsModel]()
     
-    static func writeUserMetrics(weight: Int, height: Int, age: Int, gender: Int, date: String) {
+    static func writeUserMetrics(weight: Int, height: Int, age: Int, gender: Int, date: String, goal: Int, bodyPart: Int, numberOfWeeks: Int) {
         
-        let updateUserMetricsVar = UserMetricsModel(weight: weight, height: height, age: age, gender: gender, date: date)
+        let updateUserMetricsVar = UserMetricsModel(weight: weight, height: height, age: age, gender: gender, date: date, goal: goal, bodyPart: bodyPart, numberOfWeeks: numberOfWeeks)
         let dict = updateUserMetricsVar.dictValue
         
         let userMetricRef = Database.database().reference().child("userMetrics").child(User.current.uid).child(CalendarViewController.selectedDateVarString)
         userMetricRef.updateChildValues(dict)
         print("Selected date: \(CalendarViewController.selectedDateVarString)")
         
-        let newMetric = UserMetricsModel(weight: weight as! Int, height: height as! Int, age: age as! Int, gender: gender as! Int, date: date as! String)
+        let newMetric = UserMetricsModel(weight: weight as! Int, height: height as! Int, age: age as! Int, gender: gender as! Int, date: date as! String, goal: goal as! Int, bodyPart: bodyPart as! Int, numberOfWeeks: numberOfWeeks as! Int)
         userMetricsArray.append(newMetric)
         
     }
     
-    static func updateUserMetrics(weight: Int, height: Int, age: Int, gender: Int, date: String){
+    static func updateUserMetrics(weight: Int, height: Int, age: Int, gender: Int, date: String, goal: Int, bodyPart: Int, numberOfWeeks: Int){
         
         let userMetricRef = Database.database().reference().child("userMetrics").child(User.current.uid).child(CalendarViewController.selectedDateVarString)
         userMetricRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -38,7 +38,10 @@ struct UserMetricsService {
             userMetricRef.child("gender").setValue(age)
             userMetricRef.child("age").setValue(gender)
             userMetricRef.child("date").setValue(date)
+            userMetricRef.child("goal").setValue(goal)
+            userMetricRef.child("bodyPart").setValue(bodyPart)
             
+            userMetricRef.child("numberOfWeeks").setValue(numberOfWeeks)
 
         })
     }
@@ -56,12 +59,18 @@ struct UserMetricsService {
                     let age = node.childSnapshot(forPath: "age").value
                     let gender = node.childSnapshot(forPath: "gender").value
                     let date = node.childSnapshot(forPath: "date").value
-                    print(weight)
-                    print(height)
-                    print(age)
-                    print(gender)
-                    print(date)
-                    let pulledMetric = UserMetricsModel(weight: weight as! Int, height: height as! Int, age: age as! Int, gender: gender as! Int, date: date as! String)
+                    let goal = node.childSnapshot(forPath: "goal").value
+                    let bodyPart = node.childSnapshot(forPath: "bodyPart").value
+                    let numberOfWeeks = node.childSnapshot(forPath: "numberOfWeeks").value
+                    print(weight!)
+                    print(height!)
+                    print(age!)
+                    print(gender!)
+                    print(date!)
+                    print(goal!)
+                    print(bodyPart!)
+                    print(numberOfWeeks!)
+                    let pulledMetric = UserMetricsModel(weight: weight as! Int, height: height as! Int, age: age as! Int, gender: gender as! Int, date: date as! String, goal: goal as! Int, bodyPart: bodyPart as! Int, numberOfWeeks: numberOfWeeks as! Int)
                     self.userMetricsArray.append(pulledMetric)
                 }
             }

@@ -43,11 +43,34 @@ class ExerciseSelectionViewController: UIViewController{
         
     }
     
-
+    
 }
 
 extension ExerciseSelectionViewController: UITableViewDataSource {
     
+    //TableViews
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//
+//        return 9
+//    }
+//
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//
+//        switch section {
+//        case 1: return "Chest"
+//        case 2: return "Back"
+//        case 3: return "Biceps"
+//        case 4: return "Triceps"
+//        case 5: return "Delts"
+//        case 6: return "Abs"
+//        case 7: return "Quads"
+//        case 8: return "Hamstring"
+//        case 9: return "Calves"
+//        default:
+//            return "??"
+//        }
+//
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("This cell from the chat list was selected: \(indexPath.row)")
@@ -55,7 +78,7 @@ extension ExerciseSelectionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return listOfExercises.count
     }
     
@@ -69,15 +92,11 @@ extension ExerciseSelectionViewController: UITableViewDataSource {
     }
     
     func configureCell(cell: ExerciseNameCell, forIndexPath indexPath: IndexPath){
-    
+        
         cell.exerciseNameLabel.text = listOfExercises[indexPath.row].exerciseName
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-        
-    }
+
     
 }
 

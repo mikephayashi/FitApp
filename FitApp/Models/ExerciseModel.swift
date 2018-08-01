@@ -11,6 +11,33 @@ import FirebaseDatabase
 
 class ExerciseModel {
     
+    enum BodyPart: String {
+        case chest = "chest",
+        back = "back",
+        bicep = "bicep",
+        tricep = "tricep",
+        delt = "delt",
+        abs = "abs",
+        quads = "quads",
+        hamstrings = "hamstrings",
+        calves = "calves"
+    }
+    
+    enum Intensity: String {
+        case technical = "technical",
+        ballistic = "ballistic",
+        primary = "primary",
+        accesory = "accesory"
+    }
+    
+    enum sport: String {
+        case general = "general",
+        fatLoss = "fastLoss",
+        bodyBuilding = "bodyBuilding",
+        running = "running",
+        crossfit = "crossfit",
+        martialArts = "martialArts"
+    }
 
     
     var exerciseName: String
@@ -20,8 +47,10 @@ class ExerciseModel {
     var alreadyAdded: Bool
     var dateCreated: String
     var bodyPart: String
+    var restDays: Int
+    var intensity: String
     
-    init(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String){
+    init(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String){
         self.exerciseName = exerciseName
         self.numberOfReps = numberOfReps
         self.numberOfSets = numberOfSets
@@ -29,6 +58,8 @@ class ExerciseModel {
         self.alreadyAdded = alreadyAdded
         self.dateCreated = dateCreated
         self.bodyPart = bodyPart
+        self.restDays = restDays
+        self.intensity = intensity
     }
     
     var dictValue: [String : Any] {
@@ -39,7 +70,9 @@ class ExerciseModel {
                 "sectionNumber" : sectionNumber,
                 "alreadyAdded" : alreadyAdded,
                 "dateCreated" : dateCreated,
-                "bodyPart" : bodyPart
+                "bodyPart" : bodyPart,
+                "restDays" : restDays,
+                "intensity" : intensity
         ]
     }
     
@@ -51,7 +84,9 @@ class ExerciseModel {
             let sectionNumber = dict["sectionNumber"] as? Int,
             let alreadyAdded = dict["alreadyAdded"] as? Bool,
             let dateCreated = dict["dateCreated"] as? String,
-            let bodyPart = dict["bodyPart"] as? String
+            let bodyPart = dict["bodyPart"] as? String,
+            let restDays = dict["restDays"] as? Int,
+            let intensity = dict["intensity"] as? String
             else {return nil}
         
         self.exerciseName = exerciseName
@@ -61,6 +96,8 @@ class ExerciseModel {
         self.alreadyAdded = alreadyAdded
         self.dateCreated = dateCreated
         self.bodyPart = bodyPart
+        self.restDays = restDays
+        self.intensity = intensity
         
     }
     

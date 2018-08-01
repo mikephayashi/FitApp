@@ -21,10 +21,14 @@ class UserMetricsViewController: UIViewController {
     @IBOutlet var numberOfWeeksLabel: UILabel!
     @IBOutlet var weekSlider: UISlider!
     @IBOutlet var txtDatePicker: UITextField!
+    @IBOutlet var volumeSegmentedControl: UISegmentedControl!
+    @IBOutlet var lengthOfWorkoutSlider: UISlider!
+    @IBOutlet var lengthOfWorkoutLabel: UILabel!
+    
     static var datePicker = UIDatePicker()
     
     //Exercise Properties
-    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "")
+    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "", restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     //List of Exercises
     let listOfExercisesReference = ListOfExercises()
@@ -53,8 +57,11 @@ class UserMetricsViewController: UIViewController {
             genderTextField.text = String(UserMetricsService.userMetricsArray[0].gender)
             goalSegmentedControl.selectedSegmentIndex = UserMetricsService.userMetricsArray[0].goal
             bodyPartSegmentedControl.selectedSegmentIndex = UserMetricsService.userMetricsArray[0].bodyPart
+            volumeSegmentedControl.selectedSegmentIndex = UserMetricsService.userMetricsArray[0].volume
             weekSlider.setValue(Float(UserMetricsService.userMetricsArray[0].numberOfWeeks), animated: true)
             numberOfWeeksLabel.text = String(weekSlider.value)
+            lengthOfWorkoutSlider.setValue(Float(UserMetricsService.userMetricsArray[0].numberOfWeeks), animated: true)
+            lengthOfWorkoutLabel.text = String(lengthOfWorkoutSlider.value)
         } else {
             weightTextField.text = String(0)
             heightTextField.text = String(0)
@@ -62,11 +69,15 @@ class UserMetricsViewController: UIViewController {
             genderTextField.text = String(0)
             goalSegmentedControl.selectedSegmentIndex = 0
             bodyPartSegmentedControl.selectedSegmentIndex = 0
+            volumeSegmentedControl.selectedSegmentIndex = 0
             weekSlider.setValue(Float(0), animated: true)
             numberOfWeeksLabel.text = String(weekSlider.value)
+            lengthOfWorkoutSlider.setValue(Float(0), animated: true)
+            lengthOfWorkoutLabel.text = String(lengthOfWorkoutSlider.value)
         }
         
-        
+        numberOfWeeksLabel.text = "\(weekSlider.value.rounded()) Weeks"
+        lengthOfWorkoutLabel.text = "\(lengthOfWorkoutSlider.value.rounded()) Minutes"
         showDatePicker()
         UserMetricsViewController.datePicker.date = CalendarViewController.selectedDateVar
         let formatter = DateFormatter()
@@ -124,8 +135,19 @@ class UserMetricsViewController: UIViewController {
         updateMetrics()
     }
     
+    
+    @IBAction func volumeSegmentedControlTapped(_ sender: Any) {
+        updateMetrics()
+    }
+    
     @IBAction func weekSliderTapped(_ sender: Any) {
         numberOfWeeksLabel.text = "\(weekSlider.value.rounded()) Weeks"
+        updateMetrics()
+    }
+    
+    
+    @IBAction func lengthOfWorkoutSlider(_ sender: Any) {
+        lengthOfWorkoutLabel.text = "\(lengthOfWorkoutSlider.value.rounded()) Minutes"
         updateMetrics()
     }
     
@@ -151,7 +173,7 @@ class UserMetricsViewController: UIViewController {
                 //                checkMetrics()
                 
                 if CalendarViewController.selectedDateVarString == metric.date{
-                    UserMetricsService.updateUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, numberOfWeeks: Int(weekSlider.value.rounded()))
+                    UserMetricsService.updateUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
                     
                     print("Date Exists")
                     
@@ -159,7 +181,7 @@ class UserMetricsViewController: UIViewController {
                     
                 } else {
                     
-                    UserMetricsService.writeUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, numberOfWeeks: Int(weekSlider.value.rounded()))
+                    UserMetricsService.writeUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, volume: Int(volumeSegmentedControl.selectedSegmentIndex),lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
                     
                     print("Date Exists Not")
                     
@@ -169,7 +191,7 @@ class UserMetricsViewController: UIViewController {
             
         } else {
             
-            UserMetricsService.writeUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, numberOfWeeks: Int(weekSlider.value.rounded()))
+            UserMetricsService.writeUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
         }
     }
     
@@ -213,11 +235,11 @@ extension UserMetricsViewController{
     static var dateTracker = UserMetricsViewController.datePicker.date
     
     func writeWorkoutProgram(){
-        //Writing new exercise
         
+        UserMetricsViewController.dateTracker = UserMetricsViewController.datePicker.date
         
         //Deleting old workouts
-        for x in 1...Int(weekSlider.value*(7)){
+        for x in 1...Int(self.weekSlider.value*(7)){
             
             for workout in WorkoutService.workoutArray {
                 
@@ -226,33 +248,43 @@ extension UserMetricsViewController{
                     print(workout.exerciseName)
                     print(workout.dateCreated)
                     print(UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy"))
-                    WorkoutService.removeWorkout(exerciseName: workout.dateCreated, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfReps, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: workout.dateCreated, bodyPart: workout.bodyPart)
+                    
+                    
+                    WorkoutService.removeWorkout(exerciseName: workout.dateCreated, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfReps, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: workout.dateCreated, bodyPart: workout.bodyPart, restDays: workout.restDays, intensity: workout.intensity)
                 }
                 
                 UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
             }
         }
         
-        //Writing new workouts
-        UserMetricsViewController.dateTracker = UserMetricsViewController.datePicker.date
         
-        var formattedDate = UserMetricsViewController.datePicker.date.toString(dateFormat: "dd-MMM-yyyy")
-        selectedExercise = listOfExercises[0]
-        WorkoutService.currentSectionNumber = "0"
-        
-        print("Date Picker \(UserMetricsViewController.datePicker.date)")
-        
-        for x in 1...Int(weekSlider.value*(7)){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            //Writing new workouts
+            UserMetricsViewController.dateTracker = UserMetricsViewController.datePicker.date
             
-            formattedDate = UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")
+            var formattedDate = UserMetricsViewController.datePicker.date.toString(dateFormat: "dd-MMM-yyyy")
+            self.selectedExercise = self.listOfExercises[0]
+            WorkoutService.currentSectionNumber = "0"
             
-            WorkoutService.writeProgram(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: 0, alreadyAdded: true, dateCreated: formattedDate, bodyPart: selectedExercise.bodyPart)
+            print("Date Picker \(UserMetricsViewController.datePicker.date)")
             
-            UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
+            for x in 1...Int(self.weekSlider.value*(7)){
+                
+                formattedDate = UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")
+                
+                
+                //MARK: USER METRICS TO WORKOUT CALCULATOR
+                
+                
+                WorkoutService.writeProgram(exerciseName: self.selectedExercise.exerciseName, numberOfReps: self.selectedExercise.numberOfReps, numberOfSets: self.selectedExercise.numberOfSets, sectionNumber: 0, alreadyAdded: true, dateCreated: formattedDate, bodyPart: self.selectedExercise.bodyPart, restDays: self.selectedExercise.restDays,intensity: self.selectedExercise.intensity)
+                
+                UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
+            }
+            WODViewController.copyOverData()
         }
-        WODViewController.copyOverData()
-        
+
     }
+    
     
 }
 

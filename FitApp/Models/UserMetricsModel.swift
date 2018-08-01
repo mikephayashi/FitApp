@@ -18,9 +18,11 @@ class UserMetricsModel {
     var date: String
     var goal: Int
     var bodyPart: Int
+    var volume: Int
+    var lengthOfWorkout: Int
     var numberOfWeeks: Int
     
-    init(weight: Int, height: Int, age: Int, gender: Int, date: String, goal: Int, bodyPart: Int, numberOfWeeks: Int) {
+    init(weight: Int, height: Int, age: Int, gender: Int, date: String, goal: Int, bodyPart: Int, volume: Int, lengthOfWorkout: Int, numberOfWeeks: Int) {
         self.weight = weight
         self.height = height
         self.age = age
@@ -28,6 +30,8 @@ class UserMetricsModel {
         self.date = date
         self.goal = goal
         self.bodyPart = bodyPart
+        self.volume = volume
+        self.lengthOfWorkout = lengthOfWorkout
         self.numberOfWeeks = numberOfWeeks
     }
     
@@ -40,7 +44,9 @@ class UserMetricsModel {
                 "date" : date,
                 "goal" : goal,
                 "bodyPart" : bodyPart,
-                "numberOfWeeks" : numberOfWeeks
+                "volume" : volume,
+                "lengthOfWorkout": lengthOfWorkout,
+            "numberOfWeeks" : numberOfWeeks
         ]
     }
     
@@ -52,8 +58,10 @@ class UserMetricsModel {
             let gender = dict["gender"] as? Int,
             let date = dict["date"] as? String,
             let goal = dict["goal"] as? Int,
-        let bodyPart = dict["bodyPart"] as? Int,
-        let numberOfWeeks = dict["numberOfWeeks"] as? Int
+            let bodyPart = dict["bodyPart"] as? Int,
+            let volume = dict["volume"] as? Int,
+            let lengthOfWorkout = dict["lengthOfWorkout"] as? Int,
+            let numberOfWeeks = dict["numberOfWeeks"] as? Int
             else {return nil}
         
         self.weight = weight
@@ -63,6 +71,8 @@ class UserMetricsModel {
         self.date = date
         self.goal = goal
         self.bodyPart = bodyPart
+        self.volume = volume
+        self.lengthOfWorkout = lengthOfWorkout
         self.numberOfWeeks = numberOfWeeks
         
     }

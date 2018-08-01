@@ -16,7 +16,7 @@ class WODViewController: UIViewController {
     @IBOutlet var addTimeStepper: UIStepper!
     
     //Exercise Properties
-    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "")
+    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "", restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     //List of Exercises
     let listOfExercisesReference = ListOfExercises()
@@ -246,7 +246,7 @@ class WODViewController: UIViewController {
                     
                     WorkoutService.currentSectionNumber = String(workout.sectionNumber)
                     
-                    WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart)
+                    WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity)
                     
                     selectedExercise.alreadyAdded = false
                     WODViewController.copyOverData()
@@ -276,7 +276,7 @@ class WODViewController: UIViewController {
                         
                         WorkoutService.currentSectionNumber = String(exerciseListTableView.numberOfSections)
                         
-                        WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart)
+                        WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity)
                         
                         selectedExercise.alreadyAdded = false
                         
@@ -293,7 +293,7 @@ class WODViewController: UIViewController {
         } else {
             
             
-            WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart)
+            WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity)
             
             selectedExercise.alreadyAdded = false
             

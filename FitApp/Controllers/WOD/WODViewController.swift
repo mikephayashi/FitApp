@@ -16,7 +16,7 @@ class WODViewController: UIViewController {
     @IBOutlet var addTimeStepper: UIStepper!
     
     //Exercise Properties
-    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "")
+    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "")
     
     //List of Exercises
     let listOfExercisesReference = ListOfExercises()
@@ -36,7 +36,7 @@ class WODViewController: UIViewController {
     var previousDate = ""
     
     //Table View
-    var copiedVariable = [ExerciseModel]()
+    static var copiedVariable = [ExerciseModel]()
     
     //Overide Functions
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class WODViewController: UIViewController {
             
             print(exerciseArray)
             self.exerciseListTableView.insertSections(exerciseArray, with: .fade)
-            self.copyOverData()
+            WODViewController.copyOverData()
         }
         
         
@@ -76,7 +76,7 @@ class WODViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print("Appear")
         print(WorkoutService.workoutArray)
-        print(copiedVariable)
+        print(WODViewController.copiedVariable)
         exerciseListTableView.reloadData()
         
         for exercise in WorkoutService.workoutArray{
@@ -89,7 +89,7 @@ class WODViewController: UIViewController {
             if previousDate != CalendarViewController.selectedDateVarString{
                 print("loading data")
                 print(WorkoutService.workoutArray)
-                print(copiedVariable)
+                print(WODViewController.copiedVariable)
                 var exerciseArray: IndexSet = []
                 var numberOfSections = exerciseListTableView.numberOfSections
                 
@@ -100,8 +100,8 @@ class WODViewController: UIViewController {
                     }
                     WorkoutService.workoutArray = []
                     exerciseListTableView.deleteSections(exerciseArray, with: .none)
-                    copyOverData()
-                    print(copiedVariable)
+                    WODViewController.copyOverData()
+                    print(WODViewController.copiedVariable)
                     print(WorkoutService.workoutArray)
                 }
                 
@@ -246,10 +246,10 @@ class WODViewController: UIViewController {
                     
                     WorkoutService.currentSectionNumber = String(workout.sectionNumber)
                     
-                    WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
+                    WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart)
                     
                     selectedExercise.alreadyAdded = false
-                    copyOverData()
+                    WODViewController.copyOverData()
                     
                     print("Date Exists")
                     return
@@ -276,13 +276,13 @@ class WODViewController: UIViewController {
                         
                         WorkoutService.currentSectionNumber = String(exerciseListTableView.numberOfSections)
                         
-                        WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
+                        WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart)
                         
                         selectedExercise.alreadyAdded = false
                         
                         exerciseListTableView.insertSections([Int(WorkoutService.currentSectionNumber)!], with: .fade)
                         
-                        copyOverData()
+                        WODViewController.copyOverData()
                         
                         print("Date Exists Not")
                         return
@@ -293,11 +293,11 @@ class WODViewController: UIViewController {
         } else {
             
             
-            WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString)
+            WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart)
             
             selectedExercise.alreadyAdded = false
             
-            copyOverData()
+            WODViewController.copyOverData()
             
             print("Empty")
         }
@@ -308,7 +308,7 @@ class WODViewController: UIViewController {
         
     }
     
-    func copyOverData(){
+    static func copyOverData(){
         
         if WorkoutService.workoutArray.count != 0{
             copiedVariable = []

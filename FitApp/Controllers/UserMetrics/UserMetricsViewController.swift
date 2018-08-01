@@ -20,12 +20,23 @@ class UserMetricsViewController: UIViewController {
     @IBOutlet var bodyPartSegmentedControl: UISegmentedControl!
     @IBOutlet var numberOfWeeksLabel: UILabel!
     @IBOutlet var weekSlider: UISlider!
+    @IBOutlet var txtDatePicker: UITextField!
+    static var datePicker = UIDatePicker()
+    
+    //Exercise Properties
+    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "")
+    
+    //List of Exercises
+    let listOfExercisesReference = ListOfExercises()
+    var listOfExercises = [ExerciseModel]()
     
     
     //Overide Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        listOfExercises = listOfExercisesReference.listOfExercises
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -54,6 +65,13 @@ class UserMetricsViewController: UIViewController {
             weekSlider.setValue(Float(0), animated: true)
             numberOfWeeksLabel.text = String(weekSlider.value)
         }
+        
+        
+        showDatePicker()
+        UserMetricsViewController.datePicker.date = CalendarViewController.selectedDateVar
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        txtDatePicker.text = formatter.string(from: CalendarViewController.selectedDateVar)
         
     }
     
@@ -111,6 +129,13 @@ class UserMetricsViewController: UIViewController {
         updateMetrics()
     }
     
+    @IBAction func updateButtonTapped(_ sender: Any) {
+        
+        
+        writeWorkoutProgram()
+        
+        
+    }
     
     
     
@@ -146,6 +171,87 @@ class UserMetricsViewController: UIViewController {
             
             UserMetricsService.writeUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, numberOfWeeks: Int(weekSlider.value.rounded()))
         }
+    }
+    
+    //Date Picker
+    func showDatePicker(){
+        //Formate Date
+        
+        UserMetricsViewController.datePicker.datePickerMode = .date
+        
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        txtDatePicker.inputAccessoryView = toolbar
+        txtDatePicker.inputView = UserMetricsViewController.datePicker
+        
+    }
+    
+    @objc func donedatePicker(){
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        txtDatePicker.text = formatter.string(from: UserMetricsViewController.datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelDatePicker(){
+        self.view.endEditing(true)
+    }
+    
+}
+
+//Writing Workout Program
+extension UserMetricsViewController{
+    
+    static var dateTracker = UserMetricsViewController.datePicker.date
+    
+    func writeWorkoutProgram(){
+        //Writing new exercise
+        
+        
+        //Deleting old workouts
+        for x in 1...Int(weekSlider.value*(7)){
+            
+            for workout in WorkoutService.workoutArray {
+                
+                if workout.dateCreated == UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy"){
+                    print("removing")
+                    print(workout.exerciseName)
+                    print(workout.dateCreated)
+                    print(UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy"))
+                    WorkoutService.removeWorkout(exerciseName: workout.dateCreated, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfReps, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: workout.dateCreated, bodyPart: workout.bodyPart)
+                }
+                
+                UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
+            }
+        }
+        
+        //Writing new workouts
+        UserMetricsViewController.dateTracker = UserMetricsViewController.datePicker.date
+        
+        var formattedDate = UserMetricsViewController.datePicker.date.toString(dateFormat: "dd-MMM-yyyy")
+        selectedExercise = listOfExercises[0]
+        WorkoutService.currentSectionNumber = "0"
+        
+        print("Date Picker \(UserMetricsViewController.datePicker.date)")
+        
+        for x in 1...Int(weekSlider.value*(7)){
+            
+            formattedDate = UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")
+            
+            WorkoutService.writeProgram(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: 0, alreadyAdded: true, dateCreated: formattedDate, bodyPart: selectedExercise.bodyPart)
+            
+            UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
+        }
+        WODViewController.copyOverData()
+        
     }
     
 }

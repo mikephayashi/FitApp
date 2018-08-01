@@ -131,26 +131,45 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Length of Program" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzq-KT-bbH">
-                                <rect key="frame" x="116" y="355" width="143" height="21"/>
+                                <rect key="frame" x="116" y="388" width="143" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoq-00-UfG">
-                                <rect key="frame" x="116" y="377" width="143" height="21"/>
+                                <rect key="frame" x="116" y="417" width="143" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="6" translatesAutoresizingMaskIntoConstraints="NO" id="cWo-Xu-QTf">
-                                <rect key="frame" x="12" y="400" width="347" height="30"/>
+                                <rect key="frame" x="12" y="456" width="347" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="weekSliderTapped:" destination="JDi-mV-nu7" eventType="valueChanged" id="Ohz-jK-M2m"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEB-ei-7FP">
+                                <rect key="frame" x="131" y="493" width="112" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.85701714409999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Update!"/>
+                                <connections>
+                                    <action selector="updateButtonTapped:" destination="JDi-mV-nu7" eventType="touchUpInside" id="MTQ-4a-58I"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oxs-Z3-WKg">
+                                <rect key="frame" x="116" y="355" width="143" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="chooseDateTextFieldTapped:" destination="JDi-mV-nu7" eventType="touchUpInside" id="mJY-6V-X3j"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jgq-dh-b05"/>
@@ -163,6 +182,7 @@
                         <outlet property="goalSegmentedControl" destination="SHK-Bw-2G5" id="t7G-hG-ghQ"/>
                         <outlet property="heightTextField" destination="ijW-MU-aDg" id="2KB-Ag-lVF"/>
                         <outlet property="numberOfWeeksLabel" destination="xoq-00-UfG" id="JUa-8o-ObV"/>
+                        <outlet property="txtDatePicker" destination="Oxs-Z3-WKg" id="dIz-FN-Yuq"/>
                         <outlet property="weekSlider" destination="cWo-Xu-QTf" id="pHs-eJ-7KW"/>
                         <outlet property="weightTextField" destination="xHh-6C-HJb" id="iXB-bC-wec"/>
                     </connections>

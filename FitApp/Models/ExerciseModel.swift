@@ -11,20 +11,24 @@ import FirebaseDatabase
 
 class ExerciseModel {
     
+
+    
     var exerciseName: String
     var numberOfReps: [Int]
     var numberOfSets: [Int]
     var sectionNumber: Int
     var alreadyAdded: Bool
     var dateCreated: String
+    var bodyPart: String
     
-    init(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String){
+    init(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String){
         self.exerciseName = exerciseName
         self.numberOfReps = numberOfReps
         self.numberOfSets = numberOfSets
         self.sectionNumber = sectionNumber
         self.alreadyAdded = alreadyAdded
         self.dateCreated = dateCreated
+        self.bodyPart = bodyPart
     }
     
     var dictValue: [String : Any] {
@@ -34,7 +38,8 @@ class ExerciseModel {
                 "numberOfSets" : numberOfSets,
                 "sectionNumber" : sectionNumber,
                 "alreadyAdded" : alreadyAdded,
-                "dateCreated" : dateCreated
+                "dateCreated" : dateCreated,
+                "bodyPart" : bodyPart
         ]
     }
     
@@ -45,7 +50,8 @@ class ExerciseModel {
             let numberOfSets = dict["numberOfSets"] as? [Int],
             let sectionNumber = dict["sectionNumber"] as? Int,
             let alreadyAdded = dict["alreadyAdded"] as? Bool,
-            let dateCreated = dict["dateCreated"] as? String
+            let dateCreated = dict["dateCreated"] as? String,
+            let bodyPart = dict["bodyPart"] as? String
             else {return nil}
         
         self.exerciseName = exerciseName
@@ -54,6 +60,7 @@ class ExerciseModel {
         self.sectionNumber = sectionNumber
         self.alreadyAdded = alreadyAdded
         self.dateCreated = dateCreated
+        self.bodyPart = bodyPart
         
     }
     

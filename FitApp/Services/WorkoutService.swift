@@ -16,17 +16,17 @@ struct WorkoutService {
     static var workoutArray = [ExerciseModel]()
     static var listOfDatesArray = [String]()
     
-    static func writeWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String) {
+    static func writeWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], weight: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String) {
         
         //Workout Firebase
-        let updateWorkoutVar = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated, bodyPart: bodyPart, restDays: restDays, intensity: intensity)
+        let updateWorkoutVar = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, weight: weight, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated, bodyPart: bodyPart, restDays: restDays, intensity: intensity)
         let dict = updateWorkoutVar.dictValue
         
         let workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString).child(currentSectionNumber)
         workoutRef.updateChildValues(dict)
         print("Selected date: \(CalendarViewController.selectedDateVarString)")
         
-        let newWorkout = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated, bodyPart: bodyPart, restDays: restDays, intensity: intensity)
+        let newWorkout = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, weight: weight, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated, bodyPart: bodyPart, restDays: restDays, intensity: intensity)
         workoutArray.append(newWorkout)
         
         
@@ -38,17 +38,17 @@ struct WorkoutService {
         
     }
     
-    static func writeProgram(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String) {
+    static func writeProgram(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], weight: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String) {
         
         //Workout Firebase
-        let updateWorkoutVar = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated, bodyPart: bodyPart, restDays: restDays, intensity: intensity)
+        let updateWorkoutVar = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, weight: weight, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated, bodyPart: bodyPart, restDays: restDays, intensity: intensity)
         let dict = updateWorkoutVar.dictValue
         
         let workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(dateCreated).child(currentSectionNumber)
         workoutRef.updateChildValues(dict)
         print("Date Picker: \(UserMetricsViewController.datePicker.date.toString(dateFormat: "dd-MMM-yyyy"))")
         
-        let newWorkout = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated, bodyPart: bodyPart, restDays: restDays, intensity: intensity)
+        let newWorkout = ExerciseModel(exerciseName: exerciseName, numberOfReps: numberOfReps, numberOfSets: numberOfSets, weight: weight, sectionNumber: sectionNumber, alreadyAdded: alreadyAdded, dateCreated: dateCreated, bodyPart: bodyPart, restDays: restDays, intensity: intensity)
         workoutArray.append(newWorkout)
         
         
@@ -62,7 +62,7 @@ struct WorkoutService {
     
     
     
-    static func updateWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String ){
+    static func updateWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], weight: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String ){
         
         let workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString).child(currentSectionNumber)
         workoutRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -70,6 +70,7 @@ struct WorkoutService {
             workoutRef.child("exerciseName").setValue(exerciseName)
             workoutRef.child("numberOfReps").setValue(numberOfReps)
             workoutRef.child("numberOfSets").setValue(numberOfSets)
+            workoutRef.child("weight").setValue(weight)
             workoutRef.child("sectionNumber").setValue(sectionNumber)
             workoutRef.child("alreadyAdded").setValue(alreadyAdded)
             workoutRef.child("dateCreated").setValue(dateCreated)
@@ -104,6 +105,7 @@ struct WorkoutService {
                             let exerciseName = node.childSnapshot(forPath: "exerciseName").value
                             let numberOfReps = node.childSnapshot(forPath: "numberOfReps").value
                             let numberOfSets = node.childSnapshot(forPath: "numberOfSets").value
+                            let weight = node.childSnapshot(forPath: "weight").value
                             let sectionNumber = node.childSnapshot(forPath: "sectionNumber").value
                             let alreadyAdded = node.childSnapshot(forPath: "alreadyAdded").value
                             let dateCreated = node.childSnapshot(forPath: "dateCreated").value
@@ -113,13 +115,14 @@ struct WorkoutService {
                             print(exerciseName)
                             print(numberOfReps)
                             print(numberOfSets)
+                            print(weight)
                             print(sectionNumber)
                             print(alreadyAdded)
                             print(dateCreated)
                             print(bodyPart)
                             print(restDays)
                             print(intensity)
-                            let pulledWorkout = ExerciseModel(exerciseName: exerciseName as! String, numberOfReps: numberOfReps as! [Int], numberOfSets: numberOfSets as! [Int], sectionNumber: sectionNumber as! Int, alreadyAdded: alreadyAdded as! Bool, dateCreated: dateCreated as! String, bodyPart: bodyPart as! String, restDays: restDays as! Int, intensity: intensity as! String)
+                            let pulledWorkout = ExerciseModel(exerciseName: exerciseName as! String, numberOfReps: numberOfReps as! [Int], numberOfSets: numberOfSets as! [Int], weight: weight as! [Int], sectionNumber: sectionNumber as! Int, alreadyAdded: alreadyAdded as! Bool, dateCreated: dateCreated as! String, bodyPart: bodyPart as! String, restDays: restDays as! Int, intensity: intensity as! String)
                             self.workoutArray.append(pulledWorkout)
                         }
                     }
@@ -128,7 +131,7 @@ struct WorkoutService {
         })
     }
     
-    static func removeWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String) {
+    static func removeWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], weight: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String) {
         
         //Workout Firebase
         let workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")).child(currentSectionNumber)
@@ -137,6 +140,7 @@ struct WorkoutService {
             workoutRef.child("exerciseName").removeValue()
             workoutRef.child("numberOfReps").removeValue()
             workoutRef.child("numberOfSets").removeValue()
+            workoutRef.child("weight").removeValue()
             workoutRef.child("sectionNumber").removeValue()
             workoutRef.child("alreadyAdded").removeValue()
             workoutRef.child("dateCreated").removeValue()

@@ -43,6 +43,7 @@ class ExerciseModel {
     var exerciseName: String
     var numberOfReps: [Int]
     var numberOfSets: [Int]
+    var weight: [Int]
     var sectionNumber: Int
     var alreadyAdded: Bool
     var dateCreated: String
@@ -50,10 +51,11 @@ class ExerciseModel {
     var restDays: Int
     var intensity: String
     
-    init(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String){
+    init(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], weight: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String){
         self.exerciseName = exerciseName
         self.numberOfReps = numberOfReps
         self.numberOfSets = numberOfSets
+        self.weight = weight
         self.sectionNumber = sectionNumber
         self.alreadyAdded = alreadyAdded
         self.dateCreated = dateCreated
@@ -67,6 +69,7 @@ class ExerciseModel {
         return ["exerciseName" : exerciseName,
                 "numberOfReps" : numberOfReps,
                 "numberOfSets" : numberOfSets,
+                "weight" : weight,
                 "sectionNumber" : sectionNumber,
                 "alreadyAdded" : alreadyAdded,
                 "dateCreated" : dateCreated,
@@ -81,6 +84,7 @@ class ExerciseModel {
             let exerciseName = dict["exerciseName"] as? String,
             let numberOfReps = dict["numberOfReps"] as? [Int],
             let numberOfSets = dict["numberOfSets"] as? [Int],
+            let weight = dict["weight"] as? [Int],
             let sectionNumber = dict["sectionNumber"] as? Int,
             let alreadyAdded = dict["alreadyAdded"] as? Bool,
             let dateCreated = dict["dateCreated"] as? String,
@@ -92,6 +96,7 @@ class ExerciseModel {
         self.exerciseName = exerciseName
         self.numberOfReps = numberOfReps
         self.numberOfSets = numberOfSets
+        self.weight = weight
         self.sectionNumber = sectionNumber
         self.alreadyAdded = alreadyAdded
         self.dateCreated = dateCreated

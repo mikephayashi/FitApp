@@ -16,7 +16,7 @@ class WODViewController: UIViewController {
     @IBOutlet var addTimeStepper: UIStepper!
     
     //Exercise Properties
-    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "", restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "", restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     //List of Exercises
     let listOfExercisesReference = ListOfExercises()
@@ -44,6 +44,14 @@ class WODViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         listOfExercises = listOfExercisesReference.listOfExercises
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        self.view.addGestureRecognizer(tap)
         
         
         previousDate = Date().toString(dateFormat: "dd-MMM-yyyy")
@@ -151,6 +159,7 @@ class WODViewController: UIViewController {
     @IBAction func unwindWithSegueToHome(_ segue: UIStoryboardSegue){
         
     }
+
     
     //Setting Table View
     
@@ -246,7 +255,7 @@ class WODViewController: UIViewController {
                     
                     WorkoutService.currentSectionNumber = String(workout.sectionNumber)
                     
-                    WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity)
+                    WorkoutService.updateWorkout(exerciseName: workout.exerciseName, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfSets, weight: workout.weight, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity)
                     
                     selectedExercise.alreadyAdded = false
                     WODViewController.copyOverData()
@@ -276,7 +285,7 @@ class WODViewController: UIViewController {
                         
                         WorkoutService.currentSectionNumber = String(exerciseListTableView.numberOfSections)
                         
-                        WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity)
+                        WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, weight: selectedExercise.weight, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity)
                         
                         selectedExercise.alreadyAdded = false
                         
@@ -293,7 +302,7 @@ class WODViewController: UIViewController {
         } else {
             
             
-            WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity)
+            WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, weight: selectedExercise.weight, sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity)
             
             selectedExercise.alreadyAdded = false
             
@@ -321,6 +330,12 @@ class WODViewController: UIViewController {
                 WorkoutService.workoutArray.append(x)
             }
         }
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
 }
@@ -389,6 +404,12 @@ extension WODViewController: UITableViewDataSource{
                     // + 2 because middle = 2 + numberOfSets
                     case let x where x > 1 && x < exercise.numberOfSets[0] + 2 :
                         let cell = tableView.dequeueReusableCell(withIdentifier: "SetDataCell", for: indexPath) as! SetDataCell
+                        cell.setNumberLabel.text = "Set # \(indexPath.row-1)"
+                        cell.numberOfRepsTextField.text = String(exercise.numberOfReps[indexPath.row-2])
+                        print("Weight")
+                        print(exercise.weight)
+                        cell.weightTextField.text = String(exercise.weight[indexPath.row-2])
+                        cell.delegate = self as SetDataCellDelegate
                         returnedValue = cell
                     case exercise.numberOfSets[0]+2:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "AddingSetCell", for: indexPath) as! AddingSetCell
@@ -405,48 +426,81 @@ extension WODViewController: UITableViewDataSource{
         return returnedValue
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedExercise = WorkoutService.workoutArray[indexPath.section]
     }
     
-    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    //
-    //
-    //        for exercise in WorkoutService.workoutArray{
-    //            if indexPath.section == exercise.sectionNumber && CalendarViewController.selectedDateVarString == exercise.dateCreated{
-    //                if indexPath.row != 0 || indexPath.row != 1 || indexPath.row != exercise.numberOfSets[0]+2{
-    //                    if editingStyle == .delete {
-    //                        selectedExercise = exercise
-    //                        exercise.numberOfSets[0] -= 1
-    //
-    //                        print("selected exercise")
-    //                        print(selectedExercise)
-    //                        print(selectedExercise.sectionNumber)
-    //                        exerciseListTableView.deleteRows(at: [IndexPath(row: exercise.numberOfSets[0]+1, section: exercise.sectionNumber)], with: .fade)
-    //
-    //                        saveWorkout()
-    //                    }
-    //                }
-    //
-    //            }
-    //        }
     
     
-    func setupTableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        var returnedValue = UITableViewCellEditingStyle.none
+    
+}
+
+extension WODViewController: SetDataCellDelegate{
+    
+    func savingWeight(cell: SetDataCell, weight: Int) {
+        
+        let indexPath = exerciseListTableView.indexPath(for: cell)!
+        
         for exercise in WorkoutService.workoutArray{
-            if indexPath.row != 0 || indexPath.row != 1 || indexPath.row != exercise.numberOfSets[0]+2{
-                returnedValue = UITableViewCellEditingStyle.none
-                print("Style none")
-            } else {
-                returnedValue = UITableViewCellEditingStyle.delete
-                print("Style delete")
+            if indexPath.section == exercise.sectionNumber && CalendarViewController.selectedDateVarString == exercise.dateCreated{
+                
+                selectedExercise = exercise
+                selectedExercise.weight[indexPath.row-2] = weight
+                
+                print("Saving Reps called")
+                print(selectedExercise.weight)
+                saveWorkout()
+                
+                
             }
         }
-        return returnedValue
+        
     }
     
+    func reloadingNumberOfReps(cell: SetDataCell, numberOfReps: Int) {
+        
+        let indexPath = exerciseListTableView.indexPath(for: cell)!
+        
+        for exercise in WorkoutService.workoutArray{
+            if indexPath.section == exercise.sectionNumber && CalendarViewController.selectedDateVarString == exercise.dateCreated{
+                
+                selectedExercise = exercise
+                selectedExercise.numberOfReps[indexPath.row-2] = numberOfReps
+                
+                print("Saving Reps called")
+                print(selectedExercise.numberOfReps)
+                saveWorkout()
+                
+                
+            }
+        }
+    }
     
+    func deleteRow(cell: SetDataCell){
+        
+        let indexPath = exerciseListTableView.indexPath(for: cell)!
+        
+        for exercise in WorkoutService.workoutArray{
+            if indexPath.section == exercise.sectionNumber && CalendarViewController.selectedDateVarString == exercise.dateCreated{
+                if indexPath.row != 0 || indexPath.row != 1 || indexPath.row != exercise.numberOfSets[0]+2{
+                        selectedExercise = exercise
+                        exercise.numberOfSets[0] -= 1
+                        exercise.numberOfReps.remove(at: indexPath.row-2)
+                        exercise.weight.remove(at: indexPath.row-2)
+                        
+                        print("selected exercise")
+                        print(selectedExercise)
+                        print(selectedExercise.sectionNumber)
+                        exerciseListTableView.deleteRows(at: [IndexPath(row: exercise.numberOfSets[0]+1, section: exercise.sectionNumber)], with: .fade)
+                        
+                        saveWorkout()
+                    }
+                
+            }
+        }
+        
+    }
     
 }
 
@@ -462,6 +516,8 @@ extension WODViewController: AddingSetCellDelegate{
             if indexPath.section == exercise.sectionNumber && CalendarViewController.selectedDateVarString == exercise.dateCreated{
                 selectedExercise = exercise
                 exercise.numberOfSets[0] += 1
+                exercise.numberOfReps.append(1)
+                exercise.weight.append(0)
                 
                 print("selected exercise")
                 print(selectedExercise)

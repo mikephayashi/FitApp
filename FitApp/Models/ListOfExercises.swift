@@ -16,70 +16,70 @@ class ListOfExercises {
     
     //Chest
     //Horizontal Push
-    var pushUp = ExerciseModel(exerciseName: "Push Up", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.chest.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var benchPress = ExerciseModel(exerciseName: "Bench Press", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.chest.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var pushUp = ExerciseModel(exerciseName: "Push Up", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.chest.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var benchPress = ExerciseModel(exerciseName: "Bench Press", numberOfReps: [1], numberOfSets: [1],  weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.chest.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     //Incline Push
-    var inclinePress = ExerciseModel(exerciseName: "Incline Press", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.chest.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var inclinePress = ExerciseModel(exerciseName: "Incline Press", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.chest.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     //Chest Isolation
-    var pecFlye = ExerciseModel(exerciseName: "Pec Flye", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.chest.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var pecFlye = ExerciseModel(exerciseName: "Pec Flye", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.chest.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     
     
     //Back
     //Horizontal Pulling
-    var bentOverRow = ExerciseModel(exerciseName: "Bent Over Row", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.back.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var bentOverRow = ExerciseModel(exerciseName: "Bent Over Row", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.back.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     //Vertical Pulling
-    var pullUp = ExerciseModel(exerciseName: "Pull Up", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.back.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var pullDown = ExerciseModel(exerciseName: "Pull Down", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.back.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var pullUp = ExerciseModel(exerciseName: "Pull Up", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.back.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var pullDown = ExerciseModel(exerciseName: "Pull Down", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.back.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     
     
     //Biceps
-    var bicepCurl = ExerciseModel(exerciseName: "Bicep Curl", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.bicep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var hammerCurl = ExerciseModel(exerciseName: "Hammer Curl", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.bicep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var bicepCurl = ExerciseModel(exerciseName: "Bicep Curl", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.bicep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var hammerCurl = ExerciseModel(exerciseName: "Hammer Curl", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.bicep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     
     
     //Triceps
-    var skullCrusher = ExerciseModel(exerciseName: "Skull Crusher", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var dip = ExerciseModel(exerciseName: "Dip", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var tricepExtension = ExerciseModel(exerciseName: "Tricep Extension", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var skullCrusher = ExerciseModel(exerciseName: "Skull Crusher", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var dip = ExerciseModel(exerciseName: "Dip", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var tricepExtension = ExerciseModel(exerciseName: "Tricep Extension", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     
     
     //Delts
     //Rear Delts
-    var facePull = ExerciseModel(exerciseName: "Face Pull", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.delt.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var lateralRaise = ExerciseModel(exerciseName: "Lateral Raise", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.delt.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var facePull = ExerciseModel(exerciseName: "Face Pull", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.delt.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var lateralRaise = ExerciseModel(exerciseName: "Lateral Raise", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.delt.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     //Side Delts
-    var uprightRow = ExerciseModel(exerciseName: "Upright Row", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.delt.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var uprightRow = ExerciseModel(exerciseName: "Upright Row", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.delt.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     //Front Delts
-    var shoulderPress = ExerciseModel(exerciseName: "Shoulder Press", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.delt.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var shoulderPress = ExerciseModel(exerciseName: "Shoulder Press", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.delt.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     
     
     //Abs
-    var sitUp = ExerciseModel(exerciseName: "Sit Up", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.abs.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var vUp = ExerciseModel(exerciseName: "V Up", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.abs.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var legRaise = ExerciseModel(exerciseName: "Leg Raise", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.abs.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var sitUp = ExerciseModel(exerciseName: "Sit Up", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.abs.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var vUp = ExerciseModel(exerciseName: "V Up", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.abs.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var legRaise = ExerciseModel(exerciseName: "Leg Raise", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.abs.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     
     
     //Quads
-    var backSquat = ExerciseModel(exerciseName: "Back Squat", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.quads.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var frontSquat = ExerciseModel(exerciseName: "Front Squat", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.quads.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var legPress = ExerciseModel(exerciseName: "Leg Press", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.quads.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var backSquat = ExerciseModel(exerciseName: "Back Squat", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.quads.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var frontSquat = ExerciseModel(exerciseName: "Front Squat", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.quads.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var legPress = ExerciseModel(exerciseName: "Leg Press", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.quads.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     
     
     //Hamstrings
-    var deadLift = ExerciseModel(exerciseName: "Dead Lift", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.hamstrings.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
-    var legCurl = ExerciseModel(exerciseName: "Leg Curl", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.hamstrings.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var deadLift = ExerciseModel(exerciseName: "Dead Lift", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.hamstrings.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var legCurl = ExerciseModel(exerciseName: "Leg Curl", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.hamstrings.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     
     
     //Calves
-    var calfRaises = ExerciseModel(exerciseName: "Calf Raises", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.calves.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var calfRaises = ExerciseModel(exerciseName: "Calf Raises", numberOfReps: [1], numberOfSets: [1], weight: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.calves.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     
     init(){

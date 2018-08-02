@@ -28,7 +28,7 @@ class UserMetricsViewController: UIViewController {
     static var datePicker = UIDatePicker()
     
     //Exercise Properties
-    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "", restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
+    var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], weight: [1], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "", restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue)
     
     //List of Exercises
     let listOfExercisesReference = ListOfExercises()
@@ -250,7 +250,7 @@ extension UserMetricsViewController{
                     print(UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy"))
                     
                     
-                    WorkoutService.removeWorkout(exerciseName: workout.dateCreated, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfReps, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: workout.dateCreated, bodyPart: workout.bodyPart, restDays: workout.restDays, intensity: workout.intensity)
+                    WorkoutService.removeWorkout(exerciseName: workout.dateCreated, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfReps, weight: workout.weight, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: workout.dateCreated, bodyPart: workout.bodyPart, restDays: workout.restDays, intensity: workout.intensity)
                 }
                 
                 UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
@@ -258,7 +258,13 @@ extension UserMetricsViewController{
         }
         
         
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            
+            print("dispatch")
+            
+            var selectedBodyPartArray = self.listOfExercises
+            
             //Writing new workouts
             UserMetricsViewController.dateTracker = UserMetricsViewController.datePicker.date
             
@@ -268,21 +274,100 @@ extension UserMetricsViewController{
             
             print("Date Picker \(UserMetricsViewController.datePicker.date)")
             
+            
+            var counter = 1
+            var numberOfExercises = 0
+            
+            print("Length of workout slider")
+            print(self.lengthOfWorkoutSlider.value)
+            
+            switch self.lengthOfWorkoutSlider.value {
+                
+            case let x where x > 0 && x < 41: numberOfExercises = 1
+            case let x where x > 40 && x < 81: numberOfExercises = 2
+            case let x where x > 80 && x < 121: numberOfExercises = 3
+            default: return
+                
+            }
+
+            
             for x in 1...Int(self.weekSlider.value*(7)){
+                
+                WorkoutService.currentSectionNumber = "0"
                 
                 formattedDate = UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")
                 
-                
-                //MARK: USER METRICS TO WORKOUT CALCULATOR
-                
-                
-                WorkoutService.writeProgram(exerciseName: self.selectedExercise.exerciseName, numberOfReps: self.selectedExercise.numberOfReps, numberOfSets: self.selectedExercise.numberOfSets, sectionNumber: 0, alreadyAdded: true, dateCreated: formattedDate, bodyPart: self.selectedExercise.bodyPart, restDays: self.selectedExercise.restDays,intensity: self.selectedExercise.intensity)
+                for x in counter...numberOfExercises{
+                    
+                    self.selectedExercise = selectedBodyPartArray[Int(arc4random_uniform(UInt32(selectedBodyPartArray.count)))]
+                    
+                    
+                    print("Entered for in loop")
+                    print(x)
+                    
+                    
+                    
+                    //MARK: USER METRICS TO WORKOUT CALCULATOR
+                    
+                    
+                    
+                   
+                    
+                    
+                    switch self.bodyPartSegmentedControl.selectedSegmentIndex {
+                        
+                    case 0: selectedBodyPartArray = self.listOfExercises.filter {$0.bodyPart == ExerciseModel.BodyPart.chest.rawValue}
+                    case 1: selectedBodyPartArray = self.listOfExercises.filter {$0.bodyPart == ExerciseModel.BodyPart.quads.rawValue}
+                    case 2: selectedBodyPartArray = self.listOfExercises
+                    default: return
+                        
+                    }
+                    
+                    switch self.goalSegmentedControl.selectedSegmentIndex{
+                        
+                    case 0: self.selectedExercise.numberOfReps[0] = 2
+                    case 1: self.selectedExercise.numberOfReps[0] = 6
+                    case 2: self.selectedExercise.numberOfReps[0] = 12
+                    case 3: self.selectedExercise.numberOfReps[0] = 15
+                    default: return
+                        
+                    }
+                    
+                    var numberOfReps = 0
+                    
+                    switch self.volumeSegmentedControl.selectedSegmentIndex {
+                        
+                    case 0: numberOfReps = 2
+                    case 1: numberOfReps = 4
+                    case 2: numberOfReps = 6
+                    case 3: numberOfReps = 8
+                    default: return
+                        
+                    }
+                    
+                    for x in 1...self.selectedExercise.numberOfSets[0]{
+                        self.selectedExercise.numberOfReps.append(numberOfReps)
+                    }
+
+                    //END
+                    
+                    
+                    
+
+                    
+                    
+                    WorkoutService.writeProgram(exerciseName: self.selectedExercise.exerciseName, numberOfReps: self.selectedExercise.numberOfReps, numberOfSets: self.selectedExercise.numberOfSets, weight: self.selectedExercise.weight, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: true, dateCreated: formattedDate, bodyPart: self.selectedExercise.bodyPart, restDays: self.selectedExercise.restDays,intensity: self.selectedExercise.intensity)
+                    
+                    WorkoutService.currentSectionNumber = String(Int(WorkoutService.currentSectionNumber)!+1)
+                }
                 
                 UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
             }
+            
             WODViewController.copyOverData()
+            
         }
-
+        
     }
     
     

@@ -189,6 +189,7 @@ extension CalendarViewController: VACalendarViewDelegate {
         CalendarViewController.selectedDateVarString = date.toString(dateFormat: "dd-MMM-yyyy")
         print(date)
         loadingWorkoutLabel()
+        WorkoutService.deleteSectionSender = "WOD"
     }
     
     

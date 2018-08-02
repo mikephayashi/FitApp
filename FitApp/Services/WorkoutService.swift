@@ -15,6 +15,7 @@ struct WorkoutService {
     static var currentSectionNumber = "0"
     static var workoutArray = [ExerciseModel]()
     static var listOfDatesArray = [String]()
+    static var deleteSectionSender = ""
     
     static func writeWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], weight: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String) {
         
@@ -134,7 +135,14 @@ struct WorkoutService {
     static func removeWorkout(exerciseName: String, numberOfReps: [Int], numberOfSets: [Int], weight: [Int], sectionNumber: Int, alreadyAdded: Bool, dateCreated: String, bodyPart: String, restDays: Int, intensity: String) {
         
         //Workout Firebase
-        let workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")).child(currentSectionNumber)
+        
+        var workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")).child(currentSectionNumber)
+        if WorkoutService.deleteSectionSender == "UserMetrics"{
+        workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")).child(currentSectionNumber)
+        } else if WorkoutService.deleteSectionSender == "WOD"{
+            workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString).child(currentSectionNumber)
+        }
+        
         workoutRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             workoutRef.child("exerciseName").removeValue()
@@ -151,19 +159,28 @@ struct WorkoutService {
             
         })
         
-        for workout in WorkoutService.workoutArray{
-            if workout.dateCreated == dateCreated {
-                WorkoutService.workoutArray.remove(at: WorkoutService.workoutArray.index(where: {$0 === workout})!)
+        if WorkoutService.deleteSectionSender == "UserMetrics"{
+            for workout in WorkoutService.workoutArray{
+                if workout.dateCreated == dateCreated {
+                    WorkoutService.workoutArray.remove(at: WorkoutService.workoutArray.index(where: {$0 === workout})!)
+                }
+            }
+        } else if WorkoutService.deleteSectionSender == "WOD"{
+            for workout in WorkoutService.workoutArray{
+                if workout.dateCreated == dateCreated && workout.sectionNumber == sectionNumber{
+                    WorkoutService.workoutArray.remove(at: WorkoutService.workoutArray.index(where: {$0 === workout})!)
+                }
             }
         }
         
-        
-//        //Date Firebase
-        let dateRef = Database.database().reference().child("listOfDates").child(User.current.uid).child(dateCreated)
-        dateRef.observeSingleEvent(of: .value, with: { (snapshot) in
-
-            dateRef.child("date").removeValue()
-        })
+        if WorkoutService.deleteSectionSender == "UserMetrics"{
+            //Date Firebase
+            let dateRef = Database.database().reference().child("listOfDates").child(User.current.uid).child(dateCreated)
+            dateRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                dateRef.child("date").removeValue()
+            })
+        }
         
     }
 }

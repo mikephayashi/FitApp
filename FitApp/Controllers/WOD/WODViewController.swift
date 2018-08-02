@@ -607,9 +607,12 @@ extension WODViewController: ExerciseHeaderCellDelegate{
                 sectionCounter += 1
 
             }
+             WODViewController.copyOverData()
         }
 
-        WODViewController.copyOverData()
+       
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.exerciseListTableView.reloadData()}
     }
 }
 

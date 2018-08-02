@@ -492,7 +492,7 @@ extension WODViewController: SetDataCellDelegate{
                         print("selected exercise")
                         print(selectedExercise)
                         print(selectedExercise.sectionNumber)
-                        exerciseListTableView.deleteRows(at: [IndexPath(row: exercise.numberOfSets[0]+1, section: exercise.sectionNumber)], with: .fade)
+                        exerciseListTableView.deleteRows(at: [IndexPath(row: exercise.numberOfSets[0]+2, section: exercise.sectionNumber)], with: .fade)
                         
                         saveWorkout()
                     }

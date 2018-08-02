@@ -35,11 +35,18 @@ class ExerciseSelectionViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destination = segue.destination as! WODViewController
-        let indexPath = listOfExercisesTableView.indexPathForSelectedRow
+        switch segue.identifier{
         
-        destination.selectedExercise = destination.listOfExercises[indexPath!.row]
-        destination.formatTableView()
+        case "newExercise":
+            let destination = segue.destination as! WODViewController
+            let indexPath = listOfExercisesTableView.indexPathForSelectedRow
+            
+            destination.selectedExercise = destination.listOfExercises[indexPath!.row]
+            destination.formatTableView()
+        case "cancelExercise": return
+        default: return
+            
+        }
         
     }
     

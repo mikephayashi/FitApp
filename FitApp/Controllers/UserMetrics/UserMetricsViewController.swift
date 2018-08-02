@@ -307,21 +307,24 @@ extension UserMetricsViewController{
                     
                     
                     
+                    
+                    
+                    
+                    
                     //MARK: USER METRICS TO WORKOUT CALCULATOR
-                    
-                    
-                    
-                   
                     
                     
                     switch self.bodyPartSegmentedControl.selectedSegmentIndex {
                         
-                    case 0: selectedBodyPartArray = self.listOfExercises.filter {$0.bodyPart == ExerciseModel.BodyPart.chest.rawValue}
-                    case 1: selectedBodyPartArray = self.listOfExercises.filter {$0.bodyPart == ExerciseModel.BodyPart.quads.rawValue}
+                    case 0: selectedBodyPartArray = self.listOfExercises.filter {$0.bodyPart == ExerciseModel.BodyPart.chest.rawValue || $0.bodyPart == ExerciseModel.BodyPart.bicep.rawValue || $0.bodyPart == ExerciseModel.BodyPart.tricep.rawValue || $0.bodyPart == ExerciseModel.BodyPart.back.rawValue || $0.bodyPart == ExerciseModel.BodyPart.delt.rawValue}
+                    case 1: selectedBodyPartArray = self.listOfExercises.filter {$0.bodyPart == ExerciseModel.BodyPart.quads.rawValue || $0.bodyPart == ExerciseModel.BodyPart.hamstrings.rawValue || $0.bodyPart == ExerciseModel.BodyPart.calves.rawValue }
                     case 2: selectedBodyPartArray = self.listOfExercises
                     default: return
                         
                     }
+                    
+                    print("Selected Body Part Array")
+                    print(selectedBodyPartArray)
                     
                     switch self.goalSegmentedControl.selectedSegmentIndex{
                         
@@ -354,6 +357,8 @@ extension UserMetricsViewController{
                     
                     
 
+                    
+                    
                     
                     
                     WorkoutService.writeProgram(exerciseName: self.selectedExercise.exerciseName, numberOfReps: self.selectedExercise.numberOfReps, numberOfSets: self.selectedExercise.numberOfSets, weight: self.selectedExercise.weight, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: true, dateCreated: formattedDate, bodyPart: self.selectedExercise.bodyPart, restDays: self.selectedExercise.restDays,intensity: self.selectedExercise.intensity)

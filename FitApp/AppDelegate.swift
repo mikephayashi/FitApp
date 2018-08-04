@@ -116,6 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
+//Start UP 
 extension AppDelegate {
     func configureInitialRootViewController(for window: UIWindow?) {
         let defaults = UserDefaults.standard

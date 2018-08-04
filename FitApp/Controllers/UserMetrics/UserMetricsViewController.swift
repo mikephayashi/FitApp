@@ -49,11 +49,6 @@ class UserMetricsViewController: UIViewController {
     //Overide Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        listOfExercises = listOfExercisesReference.listOfExercises
-        selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes
-        clickedWorkoutsArray = ListOfExercises.listOfExeciseTypes
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -63,15 +58,17 @@ class UserMetricsViewController: UIViewController {
         
         self.view.addGestureRecognizer(tap)
         
+        
+        
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        listOfExercises = listOfExercisesReference.listOfExercises
+        selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes
+        
+        
         formatInputFields()
         WODViewController.copyOverData()
-        
-        if UserMetricsService.userMetricsArray.count != 0{
-            clickedArray = UserMetricsService.userMetricsArray[0].checked
-        }
-        
-        
-        UILabel.appearance(whenContainedInInstancesOf: [UISegmentedControl.self]).numberOfLines = 3
         
         
     }
@@ -149,6 +146,7 @@ class UserMetricsViewController: UIViewController {
         default: fatalError("Index out of range")
         }
         clickedWorkoutsArray = selectionOfWorkoutTypesArray
+        clickedArray = []
         for _ in clickedWorkoutsArray {
             clickedArray.append(1)
         }
@@ -192,14 +190,19 @@ class UserMetricsViewController: UIViewController {
             lengthOfWorkoutLabel.text = String(lengthOfWorkoutSlider.value)
         }
         
+        //Labels
         numberOfWeeksLabel.text = "\(Int(weekSlider.value.rounded())) Weeks"
         lengthOfWorkoutLabel.text = "\(Int(lengthOfWorkoutSlider.value.rounded())) Minutes"
-        showDatePicker()
-        UserMetricsViewController.datePicker.date = CalendarViewController.selectedDateVar
+        
+        
+        //Date
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         txtDatePicker.text = formatter.string(from: CalendarViewController.selectedDateVar)
+        showDatePicker()
+        UserMetricsViewController.datePicker.date = CalendarViewController.selectedDateVar
         
+        //Check Boxes
         switch bodyPartSegmentedControl.selectedSegmentIndex{
         case 0: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.chest.rawValue || $0 == ExerciseModel.BodyPart.back.rawValue || $0 == ExerciseModel.BodyPart.bicep.rawValue || $0 == ExerciseModel.BodyPart.tricep.rawValue || $0 == ExerciseModel.BodyPart.delt.rawValue}
         case 1: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.quads.rawValue || $0 == ExerciseModel.BodyPart.hamstrings.rawValue || $0 == ExerciseModel.BodyPart.calves.rawValue}
@@ -207,33 +210,27 @@ class UserMetricsViewController: UIViewController {
         default: fatalError("Index out of range")
         }
         clickedWorkoutsArray = selectionOfWorkoutTypesArray
+        if UserMetricsService.userMetricsArray.count != 0{
+            clickedArray = UserMetricsService.userMetricsArray[0].checked
+        } else {
+            clickedArray = []
+            for _ in clickedWorkoutsArray {
+                clickedArray.append(1)
+            }
+        }
     }
     
     //Saving User Metrics
     func updateMetrics(){
         if UserMetricsService.userMetricsArray.count != 0{
-            for metric in UserMetricsService.userMetricsArray{
-                //                checkMetrics()
-                
-                if CalendarViewController.selectedDateVarString == metric.date{
-                    //                    UserMetricsService.updateUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex,volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
-                    UserMetricsService.updateUserMetrics(weight: 0, height: 0, age: 0, gender: 0, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex, checked: clickedArray,volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
-                    
-                    
-                    
-                    return
-                    
-                } else {
-                    
-                    //                    UserMetricsService.writeUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex,volume: Int(volumeSegmentedControl.selectedSegmentIndex),lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
-                    
-                    UserMetricsService.writeUserMetrics(weight: 0, height: 0, age: 0, gender: 0, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex, checked: clickedArray, volume: Int(volumeSegmentedControl.selectedSegmentIndex),lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
-                    
-                    
-                    
-                    return
-                }
-            }
+            
+            //                    UserMetricsService.updateUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex,volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
+            UserMetricsService.updateUserMetrics(weight: 0, height: 0, age: 0, gender: 0, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex, checked: clickedArray,volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
+            
+            
+            
+            return
+            
             
         } else {
             
@@ -364,19 +361,7 @@ extension UserMetricsViewController{
             
             ///////////////////////////////////////////////
             
-            switch self.goalSegmentedControl.selectedSegmentIndex {
-                
-            case 0: numberOfReps = 2
-            self.selectedExercise.numberOfSets[0] = 8
-            case 1: numberOfReps = 6
-            self.selectedExercise.numberOfSets[0] = 6
-            case 2: numberOfReps = 12
-            self.selectedExercise.numberOfSets[0] = 4
-            case 3: numberOfReps = 15
-            self.selectedExercise.numberOfSets[0] = 2
-            default: fatalError("Out of Range")
-                
-            }
+            
             
             switch self.lengthOfWorkoutSlider.value {
                 
@@ -414,12 +399,27 @@ extension UserMetricsViewController{
                     
                     self.selectedExercise = self.selectedBodyPartArray[Int(arc4random_uniform(UInt32(self.selectedBodyPartArray.count)))]
                     
+                    switch self.goalSegmentedControl.selectedSegmentIndex {
+                        
+                    case 0: numberOfReps = 2
+                    self.selectedExercise.numberOfSets[0] = 8
+                    case 1: numberOfReps = 5
+                    self.selectedExercise.numberOfSets[0] = 5
+                    case 2: numberOfReps = 12
+                    self.selectedExercise.numberOfSets[0] = 3
+                    case 3: numberOfReps = 15
+                    self.selectedExercise.numberOfSets[0] = 2
+                    default: fatalError("Out of Range")
+                        
+                    }
                     
                     self.selectedExercise.numberOfReps.remove(at: 0)
                     self.selectedExercise.weight.remove(at: 0)
+                    self.selectedExercise.completed.remove(at: 0)
                     for _ in 1...self.selectedExercise.numberOfSets[0]{
                         self.selectedExercise.numberOfReps.append(numberOfReps)
                         self.selectedExercise.weight.append(0)
+                        self.selectedExercise.completed.append(0)
                     }
                     
                     
@@ -434,6 +434,7 @@ extension UserMetricsViewController{
             WODViewController.copyOverData()
             
         }
+        WODViewController.copyOverData()
         
     }
     
@@ -470,15 +471,13 @@ extension UserMetricsViewController: UITableViewDataSource{
         cell.checkBox.checkmarkColor = .blue
         cell.checkBox.checkedBorderColor = .blue
         cell.checkBox.uncheckedBorderColor = .black
-        if clickedArray.count != 0{
-            if clickedArray[indexPath.row] == 1{
-                cell.checkBox.isChecked = true
-            } else {
-                cell.checkBox.isChecked = false
-            }
-        } else {
+        
+        if clickedArray[indexPath.row] == 1{
             cell.checkBox.isChecked = true
+        } else {
+            cell.checkBox.isChecked = false
         }
+        
         cell.checkBox.addTarget(cell, action: #selector(cell.checkboxValueChanged(sender:)), for: .valueChanged)
         
     }

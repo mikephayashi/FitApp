@@ -525,9 +525,11 @@ extension WODViewController: SetDataCellDelegate{
                         exercise.completed.remove(at: indexPath.row-2)
                         
                         
-                        exerciseListTableView.deleteRows(at: [IndexPath(row: exercise.numberOfSets[0]+2, section: exercise.sectionNumber)], with: .fade)
+                        exerciseListTableView.deleteRows(at: [IndexPath(row: indexPath.row, section: exercise.sectionNumber)], with: .fade)
                         
                         saveWorkout()
+                        
+                        exerciseListTableView.reloadData()
                     }
                 }
                 
@@ -599,7 +601,7 @@ extension WODViewController: ExerciseHeaderCellDelegate{
             
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             
             
             
@@ -615,7 +617,7 @@ extension WODViewController: ExerciseHeaderCellDelegate{
         }
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             
             var sectionCounter = 0
             
@@ -632,7 +634,7 @@ extension WODViewController: ExerciseHeaderCellDelegate{
         }
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             self.exerciseListTableView.reloadData()}
     }
 }

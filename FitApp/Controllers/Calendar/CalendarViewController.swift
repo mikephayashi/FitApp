@@ -72,6 +72,7 @@ final class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadingWorkoutLabel()
+        calendarView.setup()
         
     }
     

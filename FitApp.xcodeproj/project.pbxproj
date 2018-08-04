@@ -20,6 +20,9 @@
 		1E106D11210A4C300024B513 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D10210A4C300024B513 /* Storyboard+Utility.swift */; };
 		1E106D13210A68920024B513 /* UserMetricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D12210A68920024B513 /* UserMetricsModel.swift */; };
 		1E106D15210A693D0024B513 /* UserMetricsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D14210A693D0024B513 /* UserMetricsService.swift */; };
+		1E13EF2E2114E4B6002D2958 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13EF2D2114E4B6002D2958 /* CheckBox.swift */; };
+		1E13EF312114E5DB002D2958 /* ExerciseSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13EF302114E5DB002D2958 /* ExerciseSelectorCell.swift */; };
+		1E13EF3321150B89002D2958 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13EF3221150B89002D2958 /* Filter.swift */; };
 		1E14020F2109669800A539BA /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E14020E2109669800A539BA /* ProgressView.swift */; };
 		1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053C2106442E009E6666 /* AppDelegate.swift */; };
 		1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053E2106442E009E6666 /* WODViewController.swift */; };
@@ -61,6 +64,9 @@
 		1E106D10210A4C300024B513 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Utility.swift"; sourceTree = "<group>"; };
 		1E106D12210A68920024B513 /* UserMetricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMetricsModel.swift; sourceTree = "<group>"; };
 		1E106D14210A693D0024B513 /* UserMetricsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMetricsService.swift; sourceTree = "<group>"; };
+		1E13EF2D2114E4B6002D2958 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		1E13EF302114E5DB002D2958 /* ExerciseSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectorCell.swift; sourceTree = "<group>"; };
+		1E13EF3221150B89002D2958 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		1E14020E2109669800A539BA /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		1E1E05392106442E009E6666 /* FitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E1E053C2106442E009E6666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				1E0B887C210A9A2A000FAB3F /* MGPhotoHelper.swift */,
+				1E13EF2D2114E4B6002D2958 /* CheckBox.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -127,6 +134,14 @@
 				1E106D0B210A3DE20024B513 /* Constants.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1E13EF2F2114E5C2002D2958 /* UserMetricsTableView */ = {
+			isa = PBXGroup;
+			children = (
+				1E13EF302114E5DB002D2958 /* ExerciseSelectorCell.swift */,
+			);
+			path = UserMetricsTableView;
 			sourceTree = "<group>";
 		};
 		1E1E05302106442E009E6666 = {
@@ -184,6 +199,7 @@
 			children = (
 				1E8A08B8210677C2000B40BF /* Exercise List Table View */,
 				1E9A7BD7210696DA00B2F3FC /* Exercise Selection Table View */,
+				1E13EF2F2114E5C2002D2958 /* UserMetricsTableView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,6 +222,7 @@
 				1E14020E2109669800A539BA /* ProgressView.swift */,
 				1E106D10210A4C300024B513 /* Storyboard+Utility.swift */,
 				1E0B8880210B92A4000FAB3F /* Date.swift */,
+				1E13EF3221150B89002D2958 /* Filter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -478,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E106D00210A2B700024B513 /* LoginViewController.swift in Sources */,
+				1E13EF3321150B89002D2958 /* Filter.swift in Sources */,
 				1E106D0C210A3DE20024B513 /* Constants.swift in Sources */,
 				1E5CA0DA210915E000A252F0 /* UserMetricsViewController.swift in Sources */,
 				1E9A7BD6210696C300B2F3FC /* ExerciseNameCell.swift in Sources */,
@@ -492,6 +510,7 @@
 				1E5CA0992108E37800A252F0 /* CalendarViewController.swift in Sources */,
 				1E106D04210A32C10024B513 /* CreateUsernameViewController.swift in Sources */,
 				1E8A08B52106745C000B40BF /* ExerciseModel.swift in Sources */,
+				1E13EF2E2114E4B6002D2958 /* CheckBox.swift in Sources */,
 				1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */,
 				1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */,
 				1E14020F2109669800A539BA /* ProgressView.swift in Sources */,
@@ -499,6 +518,7 @@
 				1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */,
 				1E106D09210A379D0024B513 /* UserService.swift in Sources */,
 				1E1E055921064B32009E6666 /* ExerciseLabelCell.swift in Sources */,
+				1E13EF312114E5DB002D2958 /* ExerciseSelectorCell.swift in Sources */,
 				1E1E05452106442E009E6666 /* FitApp.xcdatamodeld in Sources */,
 				1E5CA0E72109577000A252F0 /* ExerciseNoteCell.swift in Sources */,
 				1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */,

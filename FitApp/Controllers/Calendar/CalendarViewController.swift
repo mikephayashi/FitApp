@@ -97,7 +97,7 @@ final class CalendarViewController: UIViewController {
             if workout.dateCreated == CalendarViewController.selectedDateVarString{
                 listOfWorkoutsString = listOfWorkoutsString + "\(workout.exerciseName) \(workout.numberOfSets) x \(workout.numberOfReps) \n"
                 numberOfLineCounters += 1
-                print("adding workout to label")
+
             }
         }
         workoutLabel.numberOfLines = numberOfLineCounters
@@ -187,7 +187,6 @@ extension CalendarViewController: VACalendarViewDelegate {
     func selectedDate(_ date: Date) {
         CalendarViewController.selectedDateVar = date
         CalendarViewController.selectedDateVarString = date.toString(dateFormat: "dd-MMM-yyyy")
-        print(date)
         loadingWorkoutLabel()
         WorkoutService.deleteSectionSender = "WOD"
     }

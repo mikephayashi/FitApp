@@ -59,7 +59,6 @@ extension LoginViewController: FUIAuthDelegate {
         //Reading Firebase
         // https://stackoverflow.com/questions/37403747/firebase-permission-denied
         userRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            print("Single event")
             
             //Handle New User
             if let user = User(snapshot: snapshot) { //  retrieve user data from snapshot

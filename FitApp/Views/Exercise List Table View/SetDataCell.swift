@@ -9,11 +9,14 @@
 import UIKit
 
 protocol SetDataCellDelegate: class {
+    
     func reloadingNumberOfReps(cell: SetDataCell, numberOfReps: Int)
     
     func savingWeight(cell: SetDataCell, weight: Int)
     
     func deleteRow(cell: SetDataCell)
+    
+    func setCompleted(cell: SetDataCell, checked: Bool)
 }
 
 class SetDataCell: UITableViewCell{
@@ -21,6 +24,8 @@ class SetDataCell: UITableViewCell{
     @IBOutlet weak var setNumberLabel: UILabel!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var numberOfRepsTextField: UITextField!
+    @IBOutlet weak var checkBox: Checkbox!
+    
     
      weak var delegate: SetDataCellDelegate?
     
@@ -39,6 +44,12 @@ class SetDataCell: UITableViewCell{
     @IBAction func deleteRowButtonTapped(_ sender: Any) {
         guard let cell = (sender as AnyObject).superview??.superview as? SetDataCell else { return}
         delegate?.deleteRow(cell: cell)
+    }
+    
+    @objc func checkboxValueChanged(sender: Checkbox) {
+        print("checkbox value change: \(sender.isChecked)")
+        guard let cell = (sender as AnyObject).superview??.superview as? SetDataCell else { return}
+        delegate?.setCompleted(cell: cell, checked: checkBox.isChecked)
     }
     
     

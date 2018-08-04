@@ -80,7 +80,6 @@ extension ExerciseSelectionViewController: UITableViewDataSource {
 //    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("This cell from the chat list was selected: \(indexPath.row)")
         selectedCell = indexPath
     }
     

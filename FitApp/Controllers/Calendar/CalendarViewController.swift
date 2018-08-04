@@ -166,7 +166,7 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
         case .selected:
             return .red
         default:
-            if WorkoutService.listOfDatesArray.contains(day.toString(dateFormat: "dd-MMM-yyyy")){
+            if WorkoutService.listOfDatesArray.contains(day.toString(dateFormat: "MMM-dd-yyyy")){
                 label.clipsToBounds = true
                 label.layer.cornerRadius = label.frame.height / 2
                 return .blue
@@ -201,7 +201,7 @@ extension CalendarViewController: VACalendarViewDelegate {
     //Change to "selectedDates" for multiple selection
     func selectedDate(_ date: Date) {
         CalendarViewController.selectedDateVar = date
-        CalendarViewController.selectedDateVarString = date.toString(dateFormat: "dd-MMM-yyyy")
+        CalendarViewController.selectedDateVarString = date.toString(dateFormat: "MMM-dd-yyyy")
         loadingWorkoutLabel()
         WorkoutService.deleteSectionSender = "WOD"
     }

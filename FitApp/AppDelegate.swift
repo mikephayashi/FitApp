@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureInitialRootViewController(for: window)
         
         //Formatting Selected Date String
-        CalendarViewController.selectedDateVarString = CalendarViewController.selectedDateVar.toString(dateFormat: "dd-MMM-yyyy")
+        CalendarViewController.selectedDateVarString = CalendarViewController.selectedDateVar.toString(dateFormat: "MMM-dd-yyyy")
         
         return true
     }

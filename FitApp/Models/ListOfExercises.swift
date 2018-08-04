@@ -12,7 +12,7 @@ class ListOfExercises {
     
 
     var listOfExercises = [ExerciseModel]()
-    static var listOfExeciseTypes = ["Chest", "Back", "Bicep", "Tricep", "Delt", "Abs", "Quads", "Hamstrings", "Calves", "Running"]
+    static var listOfExeciseTypes = ["Chest", "Back", "Biceps", "Triceps", "Delts", "Abs", "Quads", "Hamstrings", "Calves", "Cardio"]
 
     
     //Chest

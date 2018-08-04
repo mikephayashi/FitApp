@@ -56,28 +56,28 @@ class ExerciseSelectionViewController: UIViewController{
 extension ExerciseSelectionViewController: UITableViewDataSource {
     
     //TableViews
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//
-//        return 9
-//    }
-//
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//        switch section {
-//        case 1: return "Chest"
-//        case 2: return "Back"
-//        case 3: return "Biceps"
-//        case 4: return "Triceps"
-//        case 5: return "Delts"
-//        case 6: return "Abs"
-//        case 7: return "Quads"
-//        case 8: return "Hamstring"
-//        case 9: return "Calves"
-//        default:
-//            return "??"
-//        }
-//
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+
+        return 10
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+        switch section {
+        case 0: return "Chest"
+        case 1: return "Back"
+        case 2: return "Biceps"
+        case 3: return "Triceps"
+        case 4: return "Delts"
+        case 5: return "Abs"
+        case 6: return "Quads"
+        case 7: return "Hamstrings"
+        case 8: return "Calves"
+        default:
+            return "??"
+        }
+
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCell = indexPath
@@ -85,7 +85,10 @@ extension ExerciseSelectionViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return listOfExercises.count
+        let array = listOfExercises.filter {$0.bodyPart == self.tableView(listOfExercisesTableView, titleForHeaderInSection: section)}
+        return array.count
+
+        
     }
     
     
@@ -99,7 +102,11 @@ extension ExerciseSelectionViewController: UITableViewDataSource {
     
     func configureCell(cell: ExerciseNameCell, forIndexPath indexPath: IndexPath){
         
+        
         cell.exerciseNameLabel.text = listOfExercises[indexPath.row].exerciseName
+        
+        let array = listOfExercises.filter {$0.bodyPart == self.tableView(listOfExercisesTableView, titleForHeaderInSection: indexPath.section)}
+        cell.exerciseNameLabel.text = array[indexPath.row].exerciseName
     }
     
 

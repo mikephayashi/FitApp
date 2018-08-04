@@ -301,7 +301,7 @@ extension UserMetricsViewController{
             
             for workout in WorkoutService.workoutArray {
                 
-                if workout.dateCreated == UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy"){
+                if workout.dateCreated == UserMetricsViewController.dateTracker.toString(dateFormat: "MMM-dd-yyyy"){
                     
                     
                     WorkoutService.workoutArray = []
@@ -328,7 +328,7 @@ extension UserMetricsViewController{
             
             var numberOfExercises = 0
             var numberOfReps = 0
-            var formattedDate = UserMetricsViewController.datePicker.date.toString(dateFormat: "dd-MMM-yyyy")
+            var formattedDate = UserMetricsViewController.datePicker.date.toString(dateFormat: "MMM-dd-yyyy")
             
             UserMetricsViewController.dateTracker = UserMetricsViewController.datePicker.date
             self.selectedExercise = self.listOfExercises[0]
@@ -408,7 +408,7 @@ extension UserMetricsViewController{
                 
                 WorkoutService.currentSectionNumber = "0"
                 
-                formattedDate = UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")
+                formattedDate = UserMetricsViewController.dateTracker.toString(dateFormat: "MMM-dd-yyyy")
                 
                 for _ in 1...numberOfExercises{
                     

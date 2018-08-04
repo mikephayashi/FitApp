@@ -14,13 +14,14 @@ class ExerciseModel {
     enum BodyPart: String {
         case chest = "Chest",
         back = "Back",
-        bicep = "Bicep",
-        tricep = "Tricep",
-        delt = "Delt",
+        bicep = "Biceps",
+        tricep = "Triceps",
+        delt = "Delts",
         abs = "Abs",
         quads = "Quads",
         hamstrings = "Hamstrings",
-        calves = "Calves"
+        calves = "Calves",
+        cardio = "Cardio"
 
     }
     

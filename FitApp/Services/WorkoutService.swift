@@ -130,9 +130,9 @@ struct WorkoutService {
         
         //Workout Firebase
         
-        var workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")).child(currentSectionNumber)
+        var workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(UserMetricsViewController.dateTracker.toString(dateFormat: "MMM-dd-yyyy")).child(currentSectionNumber)
         if WorkoutService.deleteSectionSender == "UserMetrics"{
-        workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(UserMetricsViewController.dateTracker.toString(dateFormat: "dd-MMM-yyyy")).child(currentSectionNumber)
+        workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(UserMetricsViewController.dateTracker.toString(dateFormat: "MMM-dd-yyyy")).child(currentSectionNumber)
         } else if WorkoutService.deleteSectionSender == "WOD"{
             workoutRef = Database.database().reference().child("workout").child(User.current.uid).child(CalendarViewController.selectedDateVarString).child(currentSectionNumber)
         }

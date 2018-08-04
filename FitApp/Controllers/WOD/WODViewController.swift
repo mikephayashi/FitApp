@@ -60,7 +60,7 @@ class WODViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         
-        previousDate = Date().toString(dateFormat: "dd-MMM-yyyy")
+        previousDate = Date().toString(dateFormat: "MMM-dd-yyyy")
         
         timerLabel.text = String(timerLength)
         timerProgressView.progress = Float(timerLength/savedTime)

@@ -161,13 +161,23 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
         }
     }
     
-    func textBackgroundColor(for state: VADayState) -> UIColor {
+    func textBackgroundColor(for state: VADayState, day: Date, label: UILabel) -> UIColor {
         switch state {
         case .selected:
             return .red
         default:
-            return .clear
+            if WorkoutService.listOfDatesArray.contains(day.toString(dateFormat: "dd-MMM-yyyy")){
+                label.clipsToBounds = true
+                label.layer.cornerRadius = label.frame.height / 2
+                return .blue
+            } else {
+                return .clear
+            }
+            
+            
         }
+        
+        
     }
     
     func shape() -> VADayShape {

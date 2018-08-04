@@ -23,7 +23,7 @@ struct UserMetricsService {
         userMetricRef.updateChildValues(dict)
         
         
-        let newMetric = UserMetricsModel(weight: weight , height: height , age: age , gender: gender as! Int, date: date as! String, goal: goal as! Int, bodyPart: bodyPart as! Int, workoutType: workoutType as! Int, checked: checked as! [Int]!, volume : volume as! Int, lengthOfWorkout: lengthOfWorkout as! Int, numberOfWeeks: numberOfWeeks as! Int)
+        let newMetric = UserMetricsModel(weight: weight , height: height , age: age , gender: gender as! Int, date: date as! String, goal: goal as! Int, bodyPart: bodyPart as! Int, workoutType: workoutType as! Int, checked: checked as! [Int], volume : volume as! Int, lengthOfWorkout: lengthOfWorkout as! Int, numberOfWeeks: numberOfWeeks as! Int)
         userMetricsArray.append(newMetric)
         
     }
@@ -70,7 +70,7 @@ struct UserMetricsService {
                     let lengthOfWorkout = node.childSnapshot(forPath: "lengthOfWorkout").value
                     let numberOfWeeks = node.childSnapshot(forPath: "numberOfWeeks").value
 
-                    let pulledMetric = UserMetricsModel(weight: weight as! Int, height: height as! Int, age: age as! Int, gender: gender as! Int, date: date as! String, goal: goal as! Int, bodyPart: bodyPart as! Int, workoutType: workoutType as! Int, checked: checked as! [Int]!, volume: volume as! Int, lengthOfWorkout: lengthOfWorkout as! Int, numberOfWeeks: numberOfWeeks as! Int)
+                    let pulledMetric = UserMetricsModel(weight: weight as! Int, height: height as! Int, age: age as! Int, gender: gender as! Int, date: date as! String, goal: goal as! Int, bodyPart: bodyPart as! Int, workoutType: workoutType as! Int, checked: checked as! [Int], volume: volume as! Int, lengthOfWorkout: lengthOfWorkout as! Int, numberOfWeeks: numberOfWeeks as! Int)
                     self.userMetricsArray.append(pulledMetric)
                 }
             }

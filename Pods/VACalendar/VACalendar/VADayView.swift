@@ -12,7 +12,7 @@ import UIKit
 public protocol VADayViewAppearanceDelegate: class {
     @objc optional func font(for state: VADayState) -> UIFont
     @objc optional func textColor(for state: VADayState) -> UIColor
-    @objc optional func textBackgroundColor(for state: VADayState) -> UIColor
+    @objc optional func textBackgroundColor(for state: VADayState, day: Date, label: UILabel) -> UIColor
     @objc optional func backgroundColor(for state: VADayState) -> UIColor
     @objc optional func borderWidth(for state: VADayState) -> CGFloat
     @objc optional func borderColor(for state: VADayState) -> UIColor
@@ -30,6 +30,8 @@ class VADayView: UIView {
     
     var day: VADay
     weak var delegate: VADayViewDelegate?
+    
+    static var arrayOfDates = [String]()
     
     weak var dayViewAppearanceDelegate: VADayViewAppearanceDelegate? {
         return (superview as? VAWeekView)?.dayViewAppearanceDelegate
@@ -99,7 +101,7 @@ class VADayView: UIView {
         layer.borderColor = dayViewAppearanceDelegate?.borderColor?(for: state).cgColor ?? layer.borderColor
         layer.borderWidth = dayViewAppearanceDelegate?.borderWidth?(for: state) ?? dateLabel.layer.borderWidth
         dateLabel.textColor = dayViewAppearanceDelegate?.textColor?(for: state) ?? dateLabel.textColor
-        dateLabel.backgroundColor = dayViewAppearanceDelegate?.textBackgroundColor?(for: state) ?? dateLabel.backgroundColor
+        dateLabel.backgroundColor = dayViewAppearanceDelegate?.textBackgroundColor?(for: state, day: day.date, label: dateLabel) ?? dateLabel.backgroundColor
         
         if dayViewAppearanceDelegate?.shape?() == .circle && state == .selected {
             dateLabel.clipsToBounds = true

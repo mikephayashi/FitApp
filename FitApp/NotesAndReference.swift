@@ -45,3 +45,5 @@ import Foundation
 //    }
 //}
 
+//static var arrayOfDates = [String]() in VADAYCAlendar
+

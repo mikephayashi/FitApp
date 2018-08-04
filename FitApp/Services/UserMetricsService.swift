@@ -19,7 +19,7 @@ struct UserMetricsService {
         let updateUserMetricsVar = UserMetricsModel(weight: weight, height: height, age: age, gender: gender, date: date, goal: goal, bodyPart: bodyPart, workoutType: workoutType, checked:checked,  volume: volume, lengthOfWorkout: lengthOfWorkout, numberOfWeeks: numberOfWeeks)
         let dict = updateUserMetricsVar.dictValue
         
-        let userMetricRef = Database.database().reference().child("userMetrics").child(User.current.uid)
+        let userMetricRef = Database.database().reference().child("userMetrics").child(User.current.uid).child("0")
         userMetricRef.updateChildValues(dict)
         
         
@@ -30,7 +30,7 @@ struct UserMetricsService {
     
     static func updateUserMetrics(weight: Int, height: Int, age: Int, gender: Int, date: String, goal: Int, bodyPart: Int, workoutType: Int, checked: [Int], volume: Int, lengthOfWorkout: Int, numberOfWeeks: Int){
         
-        let userMetricRef = Database.database().reference().child("userMetrics").child(User.current.uid)
+        let userMetricRef = Database.database().reference().child("userMetrics").child(User.current.uid).child("0")
         userMetricRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             userMetricRef.child("weight").setValue(weight)

@@ -404,7 +404,7 @@ extension WODViewController: UITableViewDataSource{
                         cell.delegate = self as AddingSetCellDelegate
                         returnedValue = cell
                     default:
-                        fatalError("Error unexpected Indexpath.row")
+                        fatalError("Error unexpected Indexpath.row \(indexPath.row)")
                     }
                 }
             }
@@ -602,39 +602,39 @@ extension WODViewController: ExerciseHeaderCellDelegate{
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            
-            
-            
+
+
+
             WorkoutService.workoutArray = []
-            
+
             for exercise in storedArray{
-                
-                
+
+
                 WorkoutService.currentSectionNumber = String(exercise.sectionNumber)
-                
+
                 WorkoutService.removeWorkout(exerciseName: exercise.exerciseName, numberOfReps: exercise.numberOfReps, numberOfSets: exercise.numberOfSets, weight: exercise.weight, completed: exercise.completed, sectionNumber: exercise.sectionNumber, alreadyAdded: exercise.alreadyAdded, dateCreated: exercise.dateCreated, bodyPart: exercise.bodyPart, restDays: exercise.restDays, intensity: exercise.intensity, workoutType: exercise.workoutType)
             }
         }
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            
+
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+
             var sectionCounter = 0
-            
+
             for exercise in storedArray{
-                
+
                 WorkoutService.currentSectionNumber = String(sectionCounter)
-                
+
                 WorkoutService.writeWorkout(exerciseName: exercise.exerciseName, numberOfReps: exercise.numberOfReps, numberOfSets: exercise.numberOfSets, weight: exercise.weight, completed: exercise.completed, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: exercise.alreadyAdded, dateCreated: exercise.dateCreated, bodyPart: exercise.bodyPart, restDays: exercise.restDays, intensity: exercise.intensity, workoutType: exercise.workoutType)
-                
+
                 sectionCounter += 1
-                
+
             }
             WODViewController.copyOverData()
         }
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.exerciseListTableView.reloadData()}
     }
 }

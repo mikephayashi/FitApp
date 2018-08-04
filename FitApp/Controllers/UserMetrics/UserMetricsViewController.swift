@@ -290,8 +290,6 @@ extension UserMetricsViewController{
         
         
         
-        
-        
         //Deleting old workouts
         
         for _ in 1...Int(self.weekSlider.value*(7)){
@@ -319,7 +317,7 @@ extension UserMetricsViewController{
         
         //Writing new Workout
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             
             
             

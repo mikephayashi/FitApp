@@ -500,6 +500,7 @@ extension UserMetricsViewController: ExerciseSelectorCellDelegate{
             clickedArray[indexPath.row] = 0
         }
         
+        
     }
     
     

@@ -38,6 +38,10 @@ class WODViewController: UIViewController {
     //Table View
     static var copiedVariable = [ExerciseModel]()
     
+    //Animation
+    @IBOutlet weak var restView: UIView!
+    
+    
     //Overide Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +66,8 @@ class WODViewController: UIViewController {
         
         configureTableView()
         
+        restView.isHidden = true
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             var exerciseArray: IndexSet = []
             for exercise in WorkoutService.workoutArray{
@@ -77,7 +83,6 @@ class WODViewController: UIViewController {
             self.exerciseListTableView.insertSections(exerciseArray, with: .fade)
             WODViewController.copyOverData()
         }
-        
         
     }
     
@@ -178,6 +183,7 @@ class WODViewController: UIViewController {
         }
         
     }
+    
     
     @IBAction func resetButtonTapped(_ sender: Any) {
         timerLength = savedTime
@@ -473,6 +479,30 @@ extension WODViewController: SetDataCellDelegate{
                 
             }
         }
+        
+        if checked == true {
+            
+            if timerIsRunning == false{
+                
+                countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WODViewController.timerControl), userInfo: nil, repeats: true)
+                timerIsRunning = true
+            } else {
+                countDownTimer.invalidate()
+                timerLength = savedTime
+                timerLabel.text = String(timerLength)
+                timerProgressView.progress = Float(timerLength/savedTime)
+                countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WODViewController.timerControl), userInfo: nil, repeats: true)
+                timerIsRunning = true
+            }
+
+            restView.isHidden = false
+            restView.alpha = 0.0
+            restView.fadeIn()
+            restView.fadeOut()
+        }
+        
+        
+        
         
     }
     

@@ -58,17 +58,21 @@ final class CalendarViewController: UIViewController {
         calendarView.calendarDelegate = self
         calendarView.scrollDirection = .horizontal
         //Bottom Dots
-        //        calendarView.setSupplementaries([
-        //            (Date().addingTimeInterval(-(60 * 60 * 70)), [VADaySupplementary.bottomDots([.red, .magenta])]),
-        //            (Date().addingTimeInterval((60 * 60 * 110)), [VADaySupplementary.bottomDots([.red])]),
-        //            (Date().addingTimeInterval((60 * 60 * 370)), [VADaySupplementary.bottomDots([.blue, .darkGray])]),
-        //            (Date().addingTimeInterval((60 * 60 * 430)), [VADaySupplementary.bottomDots([.orange, .purple, .cyan])])
-        //            ])
+//        calendarView.setSupplementaries([
+//            (Date().addingTimeInterval(-(60 * 60 * 70)), [VADaySupplementary.bottomDots([.red, .magenta])]),
+//            (Date().addingTimeInterval((60 * 60 * 110)), [VADaySupplementary.bottomDots([.red])]),
+//            (Date().addingTimeInterval((60 * 60 * 370)), [VADaySupplementary.bottomDots([.blue, .darkGray])]),
+//            (Date().addingTimeInterval((60 * 60 * 430)), [VADaySupplementary.bottomDots([.orange, .purple, .cyan])])
+//            ])
+        calendarView.setSupplementaries([
+            (Date(), [VADaySupplementary.bottomDots([.red])])
+            ])
         view.addSubview(calendarView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadingWorkoutLabel()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -167,6 +171,7 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
     }
     
     func shape() -> VADayShape {
+        
         return .circle
     }
     

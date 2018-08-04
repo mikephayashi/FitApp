@@ -34,6 +34,8 @@ class WODViewController: UIViewController {
     
     //Calendar
     var previousDate = ""
+    @IBOutlet weak var dateLabel: UILabel!
+    
     
     //Table View
     static var copiedVariable = [ExerciseModel]()
@@ -63,6 +65,7 @@ class WODViewController: UIViewController {
         timerLabel.text = String(timerLength)
         timerProgressView.progress = Float(timerLength/savedTime)
         timerProgressView.barHeight = self.view.frame.height*0.005
+        
         
         configureTableView()
         
@@ -132,6 +135,7 @@ class WODViewController: UIViewController {
             
             
         }
+        dateLabel.text = CalendarViewController.selectedDateVarString
     }
     
     override func didReceiveMemoryWarning() {

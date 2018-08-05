@@ -219,7 +219,7 @@ class UserMetricsViewController: UIViewController {
         
         //Date
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "MMM-dd-yyyy"
         txtDatePicker.text = formatter.string(from: CalendarViewController.selectedDateVar)
         showDatePicker()
         UserMetricsViewController.datePicker.date = CalendarViewController.selectedDateVar

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth.FIRUser
+import FirebaseDatabase
 
 class WODViewController: UIViewController {
     
@@ -585,6 +587,7 @@ extension WODViewController: ExerciseHeaderCellDelegate{
         
         WorkoutService.currentSectionNumber = String(indexPath.section)
         
+        var savedDate = ""
         
         for exercise in WorkoutService.workoutArray{
             
@@ -592,10 +595,12 @@ extension WODViewController: ExerciseHeaderCellDelegate{
             
             if indexPath.section == exercise.sectionNumber && CalendarViewController.selectedDateVarString == exercise.dateCreated{
                 
+                savedDate = exercise.dateCreated
                 
                 WorkoutService.workoutArray.remove(at: WorkoutService.workoutArray.index(where: {$0 === exercise})!)
                 WODViewController.copiedVariable.remove(at: WODViewController.copiedVariable.index(where: {$0 === exercise})!)
 
+                
                 //                exerciseListTableView.deleteSections([indexPath.section], with: .fade) //Messing with firebase
                 WorkoutService.removeWorkout(exerciseName: exercise.exerciseName, numberOfReps: exercise.numberOfReps, numberOfSets: exercise.numberOfSets, weight: exercise.weight, completed: exercise.completed, sectionNumber: exercise.sectionNumber, alreadyAdded: exercise.alreadyAdded, dateCreated: exercise.dateCreated, bodyPart: exercise.bodyPart, restDays: exercise.restDays, intensity: exercise.intensity, workoutType: exercise.workoutType)
                 WODViewController.copyOverData()
@@ -606,6 +611,9 @@ extension WODViewController: ExerciseHeaderCellDelegate{
             }
             
             
+            
+            
+            
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -613,6 +621,16 @@ extension WODViewController: ExerciseHeaderCellDelegate{
             
             
             WorkoutService.workoutArray = []
+            
+            if storedArray.count == 0{
+                let dateRef = Database.database().reference().child("listOfDates").child(User.current.uid).child(savedDate)
+                dateRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    dateRef.child("date").removeValue()
+                })
+                
+                WorkoutService.listOfDatesArray.remove(at: WorkoutService.listOfDatesArray.index(where: {$0 == savedDate})!)
+            }
             
             for exercise in storedArray{
                 

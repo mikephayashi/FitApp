@@ -24,6 +24,7 @@
 		1E13EF312114E5DB002D2958 /* ExerciseSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13EF302114E5DB002D2958 /* ExerciseSelectorCell.swift */; };
 		1E13EF3321150B89002D2958 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13EF3221150B89002D2958 /* Filter.swift */; };
 		1E13EF3521152C43002D2958 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13EF3421152C43002D2958 /* Animations.swift */; };
+		1E13EF382116AAB6002D2958 /* WODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13EF372116AAB6002D2958 /* WODTableViewCell.swift */; };
 		1E14020F2109669800A539BA /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E14020E2109669800A539BA /* ProgressView.swift */; };
 		1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053C2106442E009E6666 /* AppDelegate.swift */; };
 		1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E053E2106442E009E6666 /* WODViewController.swift */; };
@@ -69,6 +70,7 @@
 		1E13EF302114E5DB002D2958 /* ExerciseSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectorCell.swift; sourceTree = "<group>"; };
 		1E13EF3221150B89002D2958 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		1E13EF3421152C43002D2958 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		1E13EF372116AAB6002D2958 /* WODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableViewCell.swift; sourceTree = "<group>"; };
 		1E14020E2109669800A539BA /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		1E1E05392106442E009E6666 /* FitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E1E053C2106442E009E6666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,14 @@
 			path = UserMetricsTableView;
 			sourceTree = "<group>";
 		};
+		1E13EF362116AA85002D2958 /* Calendar Table View */ = {
+			isa = PBXGroup;
+			children = (
+				1E13EF372116AAB6002D2958 /* WODTableViewCell.swift */,
+			);
+			path = "Calendar Table View";
+			sourceTree = "<group>";
+		};
 		1E1E05302106442E009E6666 = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8A08B8210677C2000B40BF /* Exercise List Table View */,
+				1E13EF362116AA85002D2958 /* Calendar Table View */,
 				1E9A7BD7210696DA00B2F3FC /* Exercise Selection Table View */,
 				1E13EF2F2114E5C2002D2958 /* UserMetricsTableView */,
 			);
@@ -505,6 +516,7 @@
 				1E1E053F2106442E009E6666 /* WODViewController.swift in Sources */,
 				1E9A7BD9210699E500B2F3FC /* ListOfExercises.swift in Sources */,
 				1E106D11210A4C300024B513 /* Storyboard+Utility.swift in Sources */,
+				1E13EF382116AAB6002D2958 /* WODTableViewCell.swift in Sources */,
 				1E5CA0D52109031F00A252F0 /* NotesAndReference.swift in Sources */,
 				1E106D13210A68920024B513 /* UserMetricsModel.swift in Sources */,
 				1E9A7BD22106945200B2F3FC /* SetDataCell.swift in Sources */,

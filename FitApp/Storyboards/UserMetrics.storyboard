@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User Metrics View Controller-->
+        <!--Program Workout-->
         <scene sceneID="Ora-3f-elg">
             <objects>
                 <viewController id="JDi-mV-nu7" customClass="UserMetricsViewController" customModule="FitApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -203,7 +203,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jgq-dh-b05"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="4v4-2t-Jbl"/>
+                    <tabBarItem key="tabBarItem" title="Program Workout" id="4v4-2t-Jbl"/>
                     <connections>
                         <outlet property="ageTextField" destination="sDp-gd-rf8" id="0Py-Fq-iLD"/>
                         <outlet property="bodyPartSegmentedControl" destination="UWZ-zF-im0" id="ta5-qv-T0R"/>

@@ -15,6 +15,8 @@ final class CalendarViewController: UIViewController {
     static var selectedDateVarString: String!
     
     @IBOutlet var workoutLabel: UILabel!
+    @IBOutlet weak var calendarTableView: UITableView!
+    
     
     
     @IBOutlet weak var monthHeaderView: VAMonthHeaderView! {
@@ -71,10 +73,12 @@ final class CalendarViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadingWorkoutLabel()
+        
 //        calendarView.setup()
         calendarView.setupSelection()
         calendarView.selectDates([CalendarViewController.selectedDateVar])
+        calendarTableView.reloadData()
+        
         
     }
     
@@ -96,20 +100,6 @@ final class CalendarViewController: UIViewController {
         calendarView.changeViewType()
     }
     
-    func loadingWorkoutLabel(){
-
-        var listOfWorkoutsString = ""
-        var numberOfLineCounters = 0
-        for workout in WorkoutService.workoutArray{
-            if workout.dateCreated == CalendarViewController.selectedDateVarString{
-                listOfWorkoutsString = listOfWorkoutsString + "\(workout.exerciseName) \(workout.numberOfSets) x \(workout.numberOfReps) \n"
-                numberOfLineCounters += 1
-
-            }
-        }
-        workoutLabel.numberOfLines = numberOfLineCounters
-        workoutLabel.text = listOfWorkoutsString
-    }
 }
 
 extension CalendarViewController: VAMonthHeaderViewDelegate {
@@ -175,7 +165,9 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
                 label.clipsToBounds = true
                 label.layer.cornerRadius = label.frame.height / 2
                 label.textColor = .white
-                return .blue
+                
+                return .gray
+                
             } else {
                 return .clear
             }
@@ -210,11 +202,54 @@ extension CalendarViewController: VACalendarViewDelegate {
         UserMetricsViewController.datePicker.date = date
         CalendarViewController.selectedDateVarString = date.toString(dateFormat: "MMM-dd-yyyy")
         WorkoutService.deleteSectionSender = "WOD"
-        loadingWorkoutLabel()
+        calendarTableView.reloadData()
         
     }
     
     
+    
+}
+
+extension CalendarViewController: UITableViewDataSource{
+    
+    //TableViews
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return CalendarViewController.selectedDateVarString
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return WorkoutService.workoutArray.filter {$0.dateCreated == CalendarViewController.selectedDateVarString}.count
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WODTableViewCell", for: indexPath) as! WODTableViewCell
+        configureCell(cell: cell, forIndexPath: indexPath)
+        return cell
+        
+    }
+    
+    func configureCell(cell: WODTableViewCell, forIndexPath indexPath: IndexPath){
+        
+        let day = WorkoutService.workoutArray.filter {$0.dateCreated == CalendarViewController.selectedDateVarString}[indexPath.row]
+        cell.workoutLabel.text = "\(day.exerciseName) - Sets: \(day.numberOfReps[0]) X Reps: \(day.numberOfReps)"
+        cell.workoutLabel.adjustsFontSizeToFitWidth = true
+//        cell.workoutLabel.lineBreakMode = .byWordWrapping
+//        cell.workoutLabel.numberOfLines = 2
+//        cell.frame = CGRect(x: cell.frame.origin.x, y: cell.frame.origin.y, width: cell.frame.width, height: CGFloat(Int(cell.frame.height) * cell.workoutLabel.numberOfLines))
+        
+        
+    }
     
 }
 

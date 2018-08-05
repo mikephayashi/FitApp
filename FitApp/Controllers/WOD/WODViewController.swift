@@ -267,6 +267,31 @@ class WODViewController: UIViewController {
                     
                     if isAlreadyAdded == false && counter == WorkoutService.workoutArray.count{
                         
+                        var numberOfReps = 0
+                        
+                        if UserMetricsService.userMetricsArray.count != 0{
+                            switch UserMetricsService.userMetricsArray[0].goal{
+                            case 0: numberOfReps = selectedExercise.numberOfReps[0]
+                            selectedExercise.numberOfSets = [selectedExercise.numberOfSets[0]]
+                            case 1: numberOfReps = selectedExercise.numberOfReps[1]
+                            selectedExercise.numberOfSets = [selectedExercise.numberOfSets[1]]
+                            case 2: numberOfReps = selectedExercise.numberOfReps[2]
+                            selectedExercise.numberOfSets = [selectedExercise.numberOfSets[2]]
+                            case 3: numberOfReps = selectedExercise.numberOfReps[3]
+                            selectedExercise.numberOfSets = [selectedExercise.numberOfSets[3]]
+                            default: fatalError("Out of Range")
+                            }
+                        }
+                        
+                        selectedExercise.numberOfReps = []
+                        selectedExercise.weight = []
+                        selectedExercise.completed = []
+                        for _ in 1...selectedExercise.numberOfSets[0] {
+                            selectedExercise.numberOfReps.append(numberOfReps)
+                            selectedExercise.weight.append(0)
+                            selectedExercise.completed.append(0)
+                        }
+                        
                         
                         WorkoutService.currentSectionNumber = String(exerciseListTableView.numberOfSections)
                         
@@ -286,7 +311,7 @@ class WODViewController: UIViewController {
         } else {
             
             
-            WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: selectedExercise.numberOfReps, numberOfSets: selectedExercise.numberOfSets, weight: selectedExercise.weight, completed: selectedExercise.completed,sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity, workoutType: selectedExercise.workoutType)
+            WorkoutService.writeWorkout(exerciseName: selectedExercise.exerciseName, numberOfReps: [1], numberOfSets: [1], weight: selectedExercise.weight, completed: selectedExercise.completed,sectionNumber: selectedExercise.sectionNumber, alreadyAdded: selectedExercise.alreadyAdded, dateCreated: CalendarViewController.selectedDateVarString, bodyPart: selectedExercise.bodyPart, restDays: selectedExercise.restDays, intensity: selectedExercise.intensity, workoutType: selectedExercise.workoutType)
             
             selectedExercise.alreadyAdded = false
             
@@ -557,8 +582,21 @@ extension WODViewController: AddingSetCellDelegate{
         for exercise in WorkoutService.workoutArray{
             if indexPath.section == exercise.sectionNumber && CalendarViewController.selectedDateVarString == exercise.dateCreated{
                 selectedExercise = exercise
+                
+                var numberOfReps = 1
+                
+                if UserMetricsService.userMetricsArray.count != 0{
+                    switch UserMetricsService.userMetricsArray[0].goal{
+                    case 0: numberOfReps = self.selectedExercise.numberOfReps[0]
+                    case 1: numberOfReps = self.selectedExercise.numberOfReps[1]
+                    case 2: numberOfReps = self.selectedExercise.numberOfReps[2]
+                    case 3: numberOfReps = self.selectedExercise.numberOfReps[3]
+                    default: fatalError("Out of Range")
+                    }
+                }
+                
                 exercise.numberOfSets[0] += 1
-                exercise.numberOfReps.append(1)
+                exercise.numberOfReps.append(numberOfReps)
                 exercise.weight.append(0)
                 exercise.completed.append(0)
                 
@@ -599,7 +637,7 @@ extension WODViewController: ExerciseHeaderCellDelegate{
                 
                 WorkoutService.workoutArray.remove(at: WorkoutService.workoutArray.index(where: {$0 === exercise})!)
                 WODViewController.copiedVariable.remove(at: WODViewController.copiedVariable.index(where: {$0 === exercise})!)
-
+                
                 
                 //                exerciseListTableView.deleteSections([indexPath.section], with: .fade) //Messing with firebase
                 WorkoutService.removeWorkout(exerciseName: exercise.exerciseName, numberOfReps: exercise.numberOfReps, numberOfSets: exercise.numberOfSets, weight: exercise.weight, completed: exercise.completed, sectionNumber: exercise.sectionNumber, alreadyAdded: exercise.alreadyAdded, dateCreated: exercise.dateCreated, bodyPart: exercise.bodyPart, restDays: exercise.restDays, intensity: exercise.intensity, workoutType: exercise.workoutType)

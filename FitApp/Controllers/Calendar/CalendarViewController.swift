@@ -242,7 +242,7 @@ extension CalendarViewController: UITableViewDataSource{
     func configureCell(cell: WODTableViewCell, forIndexPath indexPath: IndexPath){
         
         let day = WorkoutService.workoutArray.filter {$0.dateCreated == CalendarViewController.selectedDateVarString}[indexPath.row]
-        cell.workoutLabel.text = "\(day.exerciseName) - Sets: \(day.numberOfReps[0]) X Reps: \(day.numberOfReps)"
+        cell.workoutLabel.text = "\(day.exerciseName) - Sets: \(day.numberOfSets[0]) X Reps: \(day.numberOfReps)"
         cell.workoutLabel.adjustsFontSizeToFitWidth = true
 //        cell.workoutLabel.lineBreakMode = .byWordWrapping
 //        cell.workoutLabel.numberOfLines = 2

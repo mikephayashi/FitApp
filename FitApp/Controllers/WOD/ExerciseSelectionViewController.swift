@@ -41,8 +41,12 @@ class ExerciseSelectionViewController: UIViewController{
             let destination = segue.destination as! WODViewController
             let indexPath = listOfExercisesTableView.indexPathForSelectedRow
             
-            destination.selectedExercise = destination.listOfExercises[indexPath!.row]
+//            destination.selectedExercise = destination.listOfExercises[indexPath!.row]
+            destination.selectedExercise = destination.listOfExercises.filter {$0.exerciseName == (listOfExercisesTableView.cellForRow(at: indexPath!) as! ExerciseNameCell).exerciseNameLabel.text}[0]
             destination.formatTableView()
+            
+            
+            
         case "cancelExercise": return
         default: return
             

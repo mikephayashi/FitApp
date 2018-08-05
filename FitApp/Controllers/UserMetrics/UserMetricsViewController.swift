@@ -27,6 +27,7 @@ class UserMetricsViewController: UIViewController {
     @IBOutlet weak var lengthOfWorkoutLabel: UILabel!
     @IBOutlet weak var lengthOfWorkoutSlider: UISlider!
     @IBOutlet weak var exerciseSelectorTableView: UITableView!
+    @IBOutlet weak var updateButton: UIButton!
     
     
     //Arrays
@@ -232,7 +233,12 @@ class UserMetricsViewController: UIViewController {
             default: fatalError("Index out of range")
             }
         } else {
-            selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.cardio.rawValue}
+            switch workoutTypeSegmentControl.selectedSegmentIndex{
+            case 0: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes
+            case 1: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.cardio.rawValue}
+            case 2: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 != ExerciseModel.BodyPart.cardio.rawValue}
+            default: fatalError("Index out of range")
+            }
         }
         UserMetricsViewController.clickedWorkoutsArray = selectionOfWorkoutTypesArray
         if UserMetricsService.userMetricsArray.count != 0{
@@ -308,6 +314,7 @@ extension UserMetricsViewController{
     
     func writeWorkoutProgram(){
         
+        updateButton.isUserInteractionEnabled = false
         
         WorkoutService.deleteSectionSender = "UserMetrics"
         
@@ -324,71 +331,59 @@ extension UserMetricsViewController{
                 
                 if workout.dateCreated == UserMetricsViewController.dateTracker.toString(dateFormat: "MMM-dd-yyyy"){
                     
-                    
-                    WorkoutService.workoutArray = []
                     WorkoutService.removeWorkout(exerciseName: workout.dateCreated, numberOfReps: workout.numberOfReps, numberOfSets: workout.numberOfReps, weight: workout.weight, completed: workout.completed, sectionNumber: workout.sectionNumber, alreadyAdded: workout.alreadyAdded, dateCreated: workout.dateCreated, bodyPart: workout.bodyPart, restDays: workout.restDays, intensity: workout.intensity, workoutType: workout.workoutType)
+                    
+//                    WorkoutService.workoutArray.remove(at: WorkoutService.workoutArray.index(where: {$0 === workout})!)
                     WODViewController.copiedVariable.remove(at: WODViewController.copiedVariable.index(where: {$0 === workout})!)
                 }
                 
-                UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
             }
             
-            WODViewController.copyOverData()
+            UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
+
         }
         
-        
-        
-        
-        
+
         
         //Writing new Workout
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            
-            
-            
+
+
+
             var numberOfExercises = 0
             var numberOfReps = 0
             var formattedDate = UserMetricsViewController.datePicker.date.toString(dateFormat: "MMM-dd-yyyy")
-            
+
             UserMetricsViewController.dateTracker = UserMetricsViewController.datePicker.date
             self.selectedExercise = self.listOfExercises[0]
             WorkoutService.currentSectionNumber = "0"
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
             //MARK: USER METRICS TO WORKOUT CALCULATOR
-            
-            //            switch self.workoutTypeSegmentControl.selectedSegmentIndex{
-            //
-            //            case 0: self.selectedBodyPartArray = self.listOfExercises
-            //            case 1: self.selectedBodyPartArray = self.listOfExercises.filter {$0.workoutType == ExerciseModel.WorkoutType.cardio.rawValue}
-            //            case 2: self.selectedBodyPartArray = self.listOfExercises.filter {$0.workoutType == ExerciseModel.WorkoutType.strength.rawValue}
-            //            default: fatalError("Out of Range")
-            //
-            //            }
-            
-            
+
+
             //FILTER BASED ON SELECTED BODY PARTS OR WORKOUT TYPE ADD HERE:
-            
-            
+
+
             self.selectedBodyPartArray = self.listOfExercises
             self.selectedBodyPartArray = self.selectedBodyPartArray.filter {UserMetricsViewController.clickedWorkoutsArray.contains($0.bodyPart)}
-            
-            
-            
-            
+
+
+
+
             ///////////////////////////////////////////////
-            
-            
-            
+
+
+
             switch self.lengthOfWorkoutSlider.value {
-                
+
             case let x where x >= 0 && x < 16: numberOfExercises = 1
             case let x where x >= 15 && x < 31: numberOfExercises = 2
             case let x where x >= 30 && x < 46: numberOfExercises = 3
@@ -398,33 +393,33 @@ extension UserMetricsViewController{
             case let x where x >= 90 && x < 106: numberOfExercises = 7
             case let x where x >= 105 && x < 121: numberOfExercises = 8
             default: fatalError("Out of range")
-                
+
             }
-            
-            
-            
+
+
+
             //END
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
             for _ in 1...Int(self.weekSlider.value*(7)){
-                
+
                 WorkoutService.currentSectionNumber = "0"
-                
+
                 formattedDate = UserMetricsViewController.dateTracker.toString(dateFormat: "MMM-dd-yyyy")
-                
+
                 for _ in 1...numberOfExercises{
-                    
+
                     self.selectedExercise = self.selectedBodyPartArray[Int(arc4random_uniform(UInt32(self.selectedBodyPartArray.count)))]
-                    
+
                     switch self.goalSegmentedControl.selectedSegmentIndex {
-                        
+
                     case 0: numberOfReps = 2
                     self.selectedExercise.numberOfSets[0] = 8
                     case 1: numberOfReps = 5
@@ -434,32 +429,33 @@ extension UserMetricsViewController{
                     case 3: numberOfReps = 15
                     self.selectedExercise.numberOfSets[0] = 2
                     default: fatalError("Out of Range")
-                        
+
                     }
-                    
-                    self.selectedExercise.numberOfReps.remove(at: 0)
-                    self.selectedExercise.weight.remove(at: 0)
-                    self.selectedExercise.completed.remove(at: 0)
+
+                    self.selectedExercise.numberOfReps = []
+                    self.selectedExercise.weight = []
+                    self.selectedExercise.completed = []
                     for _ in 1...self.selectedExercise.numberOfSets[0]{
                         self.selectedExercise.numberOfReps.append(numberOfReps)
                         self.selectedExercise.weight.append(0)
                         self.selectedExercise.completed.append(0)
                     }
-                    
-                    
+
+
                     WorkoutService.writeProgram(exerciseName: self.selectedExercise.exerciseName, numberOfReps: self.selectedExercise.numberOfReps, numberOfSets: self.selectedExercise.numberOfSets, weight: self.selectedExercise.weight, completed: self.selectedExercise.completed,sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: true, dateCreated: formattedDate, bodyPart: self.selectedExercise.bodyPart, restDays: self.selectedExercise.restDays,intensity: self.selectedExercise.intensity, workoutType: self.selectedExercise.workoutType)
-                    
+
                     WorkoutService.currentSectionNumber = String(Int(WorkoutService.currentSectionNumber)!+1)
                 }
-                
+
                 UserMetricsViewController.dateTracker = Calendar.current.date(byAdding: .day, value: 1, to: UserMetricsViewController.dateTracker)!
             }
-            
+
             WODViewController.copyOverData()
-            
+            self.updateButton.isUserInteractionEnabled = true
+
         }
-        WODViewController.copyOverData()
-        
+
+
     }
     
     

@@ -108,7 +108,7 @@ class WODViewController: UIViewController {
                     }
                     WorkoutService.workoutArray = []
                     exerciseListTableView.deleteSections(exerciseArray, with: .none)
-                    WODViewController.copyOverData()
+                    
                     
                 }
                 
@@ -129,7 +129,7 @@ class WODViewController: UIViewController {
                         
                     }
                 }
-                
+                WODViewController.copyOverData()
                 exerciseListTableView.reloadData()
             }
             
@@ -301,13 +301,13 @@ class WODViewController: UIViewController {
     static func copyOverData(){
         
         if WorkoutService.workoutArray.count != 0{
-            copiedVariable = []
+            WODViewController.copiedVariable = []
             for x in WorkoutService.workoutArray{
-                copiedVariable.append(x)
+                WODViewController.copiedVariable.append(x)
             }
         }
         if WorkoutService.workoutArray.count == 0{
-            for x in copiedVariable{
+            for x in WODViewController.copiedVariable{
                 WorkoutService.workoutArray.append(x)
             }
         }
@@ -334,6 +334,8 @@ extension WODViewController: UITableViewDataSource{
                     returnedValue += 1
                 }
             }
+        } else {
+            returnedValue = 0
         }
         
         return returnedValue
@@ -592,6 +594,8 @@ extension WODViewController: ExerciseHeaderCellDelegate{
                 
                 
                 WorkoutService.workoutArray.remove(at: WorkoutService.workoutArray.index(where: {$0 === exercise})!)
+                WODViewController.copiedVariable.remove(at: WODViewController.copiedVariable.index(where: {$0 === exercise})!)
+
                 //                exerciseListTableView.deleteSections([indexPath.section], with: .fade) //Messing with firebase
                 WorkoutService.removeWorkout(exerciseName: exercise.exerciseName, numberOfReps: exercise.numberOfReps, numberOfSets: exercise.numberOfSets, weight: exercise.weight, completed: exercise.completed, sectionNumber: exercise.sectionNumber, alreadyAdded: exercise.alreadyAdded, dateCreated: exercise.dateCreated, bodyPart: exercise.bodyPart, restDays: exercise.restDays, intensity: exercise.intensity, workoutType: exercise.workoutType)
                 WODViewController.copyOverData()

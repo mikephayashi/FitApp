@@ -244,9 +244,6 @@ extension CalendarViewController: UITableViewDataSource{
         let day = WorkoutService.workoutArray.filter {$0.dateCreated == CalendarViewController.selectedDateVarString}[indexPath.row]
         cell.workoutLabel.text = "\(day.exerciseName) - Sets: \(day.numberOfSets[0]) X Reps: \(day.numberOfReps)"
         cell.workoutLabel.adjustsFontSizeToFitWidth = true
-//        cell.workoutLabel.lineBreakMode = .byWordWrapping
-//        cell.workoutLabel.numberOfLines = 2
-//        cell.frame = CGRect(x: cell.frame.origin.x, y: cell.frame.origin.y, width: cell.frame.width, height: CGFloat(Int(cell.frame.height) * cell.workoutLabel.numberOfLines))
         
         
     }

@@ -74,6 +74,13 @@ class UserMetricsViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        txtDatePicker.inputView = UserMetricsViewController.datePicker
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM-dd-yyyy"
+        txtDatePicker.text = formatter.string(from: CalendarViewController.selectedDateVar)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

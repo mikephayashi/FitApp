@@ -40,13 +40,15 @@ class ListOfExercises {
     //Biceps
     var bicepCurl = ExerciseModel(exerciseName: "Bicep Curl", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.bicep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     var hammerCurl = ExerciseModel(exerciseName: "Hammer Curl", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.bicep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
+    var cableCurl = ExerciseModel(exerciseName: "Cable Curl", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.bicep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     
     
     
     //Triceps
-    var skullCrusher = ExerciseModel(exerciseName: "Skull Crusher", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     var dip = ExerciseModel(exerciseName: "Dip", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     var tricepExtension = ExerciseModel(exerciseName: "Tricep Extension", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
+    var tricepPushdown = ExerciseModel(exerciseName: "Tricep Pushdown", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
+    var skullCrusher = ExerciseModel(exerciseName: "Skull Crusher", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.tricep.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     
     
     
@@ -84,12 +86,16 @@ class ListOfExercises {
     
     //Hamstrings
     var deadLift = ExerciseModel(exerciseName: "Dead Lift", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.hamstrings.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
+    var romanianDeadLift = ExerciseModel(exerciseName: "Romanian Dead Lift", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.hamstrings.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
+    var oneLeggedDeadLift = ExerciseModel(exerciseName: "One Legged Dead Lift", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.hamstrings.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     var legCurl = ExerciseModel(exerciseName: "Leg Curl", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.hamstrings.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     
     
     
     //Calves
     var calfRaises = ExerciseModel(exerciseName: "Calf Raises", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.calves.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
+    var farmersWalk = ExerciseModel(exerciseName: "Farmers Walk", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.calves.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
+    var dumbbellJumpSquat = ExerciseModel(exerciseName: "Dumbbell Jump Squat", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.calves.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     
     //Cardio
     var running = ExerciseModel(exerciseName: "Running", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.cardio.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.cardio.rawValue)
@@ -97,11 +103,13 @@ class ListOfExercises {
     var rowing = ExerciseModel(exerciseName: "Rowing", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.cardio.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.cardio.rawValue)
     var cycling = ExerciseModel(exerciseName: "Cycling", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.cardio.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.cardio.rawValue)
     var boxJump = ExerciseModel(exerciseName: "Rowing", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.cardio.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.cardio.rawValue)
+    var burpies = ExerciseModel(exerciseName: "Burpies", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.cardio.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.cardio.rawValue)
     
     //Olympic Lifts
     var clean = ExerciseModel(exerciseName: "Clean", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.olympicLifts.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     var cleanAndJerk = ExerciseModel(exerciseName: "Clean and Jerk", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.olympicLifts.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
-    var snatch = ExerciseModel(exerciseName: "Snatch", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.olympicLifts.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
+    var powerSnatch = ExerciseModel(exerciseName: "Power Snatch", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.olympicLifts.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
+    var hangSnatch = ExerciseModel(exerciseName: "Hang Snatch", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0],sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: ExerciseModel.BodyPart.olympicLifts.rawValue, restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.strength.rawValue)
     
     init(){
         //Chest
@@ -120,11 +128,13 @@ class ListOfExercises {
         //Bicep
         listOfExercises.append(bicepCurl)
         listOfExercises.append(hammerCurl)
+        listOfExercises.append(cableCurl)
         
         //Tricep
-        listOfExercises.append(skullCrusher)
         listOfExercises.append(dip)
         listOfExercises.append(tricepExtension)
+        listOfExercises.append(tricepPushdown)
+        listOfExercises.append(skullCrusher)
         
         //Delt
         listOfExercises.append(facePull)
@@ -150,10 +160,14 @@ class ListOfExercises {
         
         //Hamsrings
         listOfExercises.append(deadLift)
+        listOfExercises.append(romanianDeadLift)
+        listOfExercises.append(oneLeggedDeadLift)
         listOfExercises.append(legCurl)
         
         //Calves
         listOfExercises.append(calfRaises)
+        listOfExercises.append(farmersWalk)
+        listOfExercises.append(dumbbellJumpSquat)
         
         //Cardio
         listOfExercises.append(running)
@@ -161,10 +175,13 @@ class ListOfExercises {
         listOfExercises.append(rowing)
         listOfExercises.append(cycling)
         listOfExercises.append(boxJump)
+        listOfExercises.append(burpies)
         
         //Olympic Lifts
+        listOfExercises.append(clean)
         listOfExercises.append(cleanAndJerk)
-        listOfExercises.append(snatch)
+        listOfExercises.append(powerSnatch)
+        listOfExercises.append(hangSnatch)
 
     }
     

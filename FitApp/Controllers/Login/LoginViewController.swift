@@ -35,6 +35,12 @@ class LoginViewController: UIViewController {
         
         
         let authViewController = authUI.authViewController()
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        let myView = UIView(frame: CGRect(x: 0, y: 50, width: screenSize.width , height: screenSize.height*0.4))
+        myView.backgroundColor = UIColor.blue
+        authViewController.view.addSubview(myView)
+        
         present(authViewController, animated: true)
     }
     
@@ -46,7 +52,7 @@ extension LoginViewController: FUIAuthDelegate {
         
         //Error handling
         if let error = error {
-            assertionFailure("Error signing in: \(error.localizedDescription)")
+//            assertionFailure("Error signing in: \(error.localizedDescription)")
             return
         }
         

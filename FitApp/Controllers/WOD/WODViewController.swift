@@ -16,6 +16,8 @@ class WODViewController: UIViewController {
     @IBOutlet weak var newExerciseButton: UIButton!
     @IBOutlet weak var exerciseListTableView: UITableView!
     @IBOutlet var addTimeStepper: UIStepper!
+    @IBOutlet weak var instructionView: UIView!
+    
     
     //Exercise Properties
     var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "", restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.foundational.rawValue)
@@ -267,7 +269,7 @@ class WODViewController: UIViewController {
                     
                     if isAlreadyAdded == false && counter == WorkoutService.workoutArray.count{
                         
-                        var numberOfReps = 0
+                        var numberOfReps = 1
                         
                         if UserMetricsService.userMetricsArray.count != 0{
                             switch UserMetricsService.userMetricsArray[0].goal{
@@ -354,11 +356,12 @@ extension WODViewController: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         
         var returnedValue = 0
-        
+        instructionView.isHidden = false
         if WorkoutService.workoutArray.count != 0{
             for workout in WorkoutService.workoutArray {
                 if CalendarViewController.selectedDateVarString == workout.dateCreated{
                     returnedValue += 1
+                    instructionView.isHidden = true
                 }
             }
         } else {

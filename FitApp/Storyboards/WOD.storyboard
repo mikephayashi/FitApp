@@ -241,6 +241,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ll-9A-D9V">
+                                <rect key="frame" x="16" y="241" width="343" height="184"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Exercise or Program New Workout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnH-IG-DUF">
+                                        <rect key="frame" x="0.0" y="19" width="335" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -251,6 +265,7 @@
                         <outlet property="addTimeStepper" destination="uPj-sv-1nm" id="ipw-cO-CES"/>
                         <outlet property="dateLabel" destination="l3K-KV-z72" id="VcK-o8-v5E"/>
                         <outlet property="exerciseListTableView" destination="ebk-Hg-ew4" id="Tpm-6v-z1Z"/>
+                        <outlet property="instructionView" destination="6ll-9A-D9V" id="eTo-vr-j1A"/>
                         <outlet property="newExerciseButton" destination="Dop-F7-Pw6" id="CUe-gC-0cr"/>
                         <outlet property="resetButton" destination="C1V-56-epV" id="FcJ-9c-o6q"/>
                         <outlet property="restView" destination="Uig-Uq-qY2" id="Z1I-0n-vb9"/>

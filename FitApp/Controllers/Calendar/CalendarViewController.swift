@@ -72,7 +72,9 @@ final class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadingWorkoutLabel()
-        calendarView.setup()
+//        calendarView.setup()
+        calendarView.setupSelection()
+        calendarView.selectDates([CalendarViewController.selectedDateVar])
         
     }
     
@@ -160,9 +162,11 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
         default:
             return .black
         }
+        
     }
     
     func textBackgroundColor(for state: VADayState, day: Date, label: UILabel) -> UIColor {
+
         switch state {
         case .selected:
             return .red
@@ -170,6 +174,7 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
             if WorkoutService.listOfDatesArray.contains(day.toString(dateFormat: "MMM-dd-yyyy")){
                 label.clipsToBounds = true
                 label.layer.cornerRadius = label.frame.height / 2
+                label.textColor = .white
                 return .blue
             } else {
                 return .clear
@@ -202,9 +207,11 @@ extension CalendarViewController: VACalendarViewDelegate {
     //Change to "selectedDates" for multiple selection
     func selectedDate(_ date: Date) {
         CalendarViewController.selectedDateVar = date
+        UserMetricsViewController.datePicker.date = date
         CalendarViewController.selectedDateVarString = date.toString(dateFormat: "MMM-dd-yyyy")
-        loadingWorkoutLabel()
         WorkoutService.deleteSectionSender = "WOD"
+        loadingWorkoutLabel()
+        
     }
     
     

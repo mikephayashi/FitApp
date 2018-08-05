@@ -207,10 +207,13 @@ class WODViewController: UIViewController {
     
     //Timer Actions
     @IBAction func stepperClicked(_ sender: Any) {
+        
         if (sender as AnyObject).value > Double(timerLength) {
             increaseValue()
         } else {
-            decreaseValue()
+            if savedTime > 10{
+                decreaseValue()
+            }
         }
     }
     
@@ -218,14 +221,14 @@ class WODViewController: UIViewController {
         savedTime += 10
         timerLength = savedTime
         timerLabel.text = String(timerLength)
-        timerProgressView.progress = Float(timerLength/60)
+        timerProgressView.progress = Float(timerLength/savedTime)
     }
     
     func decreaseValue(){
         savedTime -= 10
         timerLength = savedTime
         timerLabel.text = String(timerLength)
-        timerProgressView.progress = Float(timerLength/60)
+        timerProgressView.progress = Float(timerLength/savedTime)
     }
     
     //Saving Workout
@@ -498,7 +501,7 @@ extension WODViewController: SetDataCellDelegate{
                 countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WODViewController.timerControl), userInfo: nil, repeats: true)
                 timerIsRunning = true
             }
-
+            
             restView.isHidden = false
             restView.alpha = 0.0
             restView.fadeIn()
@@ -602,33 +605,33 @@ extension WODViewController: ExerciseHeaderCellDelegate{
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-
-
-
+            
+            
+            
             WorkoutService.workoutArray = []
-
+            
             for exercise in storedArray{
-
-
+                
+                
                 WorkoutService.currentSectionNumber = String(exercise.sectionNumber)
-
+                
                 WorkoutService.removeWorkout(exerciseName: exercise.exerciseName, numberOfReps: exercise.numberOfReps, numberOfSets: exercise.numberOfSets, weight: exercise.weight, completed: exercise.completed, sectionNumber: exercise.sectionNumber, alreadyAdded: exercise.alreadyAdded, dateCreated: exercise.dateCreated, bodyPart: exercise.bodyPart, restDays: exercise.restDays, intensity: exercise.intensity, workoutType: exercise.workoutType)
             }
         }
-
-
+        
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-
+            
             var sectionCounter = 0
-
+            
             for exercise in storedArray{
-
+                
                 WorkoutService.currentSectionNumber = String(sectionCounter)
-
+                
                 WorkoutService.writeWorkout(exerciseName: exercise.exerciseName, numberOfReps: exercise.numberOfReps, numberOfSets: exercise.numberOfSets, weight: exercise.weight, completed: exercise.completed, sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: exercise.alreadyAdded, dateCreated: exercise.dateCreated, bodyPart: exercise.bodyPart, restDays: exercise.restDays, intensity: exercise.intensity, workoutType: exercise.workoutType)
-
+                
                 sectionCounter += 1
-
+                
             }
             WODViewController.copyOverData()
         }

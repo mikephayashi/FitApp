@@ -32,7 +32,7 @@ class UserMetricsViewController: UIViewController {
     //Arrays
     var selectedBodyPartArray = [ExerciseModel]()
     var selectionOfWorkoutTypesArray = [String]()
-    var clickedWorkoutsArray = [String]()
+    static var clickedWorkoutsArray = [String]()
     var clickedArray = [Int]()
     
     //Date Picker
@@ -139,18 +139,39 @@ class UserMetricsViewController: UIViewController {
     
     @IBAction func bodyPartSegmentedControlTapped(_ sender: Any) {
         
+        workoutTypeSegmentControl.selectedSegmentIndex = UISegmentedControlNoSegment
+        
         switch bodyPartSegmentedControl.selectedSegmentIndex{
-        case 0: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.chest.rawValue || $0 == ExerciseModel.BodyPart.back.rawValue || $0 == ExerciseModel.BodyPart.bicep.rawValue || $0 == ExerciseModel.BodyPart.tricep.rawValue || $0 == ExerciseModel.BodyPart.delt.rawValue}
-        case 1: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.quads.rawValue || $0 == ExerciseModel.BodyPart.hamstrings.rawValue || $0 == ExerciseModel.BodyPart.calves.rawValue}
+        case 0: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.chest.rawValue || $0 == ExerciseModel.BodyPart.back.rawValue || $0 == ExerciseModel.BodyPart.bicep.rawValue || $0 == ExerciseModel.BodyPart.tricep.rawValue || $0 == ExerciseModel.BodyPart.delt.rawValue || $0 == ExerciseModel.BodyPart.cardio.rawValue}
+        case 1: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.quads.rawValue || $0 == ExerciseModel.BodyPart.hamstrings.rawValue || $0 == ExerciseModel.BodyPart.calves.rawValue || $0 == ExerciseModel.BodyPart.olympicLifts.rawValue || $0 == ExerciseModel.BodyPart.cardio.rawValue}
         case 2: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes
         default: fatalError("Index out of range")
         }
-        clickedWorkoutsArray = selectionOfWorkoutTypesArray
+        UserMetricsViewController.clickedWorkoutsArray = selectionOfWorkoutTypesArray
         clickedArray = []
-        for _ in clickedWorkoutsArray {
+        for _ in UserMetricsViewController.clickedWorkoutsArray {
             clickedArray.append(1)
         }
         exerciseSelectorTableView.reloadData()
+    }
+    
+    @IBAction func workoutTypeSegmentedControlTapped(_ sender: Any) {
+        
+        bodyPartSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment
+        
+        switch workoutTypeSegmentControl.selectedSegmentIndex{
+        case 0: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes
+        case 1: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.cardio.rawValue}
+        case 2: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 != ExerciseModel.BodyPart.cardio.rawValue}
+        default: fatalError("Index out of range")
+        }
+        UserMetricsViewController.clickedWorkoutsArray = selectionOfWorkoutTypesArray
+        clickedArray = []
+        for _ in UserMetricsViewController.clickedWorkoutsArray {
+            clickedArray.append(1)
+        }
+        exerciseSelectorTableView.reloadData()
+        
     }
     
     
@@ -180,7 +201,7 @@ class UserMetricsViewController: UIViewController {
             //            heightTextField.text = String(0)
             //            ageTextField.text = String(0)
             //            genderTextField.text = String(0)
-            bodyPartSegmentedControl.selectedSegmentIndex = 2
+            bodyPartSegmentedControl.selectedSegmentIndex = -1
             workoutTypeSegmentControl.selectedSegmentIndex = 0
             goalSegmentedControl.selectedSegmentIndex = 1
             volumeSegmentedControl.selectedSegmentIndex = 1
@@ -203,18 +224,22 @@ class UserMetricsViewController: UIViewController {
         UserMetricsViewController.datePicker.date = CalendarViewController.selectedDateVar
         
         //Check Boxes
-        switch bodyPartSegmentedControl.selectedSegmentIndex{
-        case 0: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.chest.rawValue || $0 == ExerciseModel.BodyPart.back.rawValue || $0 == ExerciseModel.BodyPart.bicep.rawValue || $0 == ExerciseModel.BodyPart.tricep.rawValue || $0 == ExerciseModel.BodyPart.delt.rawValue}
-        case 1: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.quads.rawValue || $0 == ExerciseModel.BodyPart.hamstrings.rawValue || $0 == ExerciseModel.BodyPart.calves.rawValue}
-        case 2: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes
-        default: fatalError("Index out of range")
+        if bodyPartSegmentedControl.selectedSegmentIndex != -1{
+            switch bodyPartSegmentedControl.selectedSegmentIndex{
+            case 0: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.chest.rawValue || $0 == ExerciseModel.BodyPart.back.rawValue || $0 == ExerciseModel.BodyPart.bicep.rawValue || $0 == ExerciseModel.BodyPart.tricep.rawValue || $0 == ExerciseModel.BodyPart.delt.rawValue || $0 == ExerciseModel.BodyPart.cardio.rawValue}
+            case 1: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.quads.rawValue || $0 == ExerciseModel.BodyPart.hamstrings.rawValue || $0 == ExerciseModel.BodyPart.calves.rawValue || $0 == ExerciseModel.BodyPart.olympicLifts.rawValue || $0 == ExerciseModel.BodyPart.cardio.rawValue}
+            case 2: selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes
+            default: fatalError("Index out of range")
+            }
+        } else {
+            selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes.filter {$0 == ExerciseModel.BodyPart.cardio.rawValue}
         }
-        clickedWorkoutsArray = selectionOfWorkoutTypesArray
+        UserMetricsViewController.clickedWorkoutsArray = selectionOfWorkoutTypesArray
         if UserMetricsService.userMetricsArray.count != 0{
             clickedArray = UserMetricsService.userMetricsArray[0].checked
         } else {
             clickedArray = []
-            for _ in clickedWorkoutsArray {
+            for _ in UserMetricsViewController.clickedWorkoutsArray {
                 clickedArray.append(1)
             }
         }
@@ -283,6 +308,7 @@ extension UserMetricsViewController{
     
     func writeWorkoutProgram(){
         
+        
         WorkoutService.deleteSectionSender = "UserMetrics"
         
         UserMetricsViewController.dateTracker = UserMetricsViewController.datePicker.date
@@ -338,21 +364,21 @@ extension UserMetricsViewController{
             
             //MARK: USER METRICS TO WORKOUT CALCULATOR
             
-            switch self.workoutTypeSegmentControl.selectedSegmentIndex{
-                
-            case 0: self.selectedBodyPartArray = self.listOfExercises
-            case 1: self.selectedBodyPartArray = self.listOfExercises.filter {$0.workoutType == ExerciseModel.WorkoutType.foundational.rawValue}
-            case 2: self.selectedBodyPartArray = self.listOfExercises.filter {$0.workoutType == ExerciseModel.WorkoutType.strength.rawValue}
-            default: fatalError("Out of Range")
-                
-            }
+            //            switch self.workoutTypeSegmentControl.selectedSegmentIndex{
+            //
+            //            case 0: self.selectedBodyPartArray = self.listOfExercises
+            //            case 1: self.selectedBodyPartArray = self.listOfExercises.filter {$0.workoutType == ExerciseModel.WorkoutType.cardio.rawValue}
+            //            case 2: self.selectedBodyPartArray = self.listOfExercises.filter {$0.workoutType == ExerciseModel.WorkoutType.strength.rawValue}
+            //            default: fatalError("Out of Range")
+            //
+            //            }
             
             
-            //FILTER BASED ON SELECTED BODY PARTS ADD HERE:
+            //FILTER BASED ON SELECTED BODY PARTS OR WORKOUT TYPE ADD HERE:
             
             
-            
-            self.selectedBodyPartArray = self.selectedBodyPartArray.filter {self.clickedWorkoutsArray.contains($0.bodyPart)}
+            self.selectedBodyPartArray = self.listOfExercises
+            self.selectedBodyPartArray = self.selectedBodyPartArray.filter {UserMetricsViewController.clickedWorkoutsArray.contains($0.bodyPart)}
             
             
             
@@ -456,7 +482,7 @@ extension UserMetricsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseSelectorCell", for: indexPath) as! ExerciseSelectorCell
-        cell.delegate = self as! ExerciseSelectorCellDelegate
+        cell.delegate = self as ExerciseSelectorCellDelegate
         cell.exerciseName.text = selectionOfWorkoutTypesArray[indexPath.row]
         configureCell(cell: cell, forIndexPath: indexPath)
         return cell
@@ -490,13 +516,17 @@ extension UserMetricsViewController: ExerciseSelectorCellDelegate{
         
         let indexPath = exerciseSelectorTableView.indexPath(for: cell)!
         if checked == true{
-            clickedWorkoutsArray.append(cell.exerciseName.text!)
-            clickedArray[indexPath.row] = 1
+            if UserMetricsViewController.clickedWorkoutsArray.count != 1 || UserMetricsViewController.clickedWorkoutsArray[0] != cell.exerciseName.text!{
+                UserMetricsViewController.clickedWorkoutsArray.append(cell.exerciseName.text!)
+                clickedArray[indexPath.row] = 1
+            }
+            
         } else {
-            clickedWorkoutsArray.remove(at: indexPath.row)
-            clickedArray[indexPath.row] = 0
+            if UserMetricsViewController.clickedWorkoutsArray.count > 1{
+                UserMetricsViewController.clickedWorkoutsArray.remove(at: UserMetricsViewController.clickedWorkoutsArray.index(of: UserMetricsViewController.clickedWorkoutsArray.filter {$0 == cell.exerciseName.text!}[0])!)
+                clickedArray[indexPath.row] = 0
+            }
         }
-        
         
     }
     

@@ -114,6 +114,8 @@ public class Checkbox: UIControl {
         setupDefaults()
     }
     
+    
+    
     private func setupDefaults() {
         backgroundColor = UIColor.init(white: 1, alpha: 0)
         uncheckedBorderColor = tintColor
@@ -242,9 +244,18 @@ public class Checkbox: UIControl {
     
     // MARK: - Touch
     @objc private func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        isChecked = !isChecked
+        
+        
+        if UserMetricsViewController.clickedWorkoutsArray.count == 1{
+            isChecked = true
+        } else {
+            isChecked = !isChecked
+        }
+        
         valueChanged?(isChecked)
         sendActions(for: .valueChanged)
+        
+        
         
         if useHapticFeedback {
             // Trigger impact feedback.

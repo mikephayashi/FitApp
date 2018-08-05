@@ -21,7 +21,8 @@ class ExerciseModel {
         quads = "Quads",
         hamstrings = "Hamstrings",
         calves = "Calves",
-        cardio = "Cardio"
+        cardio = "Cardio",
+        olympicLifts = "Olympic Lifts"
 
     }
     

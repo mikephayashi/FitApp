@@ -82,6 +82,14 @@ public class VACalendarView: UIScrollView {
         scrollToStartDate()
     }
     
+    public func setupSelection(){
+        calendar.deselectAll()
+        directionSetup()
+        calculateContentSize()
+        setupMonths()
+        scrollToStartDate()
+    }
+    
     public func nextMonth() {
         switch scrollDirection {
         case .horizontal:

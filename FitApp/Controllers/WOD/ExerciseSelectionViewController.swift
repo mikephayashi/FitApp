@@ -58,7 +58,7 @@ extension ExerciseSelectionViewController: UITableViewDataSource {
     //TableViews
     func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 10
+        return 11
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -73,6 +73,8 @@ extension ExerciseSelectionViewController: UITableViewDataSource {
         case 6: return "Quads"
         case 7: return "Hamstrings"
         case 8: return "Calves"
+        case 9: return "Cardio"
+        case 10: return "Olympic Lifts"
         default:
             return "??"
         }

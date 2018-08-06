@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,20 +19,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfe-KJ-vPJ" customClass="VAMonthHeaderView" customModule="VACalendar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfe-KJ-vPJ" customClass="VAMonthHeaderView" customModule="VACalendar">
                                 <rect key="frame" x="0.0" y="20" width="375" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="man-AZ-On9" customClass="VAWeekDaysView" customModule="VACalendar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="man-AZ-On9" customClass="VAWeekDaysView" customModule="VACalendar">
                                 <rect key="frame" x="0.0" y="78" width="375" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.29803921568627451" green="0.69411764705882351" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V0A-gI-yFl">
-                                <rect key="frame" x="16" y="369" width="343" height="215"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V0A-gI-yFl">
+                                <rect key="frame" x="16" y="395" width="343" height="189"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="189" id="9jY-L4-v58"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WODTableViewCell" id="SDn-ZD-0eI" customClass="WODTableViewCell" customModule="FitApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
@@ -40,15 +41,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AD7-Zp-tbk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AD7-Zp-tbk">
                                                     <rect key="frame" x="15" y="11" width="313" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="AD7-Zp-tbk" firstAttribute="top" secondItem="EeZ-qt-CiJ" secondAttribute="topMargin" constant="-20" id="0rz-3D-woq"/>
+                                                <constraint firstItem="AD7-Zp-tbk" firstAttribute="centerY" secondItem="EeZ-qt-CiJ" secondAttribute="centerY" id="UH3-rd-hhq"/>
+                                                <constraint firstItem="AD7-Zp-tbk" firstAttribute="centerX" secondItem="EeZ-qt-CiJ" secondAttribute="centerX" id="i72-3S-EaW"/>
+                                                <constraint firstItem="AD7-Zp-tbk" firstAttribute="leading" secondItem="EeZ-qt-CiJ" secondAttribute="leadingMargin" constant="-1" id="ip4-tw-Old"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="workoutLabel" destination="AD7-Zp-tbk" id="AEc-NR-xWg"/>
                                         </connections>
@@ -59,10 +66,23 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sfe-KJ-vPJ" secondAttribute="trailing" id="4pF-Us-55e"/>
+                            <constraint firstItem="sfe-KJ-vPJ" firstAttribute="top" secondItem="ASO-LX-9ix" secondAttribute="top" id="5id-4M-H3q"/>
+                            <constraint firstAttribute="bottom" secondItem="sfe-KJ-vPJ" secondAttribute="bottom" constant="588" id="CoJ-UA-bgN"/>
+                            <constraint firstItem="sfe-KJ-vPJ" firstAttribute="leading" secondItem="man-AZ-On9" secondAttribute="leading" id="EY4-tY-g6k"/>
+                            <constraint firstItem="man-AZ-On9" firstAttribute="centerX" secondItem="V0A-gI-yFl" secondAttribute="centerX" id="Fel-6K-hJ9"/>
+                            <constraint firstItem="V0A-gI-yFl" firstAttribute="leading" secondItem="oog-sY-BfU" secondAttribute="leadingMargin" id="Rs2-u3-mPp"/>
+                            <constraint firstItem="ASO-LX-9ix" firstAttribute="bottom" secondItem="V0A-gI-yFl" secondAttribute="bottom" constant="83" id="Tpy-EO-lGo"/>
+                            <constraint firstItem="sfe-KJ-vPJ" firstAttribute="leading" secondItem="oog-sY-BfU" secondAttribute="leading" id="au2-5U-tzl"/>
+                            <constraint firstAttribute="bottom" secondItem="man-AZ-On9" secondAttribute="bottom" constant="538" id="czp-Vu-wLt"/>
+                            <constraint firstItem="man-AZ-On9" firstAttribute="top" secondItem="ASO-LX-9ix" secondAttribute="top" constant="58" id="fpX-Uf-6ea"/>
+                            <constraint firstItem="sfe-KJ-vPJ" firstAttribute="trailing" secondItem="man-AZ-On9" secondAttribute="trailing" id="mFs-A2-2SA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ASO-LX-9ix"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendar" id="4s9-fJ-N1h"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" selectedImage="calendar" id="4s9-fJ-N1h"/>
                     <connections>
                         <outlet property="calendarTableView" destination="V0A-gI-yFl" id="R6H-wx-s0k"/>
                         <outlet property="monthHeaderView" destination="sfe-KJ-vPJ" id="syY-qo-sBK"/>
@@ -74,4 +94,7 @@
             <point key="canvasLocation" x="-498.39999999999998" y="1225.6371814092954"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calendar" width="30" height="30"/>
+    </resources>
 </document>

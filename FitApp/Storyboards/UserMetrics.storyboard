@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,54 +19,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSW-ix-QHa">
-                                <rect key="frame" x="167" y="365" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Program Workout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKT-YA-QRh">
+                                <rect key="frame" x="84" y="27" width="203" height="34"/>
+                                <fontDescription key="fontDescription" name="PingFangHK-Semibold" family="PingFang HK" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SHK-Bw-2G5">
-                                <rect key="frame" x="1" y="385" width="369" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Max Strength"/>
-                                    <segment title="Functional"/>
-                                    <segment title="Hypertrophy"/>
-                                    <segment title="Endurance"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Body Part" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ds-wm-lCw">
-                                <rect key="frame" x="149" y="121" width="76" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Length of Program" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzq-KT-bbH">
+                                <rect key="frame" x="25" y="70" width="150" height="24"/>
+                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Length of Program" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzq-KT-bbH">
-                                <rect key="frame" x="116" y="36" width="143" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoq-00-UfG">
+                                <rect key="frame" x="115" y="96" width="143" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="bZH-Pq-mwv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoq-00-UfG">
-                                <rect key="frame" x="115" y="87" width="143" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="6" translatesAutoresizingMaskIntoConstraints="NO" id="cWo-Xu-QTf">
-                                <rect key="frame" x="11" y="96" width="347" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="6" translatesAutoresizingMaskIntoConstraints="NO" id="cWo-Xu-QTf">
+                                <rect key="frame" x="11" y="107" width="347" height="30"/>
                                 <connections>
                                     <action selector="weekSliderTapped:" destination="JDi-mV-nu7" eventType="valueChanged" id="Ohz-jK-M2m"/>
                                 </connections>
                             </slider>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oxs-Z3-WKg">
-                                <rect key="frame" x="117" y="58" width="143" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oxs-Z3-WKg">
+                                <rect key="frame" x="205" y="67" width="143" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -73,140 +55,261 @@
                                     <action selector="chooseDateTextFieldTapped:" destination="JDi-mV-nu7" eventType="touchUpInside" id="mJY-6V-X3j"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hB8-vE-WUI">
-                                <rect key="frame" x="157" y="415" width="58" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zj1-LB-bUl">
-                                <rect key="frame" x="1" y="437" width="374" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Maitnence"/>
-                                    <segment title="Min Effective"/>
-                                    <segment title="Max Adaptive"/>
-                                    <segment title="Max Recovery"/>
-                                </segments>
-                                <connections>
-                                    <action selector="volumeSegmentedControlTapped:" destination="JDi-mV-nu7" eventType="valueChanged" id="Sr6-I0-FpR"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsR-vF-Tee">
-                                <rect key="frame" x="115" y="494" width="143" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="KoJ-SN-qLO">
-                                <rect key="frame" x="12" y="506" width="347" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="lengthOfWorkoutSlider:" destination="JDi-mV-nu7" eventType="valueChanged" id="xsg-kk-i9x"/>
-                                </connections>
-                            </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEB-ei-7FP">
-                                <rect key="frame" x="132" y="537" width="112" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.85701714409999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Update!"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEB-ei-7FP">
+                                <rect key="frame" x="146" y="600" width="112" height="55"/>
+                                <color key="backgroundColor" red="0.29803921568627451" green="0.69411764705882351" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                <state key="normal" title="Update!">
+                                    <color key="titleColor" red="0.97254901960784312" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="updateButtonTapped:" destination="JDi-mV-nu7" eventType="touchUpInside" id="MTQ-4a-58I"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Snw-nM-KzI">
-                                <rect key="frame" x="51" y="549" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Cancel"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDg-cg-dE5">
+                                <rect key="frame" x="4" y="144" width="365" height="236"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body Part" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ds-wm-lCw">
+                                        <rect key="frame" x="143" y="8" width="79" height="24"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UWZ-zF-im0">
+                                        <rect key="frame" x="5" y="32" width="354" height="29"/>
+                                        <segments>
+                                            <segment title="Upper"/>
+                                            <segment title="Lower"/>
+                                            <segment title="Total"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="bodyPartSegmentedControlTapped:" destination="JDi-mV-nu7" eventType="valueChanged" id="TgL-wj-p0j"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wlK-Yx-sKR">
+                                        <rect key="frame" x="5" y="84" width="354" height="29"/>
+                                        <segments>
+                                            <segment title="Foundational"/>
+                                            <segment title="Cardio"/>
+                                            <segment title="Strength"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="workoutTypeSegmentedControlTapped:" destination="JDi-mV-nu7" eventType="valueChanged" id="8QT-8I-85T"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vse-Cm-faH">
+                                        <rect key="frame" x="8" y="121" width="343" height="107"/>
+                                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseSelectorCell" id="lq5-hv-KHa" customClass="ExerciseSelectorCell" customModule="FitApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lq5-hv-KHa" id="bXt-A4-RLT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9MU-cf-w26">
+                                                            <rect key="frame" x="23" y="12" width="213" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="213" id="OOQ-tg-vPu"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-dW-o4j" customClass="Checkbox" customModule="FitApp" customModuleProvider="target">
+                                                            <rect key="frame" x="299" y="12" width="32" height="24"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="3JB-dW-o4j" secondAttribute="bottom" constant="-3" id="12D-1C-4fJ"/>
+                                                        <constraint firstItem="9MU-cf-w26" firstAttribute="top" secondItem="3JB-dW-o4j" secondAttribute="top" id="H9B-cE-7VP"/>
+                                                        <constraint firstItem="9MU-cf-w26" firstAttribute="centerY" secondItem="bXt-A4-RLT" secondAttribute="centerY" id="PqF-Gc-hWC"/>
+                                                        <constraint firstItem="3JB-dW-o4j" firstAttribute="leading" secondItem="9MU-cf-w26" secondAttribute="trailing" constant="63" id="gDl-gN-cqn"/>
+                                                        <constraint firstItem="9MU-cf-w26" firstAttribute="bottom" secondItem="bXt-A4-RLT" secondAttribute="bottomMargin" id="i3I-Z8-zjP"/>
+                                                        <constraint firstItem="9MU-cf-w26" firstAttribute="leading" secondItem="bXt-A4-RLT" secondAttribute="leadingMargin" constant="8" id="k8H-OS-DaE"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="3JB-dW-o4j" secondAttribute="trailing" constant="-3" id="yHP-xa-uF3"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <connections>
+                                                    <outlet property="checkBox" destination="3JB-dW-o4j" id="nFT-03-DZc"/>
+                                                    <outlet property="exerciseName" destination="9MU-cf-w26" id="K9k-gA-rGC"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="JDi-mV-nu7" id="fRs-HJ-DLS"/>
+                                        </connections>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdt-Jx-i2V">
+                                        <rect key="frame" x="127" y="64" width="111" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="xIu-1I-ZlK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="xdt-Jx-i2V" firstAttribute="centerX" secondItem="wlK-Yx-sKR" secondAttribute="centerX" id="1Xm-qT-IAj"/>
+                                    <constraint firstItem="wlK-Yx-sKR" firstAttribute="top" secondItem="xdt-Jx-i2V" secondAttribute="bottom" constant="3" id="FzY-ZS-vNL"/>
+                                    <constraint firstItem="UWZ-zF-im0" firstAttribute="centerX" secondItem="WDg-cg-dE5" secondAttribute="centerX" id="Tn6-D5-zwo"/>
+                                    <constraint firstItem="xdt-Jx-i2V" firstAttribute="top" secondItem="UWZ-zF-im0" secondAttribute="bottom" constant="4" id="XaZ-xE-5sW"/>
+                                    <constraint firstItem="UWZ-zF-im0" firstAttribute="top" secondItem="2ds-wm-lCw" secondAttribute="bottom" id="XrV-Qt-Blg"/>
+                                    <constraint firstItem="2ds-wm-lCw" firstAttribute="top" secondItem="WDg-cg-dE5" secondAttribute="topMargin" id="adg-Ht-66V"/>
+                                    <constraint firstItem="Vse-Cm-faH" firstAttribute="leading" secondItem="WDg-cg-dE5" secondAttribute="leadingMargin" id="cfA-bX-y5c"/>
+                                    <constraint firstItem="UWZ-zF-im0" firstAttribute="leading" secondItem="WDg-cg-dE5" secondAttribute="leading" constant="5" id="dNq-dA-B3B"/>
+                                    <constraint firstItem="UWZ-zF-im0" firstAttribute="leading" secondItem="wlK-Yx-sKR" secondAttribute="leading" id="fy2-QT-R9P"/>
+                                    <constraint firstItem="UWZ-zF-im0" firstAttribute="trailing" secondItem="wlK-Yx-sKR" secondAttribute="trailing" id="ivX-eE-Nml"/>
+                                    <constraint firstItem="Vse-Cm-faH" firstAttribute="top" secondItem="wlK-Yx-sKR" secondAttribute="bottom" constant="9" id="pl0-tz-sbK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vse-Cm-faH" secondAttribute="trailing" constant="14" id="s79-oJ-I9D"/>
+                                    <constraint firstItem="2ds-wm-lCw" firstAttribute="centerX" secondItem="UWZ-zF-im0" secondAttribute="centerX" id="ufe-cO-0Cs"/>
+                                    <constraint firstItem="Vse-Cm-faH" firstAttribute="bottom" secondItem="WDg-cg-dE5" secondAttribute="bottomMargin" id="zNG-Ug-kaQ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQT-oA-i1D">
+                                <rect key="frame" x="4" y="396" width="365" height="189"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zj1-LB-bUl">
+                                        <rect key="frame" x="8" y="87" width="349" height="29"/>
+                                        <segments>
+                                            <segment title="Minimal"/>
+                                            <segment title="Recommended"/>
+                                            <segment title="Effective"/>
+                                            <segment title="Max"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="volumeSegmentedControlTapped:" destination="JDi-mV-nu7" eventType="valueChanged" id="Sr6-I0-FpR"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Length of Workout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oI2-kY-hbc">
+                                        <rect key="frame" x="20" y="121" width="149" height="30"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="KoJ-SN-qLO">
+                                        <rect key="frame" x="6" y="159" width="347" height="31"/>
+                                        <connections>
+                                            <action selector="lengthOfWorkoutSlider:" destination="JDi-mV-nu7" eventType="valueChanged" id="xsg-kk-i9x"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsR-vF-Tee">
+                                        <rect key="frame" x="200" y="123" width="143" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="143" id="fJ6-aX-oIE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SHK-Bw-2G5">
+                                        <rect key="frame" x="8" y="31" width="349" height="33"/>
+                                        <segments>
+                                            <segment title="Strength"/>
+                                            <segment title="Functional"/>
+                                            <segment title="Mass"/>
+                                            <segment title="Endurance"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSW-ix-QHa">
+                                        <rect key="frame" x="164" y="8" width="37" height="24"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hB8-vE-WUI">
+                                        <rect key="frame" x="153" y="67" width="59" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="WSX-yV-KcW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="hSW-ix-QHa" firstAttribute="centerX" secondItem="SHK-Bw-2G5" secondAttribute="centerX" id="0VN-1T-u26"/>
+                                    <constraint firstAttribute="bottom" secondItem="KoJ-SN-qLO" secondAttribute="bottom" id="0rb-z1-SMG"/>
+                                    <constraint firstAttribute="trailing" secondItem="KoJ-SN-qLO" secondAttribute="trailing" constant="14" id="5VC-g6-WEy"/>
+                                    <constraint firstItem="oI2-kY-hbc" firstAttribute="top" secondItem="Zj1-LB-bUl" secondAttribute="bottom" constant="6" id="5Xi-Jj-CKK"/>
+                                    <constraint firstItem="SHK-Bw-2G5" firstAttribute="trailing" secondItem="Zj1-LB-bUl" secondAttribute="trailing" id="CsV-0D-0Eg"/>
+                                    <constraint firstItem="SHK-Bw-2G5" firstAttribute="top" secondItem="hQT-oA-i1D" secondAttribute="top" constant="31" id="DMR-Zf-B6M"/>
+                                    <constraint firstItem="hB8-vE-WUI" firstAttribute="centerX" secondItem="Zj1-LB-bUl" secondAttribute="centerX" id="Df7-Nk-Ktg"/>
+                                    <constraint firstItem="Zj1-LB-bUl" firstAttribute="top" secondItem="hB8-vE-WUI" secondAttribute="bottom" constant="3" id="Jrh-77-G01"/>
+                                    <constraint firstItem="oI2-kY-hbc" firstAttribute="centerY" secondItem="fsR-vF-Tee" secondAttribute="centerY" id="LAZ-k6-EYr"/>
+                                    <constraint firstItem="SHK-Bw-2G5" firstAttribute="leading" secondItem="Zj1-LB-bUl" secondAttribute="leading" id="NTF-fD-0F9"/>
+                                    <constraint firstItem="SHK-Bw-2G5" firstAttribute="leading" secondItem="hQT-oA-i1D" secondAttribute="leadingMargin" id="Pzi-Lk-Rfh"/>
+                                    <constraint firstItem="oI2-kY-hbc" firstAttribute="leading" secondItem="hQT-oA-i1D" secondAttribute="leading" constant="20" id="RQj-Za-PND"/>
+                                    <constraint firstItem="Zj1-LB-bUl" firstAttribute="leading" secondItem="KoJ-SN-qLO" secondAttribute="leading" id="S7O-bQ-tVd"/>
+                                    <constraint firstItem="SHK-Bw-2G5" firstAttribute="trailing" secondItem="hQT-oA-i1D" secondAttribute="trailingMargin" id="Wem-vV-hNl"/>
+                                    <constraint firstItem="fsR-vF-Tee" firstAttribute="leading" secondItem="oI2-kY-hbc" secondAttribute="trailing" constant="31" id="Y7h-0D-mb3"/>
+                                    <constraint firstItem="hSW-ix-QHa" firstAttribute="top" secondItem="hQT-oA-i1D" secondAttribute="topMargin" id="coH-dg-sOT"/>
+                                    <constraint firstItem="fsR-vF-Tee" firstAttribute="top" secondItem="Zj1-LB-bUl" secondAttribute="bottom" constant="8" symbolic="YES" id="ghU-hI-vUt"/>
+                                    <constraint firstItem="KoJ-SN-qLO" firstAttribute="top" secondItem="oI2-kY-hbc" secondAttribute="bottom" constant="8" symbolic="YES" id="gzC-RR-PQ1"/>
+                                    <constraint firstItem="hB8-vE-WUI" firstAttribute="top" secondItem="hSW-ix-QHa" secondAttribute="bottom" constant="35" id="h5e-ax-dmD"/>
+                                    <constraint firstItem="hB8-vE-WUI" firstAttribute="top" secondItem="SHK-Bw-2G5" secondAttribute="bottom" constant="4" id="i9D-Au-hbi"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Snw-nM-KzI">
+                                <rect key="frame" x="52" y="609" width="75" height="36"/>
+                                <color key="backgroundColor" red="0.29803921568627451" green="0.69411764705882351" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="3km-gf-wxZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.97254901960784312" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="cancelButtonTapped:" destination="JDi-mV-nu7" eventType="touchUpInside" id="Wb0-CB-nf5"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UWZ-zF-im0">
-                                <rect key="frame" x="0.0" y="150" width="369" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Upper"/>
-                                    <segment title="Lower"/>
-                                    <segment title="Total"/>
-                                </segments>
-                                <connections>
-                                    <action selector="bodyPartSegmentedControlTapped:" destination="JDi-mV-nu7" eventType="valueChanged" id="TgL-wj-p0j"/>
-                                </connections>
-                            </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vse-Cm-faH">
-                                <rect key="frame" x="14" y="262" width="343" height="102"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseSelectorCell" id="lq5-hv-KHa" customClass="ExerciseSelectorCell" customModule="FitApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lq5-hv-KHa" id="bXt-A4-RLT">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9MU-cf-w26">
-                                                    <rect key="frame" x="28" y="12" width="213" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-dW-o4j" customClass="Checkbox" customModule="FitApp" customModuleProvider="target">
-                                                    <rect key="frame" x="302" y="11" width="26" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="checkBox" destination="3JB-dW-o4j" id="nFT-03-DZc"/>
-                                            <outlet property="exerciseName" destination="9MU-cf-w26" id="K9k-gA-rGC"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="JDi-mV-nu7" id="fRs-HJ-DLS"/>
-                                </connections>
-                            </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wlK-Yx-sKR">
-                                <rect key="frame" x="1" y="215" width="375" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Foundational"/>
-                                    <segment title="Cardio"/>
-                                    <segment title="Strength"/>
-                                </segments>
-                                <connections>
-                                    <action selector="workoutTypeSegmentedControlTapped:" destination="JDi-mV-nu7" eventType="valueChanged" id="8QT-8I-85T"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdt-Jx-i2V">
-                                <rect key="frame" x="132" y="186" width="107" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Length of Workout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oI2-kY-hbc">
-                                <rect key="frame" x="117" y="473" width="142" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zKT-YA-QRh" firstAttribute="top" secondItem="jgq-dh-b05" secondAttribute="top" constant="7" id="0NG-m6-Gig"/>
+                            <constraint firstItem="jgq-dh-b05" firstAttribute="trailing" secondItem="cWo-Xu-QTf" secondAttribute="trailing" constant="19" id="3pG-L9-7MB"/>
+                            <constraint firstItem="cWo-Xu-QTf" firstAttribute="top" secondItem="Oxs-Z3-WKg" secondAttribute="bottom" constant="10" id="5yu-cs-MNF"/>
+                            <constraint firstItem="Snw-nM-KzI" firstAttribute="leading" secondItem="jgq-dh-b05" secondAttribute="leading" constant="52" id="7Up-Mq-L6d"/>
+                            <constraint firstItem="jgq-dh-b05" firstAttribute="trailing" secondItem="WDg-cg-dE5" secondAttribute="trailing" constant="6" id="DbI-Nm-9ln"/>
+                            <constraint firstItem="hQT-oA-i1D" firstAttribute="top" secondItem="WDg-cg-dE5" secondAttribute="bottom" constant="16" id="Ehu-Xw-gve"/>
+                            <constraint firstItem="Wzq-KT-bbH" firstAttribute="leading" secondItem="jgq-dh-b05" secondAttribute="leading" constant="25" id="Epx-a2-0dF"/>
+                            <constraint firstItem="IEB-ei-7FP" firstAttribute="top" secondItem="hQT-oA-i1D" secondAttribute="bottom" constant="15" id="GeD-Lz-ZjB"/>
+                            <constraint firstItem="WDg-cg-dE5" firstAttribute="leading" secondItem="hQT-oA-i1D" secondAttribute="leading" id="LRI-V7-dsG"/>
+                            <constraint firstItem="xoq-00-UfG" firstAttribute="leading" secondItem="jgq-dh-b05" secondAttribute="leading" constant="115" id="Liy-FS-Wvs"/>
+                            <constraint firstItem="xoq-00-UfG" firstAttribute="trailing" secondItem="IEB-ei-7FP" secondAttribute="trailing" id="MXQ-XV-Yw1"/>
+                            <constraint firstItem="WDg-cg-dE5" firstAttribute="leading" secondItem="jgq-dh-b05" secondAttribute="leading" constant="4" id="NH5-oJ-PfO"/>
+                            <constraint firstItem="Oxs-Z3-WKg" firstAttribute="leading" secondItem="Wzq-KT-bbH" secondAttribute="trailing" constant="30" id="Y0h-KX-vw0"/>
+                            <constraint firstItem="WDg-cg-dE5" firstAttribute="top" secondItem="cWo-Xu-QTf" secondAttribute="bottom" constant="8" symbolic="YES" id="Y3c-sN-t8o"/>
+                            <constraint firstItem="xoq-00-UfG" firstAttribute="centerX" secondItem="WDg-cg-dE5" secondAttribute="centerX" id="Yfa-0Z-EP1"/>
+                            <constraint firstItem="xoq-00-UfG" firstAttribute="top" secondItem="Wzq-KT-bbH" secondAttribute="bottom" constant="2" id="Yhi-fe-kju"/>
+                            <constraint firstItem="cWo-Xu-QTf" firstAttribute="leading" secondItem="jgq-dh-b05" secondAttribute="leading" constant="13" id="b6X-C6-0Ow"/>
+                            <constraint firstItem="jgq-dh-b05" firstAttribute="trailing" secondItem="Oxs-Z3-WKg" secondAttribute="trailing" constant="27" id="ftA-VC-lAe"/>
+                            <constraint firstItem="Oxs-Z3-WKg" firstAttribute="top" secondItem="zKT-YA-QRh" secondAttribute="bottom" constant="6" id="gTG-F5-s39"/>
+                            <constraint firstItem="Wzq-KT-bbH" firstAttribute="top" secondItem="zKT-YA-QRh" secondAttribute="bottom" constant="9" id="goZ-CF-yUS"/>
+                            <constraint firstItem="jgq-dh-b05" firstAttribute="bottom" secondItem="IEB-ei-7FP" secondAttribute="bottom" constant="12" id="hiR-Ip-DxR"/>
+                            <constraint firstItem="Snw-nM-KzI" firstAttribute="top" secondItem="hQT-oA-i1D" secondAttribute="bottom" constant="24" id="jVu-ye-y76"/>
+                            <constraint firstItem="zKT-YA-QRh" firstAttribute="leading" secondItem="jgq-dh-b05" secondAttribute="leading" constant="84" id="jqH-1m-2IW"/>
+                            <constraint firstItem="Wzq-KT-bbH" firstAttribute="centerY" secondItem="Oxs-Z3-WKg" secondAttribute="centerY" id="lgw-LL-sL0"/>
+                            <constraint firstItem="WDg-cg-dE5" firstAttribute="trailing" secondItem="hQT-oA-i1D" secondAttribute="trailing" id="nLt-wg-sWy"/>
+                            <constraint firstItem="IEB-ei-7FP" firstAttribute="leading" secondItem="Snw-nM-KzI" secondAttribute="trailing" constant="19" id="qBH-rh-ybC"/>
+                            <constraint firstItem="WDg-cg-dE5" firstAttribute="top" secondItem="xoq-00-UfG" secondAttribute="bottom" constant="27" id="sj1-xU-zxu"/>
+                            <constraint firstItem="Snw-nM-KzI" firstAttribute="centerY" secondItem="IEB-ei-7FP" secondAttribute="centerY" constant="-0.5" id="wB3-XK-0Kn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jgq-dh-b05"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Program Workout" id="4v4-2t-Jbl"/>
+                    <tabBarItem key="tabBarItem" title="Program Workout" image="tshirt" selectedImage="tshirt" id="4v4-2t-Jbl"/>
                     <connections>
                         <outlet property="ageTextField" destination="sDp-gd-rf8" id="0Py-Fq-iLD"/>
                         <outlet property="bodyPartSegmentedControl" destination="UWZ-zF-im0" id="ta5-qv-T0R"/>
+                        <outlet property="bottomView" destination="hQT-oA-i1D" id="RIs-a7-qsx"/>
+                        <outlet property="cancelButton" destination="Snw-nM-KzI" id="3n7-Df-QaI"/>
                         <outlet property="exerciseSelectorTableView" destination="Vse-Cm-faH" id="jKl-F4-EsQ"/>
                         <outlet property="genderTextField" destination="fM6-WD-H6x" id="bjC-8m-R6z"/>
                         <outlet property="goalSegmentedControl" destination="SHK-Bw-2G5" id="t7G-hG-ghQ"/>
@@ -214,6 +317,7 @@
                         <outlet property="lengthOfWorkoutLabel" destination="fsR-vF-Tee" id="Tpz-AZ-uaV"/>
                         <outlet property="lengthOfWorkoutSlider" destination="KoJ-SN-qLO" id="JjS-sT-QGn"/>
                         <outlet property="numberOfWeeksLabel" destination="xoq-00-UfG" id="JUa-8o-ObV"/>
+                        <outlet property="topView" destination="WDg-cg-dE5" id="peZ-Br-7lb"/>
                         <outlet property="txtDatePicker" destination="Oxs-Z3-WKg" id="dIz-FN-Yuq"/>
                         <outlet property="updateButton" destination="IEB-ei-7FP" id="5Jy-nw-6eP"/>
                         <outlet property="volumeSegmentedControl" destination="Zj1-LB-bUl" id="rlI-9C-Rmv"/>
@@ -315,7 +419,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zx-8t-Ufh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-366" y="1085"/>
+            <point key="canvasLocation" x="-367.19999999999999" y="1084.4077961019491"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tshirt" width="30" height="30"/>
+    </resources>
 </document>

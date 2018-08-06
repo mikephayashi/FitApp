@@ -18,6 +18,9 @@ class ExerciseHeaderCell: UITableViewCell{
     
     weak var delegate: ExerciseHeaderCellDelegate?
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    
     
     @IBAction func deleteExerciseButtonTapped(_ sender: Any) {
         guard let cell = (sender as AnyObject).superview??.superview as? ExerciseHeaderCell else { return}

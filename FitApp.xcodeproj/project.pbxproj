@@ -10,6 +10,7 @@
 		1E0B887D210A9A2A000FAB3F /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B887C210A9A2A000FAB3F /* MGPhotoHelper.swift */; };
 		1E0B8881210B92A4000FAB3F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B8880210B92A4000FAB3F /* Date.swift */; };
 		1E0B8883210BAC51000FAB3F /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B8882210BAC51000FAB3F /* WorkoutService.swift */; };
+		1E10408B2118E25800009094 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E10408A2118E25800009094 /* Color.swift */; };
 		1E106CFD210A2B270024B513 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E106CFC210A2B270024B513 /* Login.storyboard */; };
 		1E106D00210A2B700024B513 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106CFF210A2B700024B513 /* LoginViewController.swift */; };
 		1E106D02210A31520024B513 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E106D01210A31520024B513 /* User.swift */; };
@@ -56,6 +57,7 @@
 		1E0B887C210A9A2A000FAB3F /* MGPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
 		1E0B8880210B92A4000FAB3F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1E0B8882210BAC51000FAB3F /* WorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
+		1E10408A2118E25800009094 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1E106CFC210A2B270024B513 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		1E106CFF210A2B700024B513 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E106D01210A31520024B513 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				1E0B8880210B92A4000FAB3F /* Date.swift */,
 				1E13EF3221150B89002D2958 /* Filter.swift */,
 				1E13EF3421152C43002D2958 /* Animations.swift */,
+				1E10408A2118E25800009094 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */,
 				1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */,
 				1E14020F2109669800A539BA /* ProgressView.swift in Sources */,
+				1E10408B2118E25800009094 /* Color.swift in Sources */,
 				1E106D15210A693D0024B513 /* UserMetricsService.swift in Sources */,
 				1E9A7BD4210695E800B2F3FC /* ExerciseSelectionViewController.swift in Sources */,
 				1E106D09210A379D0024B513 /* UserService.swift in Sources */,
@@ -692,7 +696,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.HayashiMichael.FitApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HayashiMichael.Pumped;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -711,7 +715,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.HayashiMichael.FitApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HayashiMichael.Pumped;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

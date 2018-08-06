@@ -17,7 +17,8 @@ class WODViewController: UIViewController {
     @IBOutlet weak var exerciseListTableView: UITableView!
     @IBOutlet var addTimeStepper: UIStepper!
     @IBOutlet weak var instructionView: UIView!
-    
+    @IBOutlet weak var playButton: UIButton!
+
     
     //Exercise Properties
     var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "", restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.foundational.rawValue)
@@ -70,10 +71,11 @@ class WODViewController: UIViewController {
         timerProgressView.progress = Float(timerLength/savedTime)
         timerProgressView.barHeight = self.view.frame.height*0.005
         
-        
+        formatViews()
         configureTableView()
         
         restView.isHidden = true
+        timerProgressView.barHeight = self.view.frame.height*0.02
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             var exerciseArray: IndexSet = []
@@ -89,6 +91,7 @@ class WODViewController: UIViewController {
             
             self.exerciseListTableView.insertSections(exerciseArray, with: .fade)
             WODViewController.copyOverData()
+            self.dateLabel.text = CalendarViewController.selectedDateVarString
         }
         
     }
@@ -96,6 +99,7 @@ class WODViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         exerciseListTableView.reloadData()
+        dateLabel.text = CalendarViewController.selectedDateVarString
         
         for exercise in WorkoutService.workoutArray{
             
@@ -139,7 +143,7 @@ class WODViewController: UIViewController {
             
             
         }
-        dateLabel.text = CalendarViewController.selectedDateVarString
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -178,20 +182,53 @@ class WODViewController: UIViewController {
         
     }
     
+    func formatViews(){
+        
+
+        newExerciseButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        newExerciseButton.layer.shadowOpacity = 0.05
+        newExerciseButton.layer.cornerRadius = 8
+        newExerciseButton.layer.shadowRadius = 3
+        newExerciseButton.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+        newExerciseButton.layer.masksToBounds = true
+        newExerciseButton.layer.borderWidth = 0
+        newExerciseButton.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
+        
+        instructionView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        instructionView.layer.shadowOpacity = 0.05
+        instructionView.layer.cornerRadius = 8
+        instructionView.layer.shadowRadius = 3
+        instructionView.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+        instructionView.layer.masksToBounds = true
+        instructionView.layer.borderWidth = 0
+        instructionView.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
+        
+        restView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        restView.layer.shadowOpacity = 0.05
+        restView.layer.cornerRadius = 8
+        restView.layer.shadowRadius = 3
+        restView.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+        restView.layer.masksToBounds = true
+        restView.layer.borderWidth = 0
+        restView.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
+        
+    }
+    
     //Stopwatch
     @IBAction func toggleTimerTapped(_ sender: Any) {
         
+
         if timerIsRunning == false{
-            
+            playButton.setTitle("Pause", for: .normal)
             countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WODViewController.timerControl), userInfo: nil, repeats: true)
             timerIsRunning = true
         } else {
+            playButton.setTitle("Play", for: .normal)
             countDownTimer.invalidate()
             timerIsRunning = false
         }
         
     }
-    
     
     @IBAction func resetButtonTapped(_ sender: Any) {
         timerLength = savedTime
@@ -204,7 +241,7 @@ class WODViewController: UIViewController {
         
         if timerLength > 0{
             timerLength -= 1
-            timerLabel.text = String(timerLength)
+            timerLabel.text = "\(timerLength)"
             timerProgressView.progress = Float(Double(timerLength)/Double(savedTime))
         }
     }
@@ -411,6 +448,14 @@ extension WODViewController: UITableViewDataSource{
                     case 0:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseHeaderCell", for: indexPath) as! ExerciseHeaderCell
                         cell.delegate = self as ExerciseHeaderCellDelegate
+                        cell.deleteButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+                        cell.deleteButton.layer.shadowOpacity = 0.05
+                        cell.deleteButton.layer.cornerRadius = 8
+                        cell.deleteButton.layer.shadowRadius = 3
+                        cell.deleteButton.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+                        cell.deleteButton.layer.masksToBounds = true
+                        cell.deleteButton.layer.borderWidth = 0
+                        cell.deleteButton.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
                         returnedValue = cell
                     case 1:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseLabelsCell", for: indexPath) as! ExerciseLabelsCell
@@ -427,6 +472,14 @@ extension WODViewController: UITableViewDataSource{
                         cell.checkBox.checkmarkColor = .blue
                         cell.checkBox.checkedBorderColor = .blue
                         cell.checkBox.uncheckedBorderColor = .black
+                        cell.deleteButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+                        cell.deleteButton.layer.shadowOpacity = 0.05
+                        cell.deleteButton.layer.cornerRadius = 8
+                        cell.deleteButton.layer.shadowRadius = 3
+                        cell.deleteButton.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+                        cell.deleteButton.layer.masksToBounds = true
+                        cell.deleteButton.layer.borderWidth = 0
+                        cell.deleteButton.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
                         if exercise.completed[indexPath.row-2] == 1{
                             cell.checkBox.isChecked = true
                         } else {
@@ -437,6 +490,14 @@ extension WODViewController: UITableViewDataSource{
                     case exercise.numberOfSets[0]+2:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "AddingSetCell", for: indexPath) as! AddingSetCell
                         cell.delegate = self as AddingSetCellDelegate
+                        cell.addingSetButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+                        cell.addingSetButton.layer.shadowOpacity = 0.05
+                        cell.addingSetButton.layer.cornerRadius = 8
+                        cell.addingSetButton.layer.shadowRadius = 3
+                        cell.addingSetButton.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+                        cell.addingSetButton.layer.masksToBounds = true
+                        cell.addingSetButton.layer.borderWidth = 0
+                        cell.addingSetButton.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
                         returnedValue = cell
                     default:
                         fatalError("Error unexpected Indexpath.row \(indexPath.row)")
@@ -650,7 +711,6 @@ extension WODViewController: ExerciseHeaderCellDelegate{
             if exercise.dateCreated == CalendarViewController.selectedDateVarString && exercise.sectionNumber != indexPath.section{
                 storedArray.append(exercise)
             }
-            
             
             
             

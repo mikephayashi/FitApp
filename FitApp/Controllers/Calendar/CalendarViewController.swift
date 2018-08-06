@@ -50,6 +50,13 @@ final class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //remove separators for empty cells
+        calendarTableView.tableFooterView = UIView()
+        //remove separators from cells
+        calendarTableView.separatorStyle = .none
+        //remove scroll
+        calendarTableView.showsVerticalScrollIndicator = false
+        
         let calendar = VACalendar(calendar: defaultCalendar)
         calendarView = VACalendarView(frame: .zero, calendar: calendar)
         calendarView.showDaysOut = true
@@ -159,7 +166,7 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
 
         switch state {
         case .selected:
-            return .red
+            return UIColor(rgb: 0x4CB1FF)
         default:
             if WorkoutService.listOfDatesArray.contains(day.toString(dateFormat: "MMM-dd-yyyy")){
                 label.clipsToBounds = true

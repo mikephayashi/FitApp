@@ -28,6 +28,10 @@ class UserMetricsViewController: UIViewController {
     @IBOutlet weak var lengthOfWorkoutSlider: UISlider!
     @IBOutlet weak var exerciseSelectorTableView: UITableView!
     @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var bottomView: UIView!
+    
     
     
     //Arrays
@@ -68,8 +72,16 @@ class UserMetricsViewController: UIViewController {
         selectionOfWorkoutTypesArray = ListOfExercises.listOfExeciseTypes
         
         
+        //remove separators for empty cells
+        exerciseSelectorTableView.tableFooterView = UIView()
+        //remove separators from cells
+        exerciseSelectorTableView.separatorStyle = .none
+        //remove scroll
+        exerciseSelectorTableView.showsVerticalScrollIndicator = false
         formatInputFields()
         WODViewController.copyOverData()
+        
+        formatViews()
         
         
     }
@@ -184,6 +196,46 @@ class UserMetricsViewController: UIViewController {
         
     }
     
+    //Format
+    func formatViews(){
+        
+        updateButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        updateButton.layer.shadowOpacity = 0.05
+        updateButton.layer.cornerRadius = 8
+        updateButton.layer.shadowRadius = 3
+        updateButton.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+        updateButton.layer.masksToBounds = true
+        updateButton.layer.borderWidth = 0
+        updateButton.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
+        
+        cancelButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cancelButton.layer.shadowOpacity = 0.05
+        cancelButton.layer.cornerRadius = 8
+        cancelButton.layer.shadowRadius = 3
+        cancelButton.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+        cancelButton.layer.masksToBounds = true
+        cancelButton.layer.borderWidth = 0
+        cancelButton.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
+        
+        topView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        topView.layer.shadowOpacity = 0.05
+        topView.layer.cornerRadius = 8
+        topView.layer.shadowRadius = 3
+        topView.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+        topView.layer.masksToBounds = true
+        topView.layer.borderWidth = 1
+        topView.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
+        
+        bottomView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        bottomView.layer.shadowOpacity = 0.05
+        bottomView.layer.cornerRadius = 8
+        bottomView.layer.shadowRadius = 3
+        bottomView.layer.shadowColor = UIColor(rgb: 0x0090FF).cgColor
+        bottomView.layer.masksToBounds = true
+        bottomView.layer.borderWidth = 1
+        bottomView.layer.borderColor = UIColor(rgb: 0x00487F).cgColor
+        
+    }
     
     //Dismiss Keyboard
     @objc func dismissKeyboard() {

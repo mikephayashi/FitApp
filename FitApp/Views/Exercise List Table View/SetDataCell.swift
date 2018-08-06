@@ -25,6 +25,8 @@ class SetDataCell: UITableViewCell{
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var numberOfRepsTextField: UITextField!
     @IBOutlet weak var checkBox: Checkbox!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     
     
      weak var delegate: SetDataCellDelegate?

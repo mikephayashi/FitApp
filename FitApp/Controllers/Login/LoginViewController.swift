@@ -41,11 +41,11 @@ class LoginViewController: UIViewController {
         
         let authViewController = authUI.authViewController()
         
-        let screenSize: CGRect = UIScreen.main.bounds
-        let myView = UIImageView(image: UIImage(named: "LoginPhoto")!)
-        myView.contentMode = .scaleAspectFit
-        myView.frame = CGRect(x: 0, y: screenSize.height*0.17, width: screenSize.width , height: screenSize.height*0.4)
-        authViewController.view.addSubview(myView)
+//        let screenSize: CGRect = UIScreen.main.bounds
+//        let myView = UIImageView(image: UIImage(named: "LoginPhoto")!)
+//        myView.contentMode = .scaleAspectFit
+//        myView.frame = CGRect(x: 0, y: screenSize.height*0.17, width: screenSize.width , height: screenSize.height*0.4)
+//        authViewController.view.addSubview(myView)
         
         present(authViewController, animated: true)
     }

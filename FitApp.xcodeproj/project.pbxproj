@@ -42,7 +42,6 @@
 		1E5CA0DA210915E000A252F0 /* UserMetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0D9210915E000A252F0 /* UserMetricsViewController.swift */; };
 		1E5CA0DF21094E8F00A252F0 /* NutriHealth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E5CA0DE21094E8F00A252F0 /* NutriHealth.storyboard */; };
 		1E5CA0E321094F4600A252F0 /* NutriHealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0E221094F4600A252F0 /* NutriHealthViewController.swift */; };
-		1E5CA0E72109577000A252F0 /* ExerciseNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5CA0E62109577000A252F0 /* ExerciseNoteCell.swift */; };
 		1E8A08B321066A62000B40BF /* ExerciseHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */; };
 		1E8A08B52106745C000B40BF /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B42106745C000B40BF /* ExerciseModel.swift */; };
 		1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A08B6210677AB000B40BF /* AddingSetCell.swift */; };
@@ -91,7 +90,6 @@
 		1E5CA0D9210915E000A252F0 /* UserMetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMetricsViewController.swift; sourceTree = "<group>"; };
 		1E5CA0DE21094E8F00A252F0 /* NutriHealth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NutriHealth.storyboard; sourceTree = "<group>"; };
 		1E5CA0E221094F4600A252F0 /* NutriHealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriHealthViewController.swift; sourceTree = "<group>"; };
-		1E5CA0E62109577000A252F0 /* ExerciseNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNoteCell.swift; sourceTree = "<group>"; };
 		1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHeaderCell.swift; sourceTree = "<group>"; };
 		1E8A08B42106745C000B40BF /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		1E8A08B6210677AB000B40BF /* AddingSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingSetCell.swift; sourceTree = "<group>"; };
@@ -312,7 +310,6 @@
 		1E8A08B8210677C2000B40BF /* Exercise List Table View */ = {
 			isa = PBXGroup;
 			children = (
-				1E5CA0E62109577000A252F0 /* ExerciseNoteCell.swift */,
 				1E8A08B221066A62000B40BF /* ExerciseHeaderCell.swift */,
 				1E1E055821064B32009E6666 /* ExerciseLabelCell.swift */,
 				1E9A7BD12106945200B2F3FC /* SetDataCell.swift */,
@@ -539,7 +536,6 @@
 				1E1E055921064B32009E6666 /* ExerciseLabelCell.swift in Sources */,
 				1E13EF312114E5DB002D2958 /* ExerciseSelectorCell.swift in Sources */,
 				1E1E05452106442E009E6666 /* FitApp.xcdatamodeld in Sources */,
-				1E5CA0E72109577000A252F0 /* ExerciseNoteCell.swift in Sources */,
 				1E1E053D2106442E009E6666 /* AppDelegate.swift in Sources */,
 				1E8A08B7210677AB000B40BF /* AddingSetCell.swift in Sources */,
 				1E0B8881210B92A4000FAB3F /* Date.swift in Sources */,

@@ -32,12 +32,18 @@ class SetDataCell: UITableViewCell{
      weak var delegate: SetDataCellDelegate?
     
     @IBAction func weightTextFieldTapped(_ sender: Any) {
+        if weightTextField.text == "" {
+            weightTextField.text = "0"
+        }
         guard let cell = (sender as AnyObject).superview??.superview as? SetDataCell else { return}
         delegate?.savingWeight(cell: cell, weight: Int(weightTextField.text!)!)
         
     }
     
     @IBAction func numberOfRepsTextFieldTapped(_ sender: Any) {
+        if numberOfRepsTextField.text == "" {
+            numberOfRepsTextField.text = "1"
+        }
         guard let cell = (sender as AnyObject).superview??.superview as? SetDataCell else { return}
         delegate?.reloadingNumberOfReps(cell: cell, numberOfReps: Int(numberOfRepsTextField.text!)!)
     }

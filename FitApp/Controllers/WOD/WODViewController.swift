@@ -18,7 +18,7 @@ class WODViewController: UIViewController {
     @IBOutlet var addTimeStepper: UIStepper!
     @IBOutlet weak var instructionView: UIView!
     @IBOutlet weak var playButton: UIButton!
-
+    
     
     //Exercise Properties
     var selectedExercise = ExerciseModel(exerciseName: "", numberOfReps: [1], numberOfSets: [1], weight: [0], completed: [0], sectionNumber: 0, alreadyAdded: false, dateCreated: "", bodyPart: "", restDays: 2, intensity: ExerciseModel.Intensity.primary.rawValue, workoutType: ExerciseModel.WorkoutType.foundational.rawValue)
@@ -184,7 +184,7 @@ class WODViewController: UIViewController {
     
     func formatViews(){
         
-
+        
         newExerciseButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         newExerciseButton.layer.shadowOpacity = 0.05
         newExerciseButton.layer.cornerRadius = 8
@@ -217,7 +217,7 @@ class WODViewController: UIViewController {
     //Stopwatch
     @IBAction func toggleTimerTapped(_ sender: Any) {
         
-
+        
         if timerIsRunning == false{
             playButton.setTitle("Pause", for: .normal)
             countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WODViewController.timerControl), userInfo: nil, repeats: true)
@@ -650,36 +650,42 @@ extension WODViewController: AddingSetCellDelegate{
                 var numberOfReps = 1
                 
                 if UserMetricsService.userMetricsArray.count != 0{
-                    switch UserMetricsService.userMetricsArray[0].goal{
-                    case 0: numberOfReps = self.selectedExercise.numberOfReps[0]
-                    case 1: numberOfReps = self.selectedExercise.numberOfReps[1]
-                    case 2: numberOfReps = self.selectedExercise.numberOfReps[2]
-                    case 3: numberOfReps = self.selectedExercise.numberOfReps[3]
-                    default: fatalError("Out of Range")
+                    if selectedExercise.numberOfSets.count == 1{
+                        numberOfReps = selectedExercise.numberOfReps[0]
+                    } else {
+                        switch UserMetricsService.userMetricsArray[0].goal{
+                        case 0: numberOfReps = self.selectedExercise.numberOfReps[0]
+                        case 1: numberOfReps = self.selectedExercise.numberOfReps[1]
+                        case 2: numberOfReps = self.selectedExercise.numberOfReps[2]
+                        case 3: numberOfReps = self.selectedExercise.numberOfReps[3]
+                        default: fatalError("Out of Range")
+                        }
                     }
+                    
+                    exercise.numberOfSets[0] += 1
+                    exercise.numberOfReps.append(numberOfReps)
+                    exercise.weight.append(0)
+                    exercise.completed.append(0)
+                    
+                    
+                    exerciseListTableView.insertRows(at: [IndexPath(row: exercise.numberOfSets[0]+1, section: exercise.sectionNumber)], with: .fade)
+                    
+                    saveWorkout()
+                    
+                    
                 }
-                
-                exercise.numberOfSets[0] += 1
-                exercise.numberOfReps.append(numberOfReps)
-                exercise.weight.append(0)
-                exercise.completed.append(0)
-                
-                
-                exerciseListTableView.insertRows(at: [IndexPath(row: exercise.numberOfSets[0]+1, section: exercise.sectionNumber)], with: .fade)
-                
-                saveWorkout()
-                
-                
             }
         }
+        
     }
-    
 }
 
 //Deleting Exercise
 extension WODViewController: ExerciseHeaderCellDelegate{
     
     func deleteExercise(cell: ExerciseHeaderCell) {
+        
+        cell.deleteButton.isUserInteractionEnabled = false
         
         var storedArray = [ExerciseModel]()
         
@@ -761,7 +767,9 @@ extension WODViewController: ExerciseHeaderCellDelegate{
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            self.exerciseListTableView.reloadData()}
+            self.exerciseListTableView.reloadData()
+            cell.deleteButton.isUserInteractionEnabled = true
+        }
     }
 }
 

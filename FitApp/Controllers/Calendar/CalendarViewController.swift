@@ -67,12 +67,12 @@ final class CalendarViewController: UIViewController {
         calendarView.calendarDelegate = self
         calendarView.scrollDirection = .horizontal
         //Bottom Dots
-//        calendarView.setSupplementaries([
-//            (Date().addingTimeInterval(-(60 * 60 * 70)), [VADaySupplementary.bottomDots([.red, .magenta])]),
-//            (Date().addingTimeInterval((60 * 60 * 110)), [VADaySupplementary.bottomDots([.red])]),
-//            (Date().addingTimeInterval((60 * 60 * 370)), [VADaySupplementary.bottomDots([.blue, .darkGray])]),
-//            (Date().addingTimeInterval((60 * 60 * 430)), [VADaySupplementary.bottomDots([.orange, .purple, .cyan])])
-//            ])
+        //        calendarView.setSupplementaries([
+        //            (Date().addingTimeInterval(-(60 * 60 * 70)), [VADaySupplementary.bottomDots([.red, .magenta])]),
+        //            (Date().addingTimeInterval((60 * 60 * 110)), [VADaySupplementary.bottomDots([.red])]),
+        //            (Date().addingTimeInterval((60 * 60 * 370)), [VADaySupplementary.bottomDots([.blue, .darkGray])]),
+        //            (Date().addingTimeInterval((60 * 60 * 430)), [VADaySupplementary.bottomDots([.orange, .purple, .cyan])])
+        //            ])
         calendarView.setSupplementaries([
             (Date(), [VADaySupplementary.bottomDots([.red])])
             ])
@@ -81,7 +81,7 @@ final class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        calendarView.setup()
+        //        calendarView.setup()
         calendarView.setupSelection()
         calendarView.selectDates([CalendarViewController.selectedDateVar])
         calendarTableView.reloadData()
@@ -155,7 +155,7 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
         case .selected:
             return .white
         case .unavailable:
-            return .lightGray
+            return .clear
         default:
             return .black
         }
@@ -163,26 +163,24 @@ extension CalendarViewController: VADayViewAppearanceDelegate {
     }
     
     func textBackgroundColor(for state: VADayState, day: Date, label: UILabel) -> UIColor {
-
+        
         switch state {
         case .selected:
             return UIColor(rgb: 0x4CB1FF)
         default:
+            var returnedColor = UIColor.clear
             if WorkoutService.listOfDatesArray.contains(day.toString(dateFormat: "MMM-dd-yyyy")){
+                if state == .available{
                 label.clipsToBounds = true
                 label.layer.cornerRadius = label.frame.height / 2
                 label.textColor = .white
-                
-                return .gray
-                
+                returnedColor = UIColor.gray
+                }
+                return returnedColor
             } else {
                 return .clear
             }
-            
-            
         }
-        
-        
     }
     
     func shape() -> VADayShape {

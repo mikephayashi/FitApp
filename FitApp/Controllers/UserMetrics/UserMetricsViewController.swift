@@ -319,24 +319,19 @@ class UserMetricsViewController: UIViewController {
     
     //Saving User Metrics
     func updateMetrics(){
+        updateButton.isUserInteractionEnabled = false
         if UserMetricsService.userMetricsArray.count != 0{
-            
-            //                    UserMetricsService.updateUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex,volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
+
             UserMetricsService.updateUserMetrics(weight: 0, height: 0, age: 0, gender: 0, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex, checked: clickedArray,volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
             
             
-            
-            return
-            
-            
         } else {
-            
-            //            UserMetricsService.writeUserMetrics(weight: Int(weightTextField.text!)!, height: Int(heightTextField.text!)!, age: Int(ageTextField.text!)!, gender: Int(genderTextField.text!)!, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex,volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
             
             UserMetricsService.writeUserMetrics(weight: 0, height: 0, age: 0, gender: 0, date: CalendarViewController.selectedDateVarString, goal: goalSegmentedControl.selectedSegmentIndex, bodyPart: bodyPartSegmentedControl.selectedSegmentIndex, workoutType: workoutTypeSegmentControl.selectedSegmentIndex, checked: clickedArray,volume: Int(volumeSegmentedControl.selectedSegmentIndex), lengthOfWorkout: Int(lengthOfWorkoutSlider.value.rounded()), numberOfWeeks: Int(weekSlider.value.rounded()))
         }
         
         UserMetricsService.userMetricsArray[0].checked = clickedArray
+        updateButton.isUserInteractionEnabled = true
     }
     
     //Date Picker

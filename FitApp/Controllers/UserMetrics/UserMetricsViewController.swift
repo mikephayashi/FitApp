@@ -422,7 +422,7 @@ extension UserMetricsViewController{
             
             self.selectedBodyPartArray = self.listOfExercises
             self.selectedBodyPartArray = self.selectedBodyPartArray.filter {UserMetricsViewController.clickedWorkoutsArray.contains($0.bodyPart)}
-            
+            let holdArray = self.selectedBodyPartArray
             
             
             
@@ -464,7 +464,7 @@ extension UserMetricsViewController{
                 
                 formattedDate = UserMetricsViewController.dateTracker.toString(dateFormat: "MMM-dd-yyyy")
                 
-                let holdArray = self.selectedBodyPartArray
+                
                 
                 for _ in 1...numberOfExercises{
                     
@@ -485,22 +485,24 @@ extension UserMetricsViewController{
                     case 3: numberOfReps = self.selectedExercise.numberOfReps[3]
                     numberOfSets = self.selectedExercise.numberOfSets[3]
                     default: fatalError("Out of Range")
-                        
+                        //po selectedExercise.numberOfReps
                     }
                     
-                    self.selectedExercise.numberOfReps = []
-                    self.selectedExercise.weight = []
-                    self.selectedExercise.completed = []
+                    var reps = [Int]()
+                    var weight = [Int]()
+                    var completed = [Int]()
                     for _ in 1...numberOfSets {
-                        self.selectedExercise.numberOfReps.append(numberOfReps)
-                        self.selectedExercise.weight.append(0)
-                        self.selectedExercise.completed.append(0)
+                        reps.append(numberOfReps)
+                        weight.append(0)
+                        completed.append(0)
                     }
                     
                     
-                    WorkoutService.writeProgram(exerciseName: self.selectedExercise.exerciseName, numberOfReps: self.selectedExercise.numberOfReps, numberOfSets: [numberOfSets], weight: self.selectedExercise.weight, completed: self.selectedExercise.completed,sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: true, dateCreated: formattedDate, bodyPart: self.selectedExercise.bodyPart, restDays: self.selectedExercise.restDays,intensity: self.selectedExercise.intensity, workoutType: self.selectedExercise.workoutType)
+                    
+                    WorkoutService.writeProgram(exerciseName: self.selectedExercise.exerciseName, numberOfReps: reps, numberOfSets: [numberOfSets], weight: weight, completed: completed,sectionNumber: Int(WorkoutService.currentSectionNumber)!, alreadyAdded: true, dateCreated: formattedDate, bodyPart: self.selectedExercise.bodyPart, restDays: self.selectedExercise.restDays,intensity: self.selectedExercise.intensity, workoutType: self.selectedExercise.workoutType)
                     
                     WorkoutService.currentSectionNumber = String(Int(WorkoutService.currentSectionNumber)!+1)
+
                     
                     self.selectedBodyPartArray.remove(at: self.selectedBodyPartArray.index(where: {$0 === self.selectedExercise})!)
                 }

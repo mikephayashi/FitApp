@@ -35,7 +35,7 @@ class SetDataCell: UITableViewCell{
         if weightTextField.text == "" {
             weightTextField.text = "0"
         }
-        guard let cell = (sender as AnyObject).superview??.superview as? SetDataCell else { return}
+        guard let cell = (sender as AnyObject).superview??.superview?.superview as? SetDataCell else { return}
         delegate?.savingWeight(cell: cell, weight: Int(weightTextField.text!)!)
         
     }
@@ -44,19 +44,19 @@ class SetDataCell: UITableViewCell{
         if numberOfRepsTextField.text == "" {
             numberOfRepsTextField.text = "1"
         }
-        guard let cell = (sender as AnyObject).superview??.superview as? SetDataCell else { return}
+        guard let cell = (sender as AnyObject).superview??.superview?.superview as? SetDataCell else { return}
         delegate?.reloadingNumberOfReps(cell: cell, numberOfReps: Int(numberOfRepsTextField.text!)!)
     }
     
     
     @IBAction func deleteRowButtonTapped(_ sender: Any) {
-        guard let cell = (sender as AnyObject).superview??.superview as? SetDataCell else { return}
+        guard let cell = (sender as AnyObject).superview??.superview?.superview as? SetDataCell else { return }
         delegate?.deleteRow(cell: cell)
     }
     
     @objc func checkboxValueChanged(sender: Checkbox) {
         print("checkbox value change: \(sender.isChecked)")
-        guard let cell = (sender as AnyObject).superview??.superview as? SetDataCell else { return}
+        guard let cell = (sender as AnyObject).superview??.superview?.superview as? SetDataCell else { return}
         delegate?.setCompleted(cell: cell, checked: checkBox.isChecked)
     }
     

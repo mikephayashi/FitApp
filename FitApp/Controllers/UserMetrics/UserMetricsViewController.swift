@@ -16,6 +16,8 @@ class UserMetricsViewController: UIViewController {
     //    @IBOutlet weak var heightTextField: UITextField!
     //    @IBOutlet weak var ageTextField: UITextField!
     //    @IBOutlet weak var genderTextField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var txtDatePicker: UITextField!
     @IBOutlet weak var numberOfWeeksLabel: UILabel!
@@ -83,7 +85,8 @@ class UserMetricsViewController: UIViewController {
         
         formatViews()
         
-        
+//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
+        scrollView.isScrollEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

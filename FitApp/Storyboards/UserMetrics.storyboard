@@ -178,7 +178,7 @@
                                         <rect key="frame" x="8" y="87" width="349" height="29"/>
                                         <segments>
                                             <segment title="Minimal"/>
-                                            <segment title="Recommended"/>
+                                            <segment title="Normal"/>
                                             <segment title="Effective"/>
                                             <segment title="Max"/>
                                         </segments>
